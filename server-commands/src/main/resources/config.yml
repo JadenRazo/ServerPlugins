@@ -1,0 +1,1028 @@
+# ServerCommands Configuration
+
+# Database configuration for data storage (homes, warps, mutes, playtime)
+# Leave host empty to use YAML file storage instead
+database:
+  host: "localhost"
+  port: 3306
+  database: "my_database"
+  username: "db_user"
+  password: ""
+  pool-size: 10
+  connection-timeout: 30000
+
+# Punishment history settings
+punishment-history:
+  enabled: true
+  server-id: "main"
+
+# Links displayed by /links command
+links:
+  discord: "https://discord.gg/serverplugins"
+  store: "https://store.example.com"
+  website: "https://example.com"
+  rules: "https://example.com/rules"
+  vote:
+    - "https://minecraft-server-list.com/server/serverplugins"
+    - "https://minecraftservers.org/server/serverplugins"
+
+# Spawn location
+spawn:
+  world: "spawn"
+  x: -21.5
+  y: 66
+  z: -68.5
+  yaw: 136
+  pitch: 0
+
+# Teleport settings
+teleport:
+  delay: 3
+  cancel-on-move: true
+  warmup-message: "<gray>Teleporting to <yellow>{destination}</yellow> in <yellow>{seconds}</yellow> seconds..."
+  countdown-message: "<yellow>{seconds}...</yellow>"
+  success-message: "<green>Teleported to {destination}!"
+  cancelled-message: "<red>Teleport cancelled - you moved!"
+
+# Home settings
+homes:
+  default-max: 3
+
+# TPA settings
+tpa:
+  expiration-seconds: 60
+
+# Join Item - Survival Guide book given to players
+join-item:
+  enabled: true
+  slot: 8  # Last hotbar slot
+  material: STICK
+  custom-model-data: 10  # Book texture from resource pack
+  name: "<gold><bold>Survival Guide</bold></gold>"
+  lore:
+    - "<gray>Right-click to open the server menu!"
+    - ""
+    - "<yellow>Click to open"
+  command: Menu  # Executes /Menu when right-clicked (Genesis command)
+  protect: true  # Prevent dropping/moving
+  give-on-respawn: true  # Give back on respawn
+
+# Moderation settings
+moderation:
+  max-warnings-before-action: 3
+  warning-action: kick
+  warning-tempban-duration: 86400000
+
+  # Ban messages
+  ban-message: "<red>You have been permanently banned from the server.\n<gray>Reason: <white>{reason}\n<gray>Banned by: <white>{staff}"
+  tempban-message: "<red>You are temporarily banned from the server.\n<gray>Duration: <white>{duration}\n<gray>Reason: <white>{reason}\n<gray>Banned by: <white>{staff}\n<gray>Expires: <white>{expiry}"
+  ban-broadcast: "<gold>{staff}</gold> <gray>banned</gray> <red>{player}</red> <gray>for</gray> <white>{reason}"
+  tempban-broadcast: "<gold>{staff}</gold> <gray>temp-banned</gray> <red>{player}</red> <gray>for</gray> <yellow>{duration}</yellow> <gray>-</gray> <white>{reason}"
+  unban-broadcast: "<gold>{staff}</gold> <gray>unbanned</gray> <green>{player}"
+
+# Broadcast system configuration
+broadcast:
+  # Prefix for simple broadcasts (/announce <message>)
+  prefix: "<gold><bold>[Broadcast]</bold></gold> "
+  suffix: ""
+
+  # Sound effect for broadcasts
+  sound:
+    enabled: true
+    type: ENTITY_PLAYER_LEVELUP
+    volume: 1.0
+    pitch: 1.0
+
+# Pre-configured broadcast messages
+broadcasts:
+  server-restart:
+    type: TITLE
+    message: "<red><bold>SERVER RESTARTING</bold></red>"
+    title: "<red><bold>SERVER RESTARTING</bold></red>"
+    subtitle: "<yellow>Reconnect in {seconds} seconds</yellow>"
+    fade-in: 10
+    stay: 60
+    fade-out: 20
+    sound:
+      type: BLOCK_PORTAL_TRAVEL
+      volume: 1.0
+      pitch: 0.8
+
+  admin-alert:
+    type: CHAT
+    message: "<red><bold>[ADMIN]</bold></red> <white>{message}</white>"
+    filter:
+      permission: "servercommands.admin"
+    sound:
+      type: BLOCK_NOTE_BLOCK_PLING
+      volume: 1.0
+      pitch: 1.5
+
+  event-announcement:
+    type: CHAT
+    message: "<gradient:#ff6b6b:#feca57><bold>EVENT!</bold></gradient> <white>{message}</white>"
+    click:
+      action: RUN_COMMAND
+      value: "/spawn"
+      hover: "<yellow>Click to teleport to event!"
+    sound:
+      type: ENTITY_PLAYER_LEVELUP
+      volume: 1.0
+      pitch: 1.2
+
+# Messages
+messages:
+  prefix: "<gradient:#ff6b6b:#feca57>[Commands]</gradient> "
+
+  # Common error messages
+  no-permission: "<red>You don't have permission to use this command!"
+  players-only: "<red>This command can only be used by players!"
+  console-only: "<red>This command can only be used from console!"
+  invalid-usage: "<red>Usage: {usage}"
+  player-not-found: "<red>Player not found!"
+  invalid-number: "<red>Invalid number!"
+
+  # Home messages
+  home-set: "<green>Home '{home}' has been set! ({count}/{max})"
+  home-updated: "<green>Home '{home}' has been updated!"
+  home-deleted: "<green>Home '{home}' has been deleted!"
+  home-renamed: "<green>Home '{old}' has been renamed to '{new}'!"
+  home-description-set: "<green>Description set for home '{home}'!"
+  home-not-found: "<red>Home '{home}' not found!"
+  home-invalid-name: "<red>Home name can only contain letters, numbers, underscores, and dashes!"
+  home-name-too-long: "<red>Home name cannot be longer than 16 characters!"
+  home-max-reached: "<red>You have reached your maximum number of homes ({max})!"
+  home-invalid-icon: "<red>Invalid icon material! Using default."
+  home-invalid-material: "<red>Invalid material '{material}'! Using default icon."
+  home-already-exists: "<red>You already have a home named '{home}'!"
+  home-no-homes: "<red>You have no homes set!"
+  home-description-too-long: "<red>Description cannot be longer than 64 characters!"
+
+  # Warp messages
+  warp-set: "<green>Warp '{warp}' has been set!"
+  warp-deleted: "<green>Warp '{warp}' has been deleted!"
+  warp-not-found: "<red>Warp '{warp}' not found!"
+  warp-no-warps: "<red>No warps are available!"
+  warp-list-header: "<gold><bold>--- Server Warps ({count}) ---"
+  warp-list-entry: "<yellow>• {name} <gray>- {world} ({x}, {y}, {z})"
+
+  # Teleport messages
+  tpa-expired: "<red>Your teleport request to {player} has expired."
+  tpa-request-sent: "<green>Teleport request sent to {player}!"
+  tpa-request-sent-here: "<green>Teleport request sent to {player}! Asking them to teleport to you."
+  tpa-request-received: "<yellow>{player} <green>wants to teleport to you."
+  tpa-request-received-here: "<yellow>{player} <green>wants you to teleport to them."
+  tpa-accept-deny: "<green>Type <yellow>/tpaccept <green>to accept or <yellow>/tpdeny <green>to deny."
+  tpa-no-pending: "<red>You have no pending teleport requests!"
+  tpa-denied: "<red>Teleport request denied!"
+  tpa-denied-sender: "<red>{player} denied your teleport request."
+  tpa-already-pending: "<red>You already have a pending request to this player!"
+
+  # Moderation messages
+  kick-usage: "<red>Usage: /kick <player> [reason]"
+  kick-exempt: "<red>You cannot kick this player!"
+  kick-message: "<red>You have been kicked!\n<gray>Reason: {reason}"
+  kick-broadcast: "<red>{player} <gray>has been kicked by <red>{staff}<gray>. Reason: <white>{reason}"
+
+  mute-usage: "<red>Usage: /mute <player> <duration> [reason]"
+  mute-already: "<red>That player is already muted!"
+  mute-message: "<red>You have been muted for {duration}!\n<gray>Reason: {reason}"
+  mute-broadcast: "<gold>{staff} <gray>muted <red>{player} <gray>for <yellow>{duration} <gray>- <white>{reason}"
+  muted-chat: "<red>You are muted! Time remaining: {remaining}"
+  muted-chat-reason: "<red>Reason: {reason}"
+
+  unmute-usage: "<red>Usage: /unmute <player>"
+  unmute-not-muted: "<red>That player is not muted!"
+  unmute-broadcast: "<gold>{staff} <gray>unmuted <green>{player}"
+
+  warn-usage: "<red>Usage: /warn <player> [reason]"
+  warn-broadcast: "<gold>{staff} <gray>warned <red>{player} <gray>- <white>{reason}"
+  warn-threshold: "<red>You have been warned {count}/{max} times! Next warning will result in a {action}."
+
+  # Admin command messages
+  gamemode-changed: "<green>Your gamemode has been set to {mode}."
+  gamemode-changed-other: "<green>Set {player}'s gamemode to {mode}."
+  gamemode-invalid: "<red>Invalid gamemode! Use: survival, creative, adventure, spectator"
+
+  fly-enabled: "<green>Flight enabled!"
+  fly-disabled: "<red>Flight disabled!"
+  fly-enabled-other: "<green>Enabled flight for {player}."
+  fly-disabled-other: "<green>Disabled flight for {player}."
+
+  god-enabled: "<green>God mode enabled!"
+  god-disabled: "<red>God mode disabled!"
+  god-enabled-other: "<green>Enabled god mode for {player}."
+  god-disabled-other: "<green>Disabled god mode for {player}."
+
+  speed-set: "<green>Your {type} speed has been set to {speed}."
+  speed-set-other: "<green>Set {player}'s {type} speed to {speed}."
+  speed-invalid: "<red>Speed must be between 1 and 10!"
+  speed-usage: "<red>Usage: /speed <1-10> [player]"
+
+  clear-success: "<green>Cleared {count} items from your inventory."
+  clear-success-other: "<green>Cleared {count} items from {player}'s inventory."
+  clear-empty: "<yellow>Your inventory is already empty."
+  clear-empty-other: "<yellow>{player}'s inventory is already empty."
+
+  invsee-viewing: "<green>Viewing {player}'s inventory..."
+
+  enderchest-viewing: "<green>Viewing {player}'s ender chest..."
+
+  repair-success: "<green>Repaired your item!"
+  repair-no-item: "<red>You must be holding an item to repair!"
+  repair-not-repairable: "<red>This item cannot be repaired!"
+
+  heal-success: "<green>You have been healed!"
+  heal-success-other: "<green>Healed {player}."
+
+  feed-success: "<green>You have been fed!"
+  feed-success-other: "<green>Fed {player}."
+
+  # World commands
+  time-set: "<green>Time set to {time} in {world}!"
+  time-invalid: "<red>Invalid time! Use: day, noon, night, midnight, or a number"
+  time-usage: "<red>Usage: /time <day|noon|night|midnight|#>"
+  time-current: "<gray>Current time: {time}"
+  time-console-world: "<red>Console cannot use this command without specifying a world!"
+
+  weather-set-clear: "<green>Weather set to clear in {world}!"
+  weather-set-rain: "<green>Weather set to rain in {world}!"
+  weather-set-thunder: "<green>Weather set to thunder in {world}!"
+  weather-invalid: "<red>Unknown weather type! Use: clear, rain, thunder"
+  weather-usage: "<red>Usage: /weather <clear|rain|thunder> [duration]"
+  weather-current: "<gray>Current weather: {weather}"
+  weather-invalid-duration: "<red>Invalid duration!"
+  weather-console-world: "<red>Console cannot use this command without specifying a world!"
+
+  # Info commands
+  playtime-self: "<gold>Your playtime: <yellow>{playtime}"
+  playtime-other: "<gold>{player}'s playtime: <yellow>{playtime}"
+  playtime-session: "<gray>Current session: <white>{session}"
+
+  seen-online: "<green>{player} is currently online!"
+  seen-offline: "<gray>{player} was last seen <yellow>{time} ago"
+  seen-never: "<red>{player} has never joined the server!"
+
+  # History commands
+  history-header: "<gold><bold>Punishment History - {player}"
+  history-no-records: "<gray>No punishment records found."
+  history-entry: "<yellow>{date} <gray>- {type} <gray>by {staff} <gray>- <white>{reason}"
+
+  staff-history-header: "<gold><bold>Staff History - {staff}"
+  staff-history-total: "<gold>Total actions: <yellow>{count}"
+
+  # Admin menu
+  admin-menu-title: "<gold><bold>Admin Menu"
+
+  # Back command
+  back-no-location: "<red>No previous location to return to!"
+  back-success: "<green>Teleported to previous location!"
+
+  # Spawn command
+  spawn-teleporting: "<green>Teleporting to spawn..."
+  spawn-no-location: "<red>Spawn location not configured!"
+
+  # RTP Menu
+  rtp-menu-opening: "<green>Opening random teleport menu..."
+
+  # Give Key
+  givekey-usage: "<red>Usage: /givekey <player> <crate> [amount]"
+  givekey-invalid-amount: "<red>Amount must be a number between 1 and 64!"
+  givekey-unknown-crate: "<red>Unknown crate type: {crate}"
+  givekey-available-crates: "<yellow>Available crates: <white>{crates}"
+  givekey-success: "<green>Gave <yellow>{amount}x {crate} Key <green>to <yellow>{player}<green>!"
+  givekey-success-target: "<green>You received <yellow>{amount}x {crate} Key<green>!"
+  givekey-failed: "<red>Failed to give key. Is ExcellentCrates installed?"
+  givekey-help-header: "<gold><bold>=== Give Key Command ==="
+  givekey-help-usage: "<yellow>Usage: <white>/givekey <player> <crate> [amount]"
+  givekey-help-crates: "<gold>Available Crates:"
+  givekey-help-examples: "<gold>Examples:"
+
+  # Links
+  links-header: "<gold><bold>ServerPlugins Links</bold></gold>"
+  links-discord: "<blue>Discord:</blue> <click:open_url:'{url}'><aqua>{url}</aqua></click>"
+  links-store: "<green>Store:</green> <click:open_url:'{url}'><aqua>{url}</aqua></click>"
+  links-website: "<yellow>Website:</yellow> <click:open_url:'{url}'><aqua>{url}</aqua></click>"
+
+  # Rules
+  rules-header: "<gold><bold>Server Rules</bold></gold>"
+  rules:
+    - "<yellow>1.</yellow> <white>Be respectful to all players</white>"
+    - "<yellow>2.</yellow> <white>No griefing or stealing</white>"
+    - "<yellow>3.</yellow> <white>No hacking or exploiting</white>"
+    - "<yellow>4.</yellow> <white>No spam or excessive caps</white>"
+    - "<yellow>5.</yellow> <white>Have fun!</white>"
+
+# Dynamic Commands - Define custom commands via config
+# Types: RAW_TEXT, COMMAND, CONSOLE_COMMAND, RUN_COMMAND, RUN_CONSOLE, ACTION_BAR_TEXT, GUI_MENU, SYSTEM
+# Sound format: "SOUND_NAME volume pitch" or use a section with type, volume, pitch
+dynamic-commands:
+  Welcome:
+    command: /welcome
+    type: SYSTEM
+    permission: "servercore.welcome"
+    message:
+      - ""
+      - "<gradient:#00ff00:#00aa00>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</gradient>"
+      - "  <gradient:#ffaa00:#ff5500><bold>Welcome to ServerPlugins!</bold></gradient>"
+      - ""
+      - "  <gray>• Discord: <white>/discord"
+      - "  <gray>• Website: <white>/website"
+      - "  <gray>• Rules: <white>/rules"
+      - "  <gray>• Getting Started: <white>/tutorial"
+      - ""
+      - "<gradient:#00ff00:#00aa00>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</gradient>"
+      - ""
+  Links:
+    command: /links
+    type: RAW_TEXT
+    cooldown: 5
+    cooldown-message: "<white> <red>ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴀɢᴀɪɴ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪɴ 5s"
+    text:
+      - ''
+      - '<white>'
+      - '<light_purple><bold>            ᴡᴇᴇɴɪᴇsᴍᴘ <gray>| <white>ᴏꜰꜰɪᴄɪᴀʟ ʟɪɴᴋs'
+      - '<white>'
+      - '<white>            <aqua>⬤ <white>ᴡᴇʙsɪᴛᴇ: <gray>ᴡᴇᴇɴɪᴇsᴍᴘ.ɴᴇᴛ<click:open_url:https://example.com><dark_gray>ᴄʟɪᴄᴋ ᴛᴏ ᴏᴘᴇɴ</click>'
+      - '<white>            <green>⬤ <white>sᴛᴏʀᴇ: <gray>sᴛᴏʀᴇ.ᴡᴇᴇɴɪᴇsᴍᴘ.ɴᴇᴛ<click:open_url:https://store.example.com><dark_gray>ᴄʟɪᴄᴋ ᴛᴏ ᴏᴘᴇɴ</click>'
+      - '<white>            <light_purple>⬤ <white>ᴅɪsᴄᴏʀᴅ: <gray>ᴅɪsᴄᴏʀᴅ.ɢɢ/ᴢᴢᴢɴ7ᴅᴛᴠ3ᴢ<click:open_url:https://discord.gg/ZzZn7dTV3Z><dark_gray>ᴄʟɪᴄᴋ ᴛᴏ ᴊᴏɪɴ</click>'
+      - '<white>'
+      - '<white>            <yellow>⬤ <white>sᴇʀᴠᴇʀ ɪᴘ: <green>ᴘʟᴀʏ.ᴡᴇᴇɴɪᴇsᴍᴘ.ɴᴇᴛ'
+      - '<white>'
+      - '<white>             <gold>ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʟɪɴᴋs ᴛᴏ ᴏᴘᴇɴ ᴛʜᴇᴍ ɪɴ ʏᴏᴜʀ ʙʀᴏᴡsᴇʀ'
+      - ''
+  store:
+    description: "Open the server store"
+    type: RAW_TEXT
+    cooldown: 5
+    cooldown-message: "<red>Please wait %time% seconds before using this again."
+    text:
+      - ""
+      - "<gold><bold>ServerPlugins Store</bold></gold>"
+      - ""
+      - "<gray>Visit our store at:"
+      - "<click:open_url:'https://store.example.com'><aqua>https://store.example.com</aqua></click>"
+      - ""
+
+  settings:
+    description: "Open player settings"
+    type: COMMAND
+    command: "openinv settings"
+    permission: "servercommands.settings"
+
+  guide:
+    description: "Open the server guide"
+    type: RAW_TEXT
+    text:
+      - ""
+      - "<gold><bold>Server Guide</bold></gold>"
+      - ""
+      - "<gray>Welcome to ServerPlugins! Here's how to get started:"
+      - "<yellow>1.</yellow> <white>Type /spawn to teleport to spawn</white>"
+      - "<yellow>2.</yellow> <white>Use /claim to protect your builds</white>"
+      - "<yellow>3.</yellow> <white>Check /rules for server rules</white>"
+      - ""
+
+  # Example: Action bar command with sound
+  notification:
+    description: "Display an action bar notification"
+    type: ACTION_BAR_TEXT
+    permission: "servercommands.notify"
+    cooldown: 10
+    sound: "ENTITY_EXPERIENCE_ORB_PICKUP 0.5 1.0"
+    text:
+      - "<gradient:#00ff00:#ffff00>Welcome to ServerPlugins!</gradient>"
+
+  # Example: Command with sound using config section format
+  heal:
+    description: "Heal the player"
+    type: RUN_CONSOLE
+    permission: "servercommands.heal"
+    cooldown: 60
+    sound:
+      type: "ENTITY_PLAYER_LEVELUP"
+      volume: 0.8
+      pitch: 1.2
+    runcmd:
+      - "effect give {player} minecraft:instant_health 1 10 true"
+      - "effect give {player} minecraft:saturation 1 10 true"
+
+  # Example: GUI menu command
+  servermenu:
+    description: "Open the server menu"
+    type: GUI_MENU
+    command: "server-menu"  # References gui-menus.server-menu below
+    permission: "servercommands.menu"
+    sound: "UI_BUTTON_CLICK 0.5 1.0"
+
+  playermenu:
+    description: "Open the player menu"
+    type: GUI_MENU
+    command: "player-menu"  # References gui-menus.player-menu below
+    sound: "BLOCK_CHEST_OPEN 0.8 1.0"
+
+  # NPC Commands
+  Sylvia:
+    command: /sylvia
+    type: RAW_TEXT
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ sʏʟᴠɪᴀ ᴀɢᴀɪɴ"
+    text:
+      - ''
+      - '<white><#8D580F><bold>                ɴᴘᴄ <#8D580F>sʏʟᴠɪᴀ'
+      - '<white>⻔ <gray>ᴀʀᴇ ʏᴏᴜ ɴᴇᴡ ʜᴇʀᴇ? ɪ ᴄᴀɴ ɢɪᴠᴇ ʏᴏᴜ ᴛʜᴇ ᴡɪsᴇsᴛ'
+      - '<gray>                   ᴀᴅᴠɪᴄᴇ ᴛᴏ ᴍᴀᴋᴇ ʏᴏᴜʀ ᴀᴅᴠᴇɴᴛᴜʀᴇ ᴍᴜᴄʜ ᴇᴀsɪᴇʀ.'
+      - '<gray>                   ᴅᴏ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴋɴᴏᴡ sᴏᴍᴇᴛʜɪɴɢ ꜰʀᴏᴍ ᴍᴇ?'
+      - ''
+      - '<white>                    <click:run_command:/sylvia2>▪ sᴇʀᴠᴇʀ ɢᴜɪᴅᴇ <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - '<white>                    <click:run_command:/sylvia3>▪ sᴇʀᴠᴇʀ ʟɪɴᴋs <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - ''
+      - '<white>                    <red>ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ʜᴏᴠᴇʀ ᴀɴᴅ ᴄʟɪᴄᴋ ᴛʜᴇ ᴏᴘᴛɪᴏɴs'
+      - ''
+  Sylvia2:
+    command: /sylvia2
+    type: RUN_COMMAND
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ sʏʟᴠɪᴀ ᴀɢᴀɪɴ"
+    runcmd:
+      - '$text$<white>'
+      - '$text$<#8D580F><bold>ɴᴘᴄ <#8D580F>sʏʟᴠɪᴀ・<white>ᴛᴀʟᴋɪɴɢ.. '
+      - '$text$<dark_gray><bold>| <gray>ᴏʜ, ꜱᴏ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴋɴᴏᴡ ᴍᴏʀᴇ ᴀʙᴏᴜᴛ ʜᴏᴡ ᴛᴏ ᴘʟᴀʏ, ɪ ᴡɪʟʟ'
+      - '$text$<dark_gray><bold>| <gray>ᴏᴘᴇɴ ᴀ ᴍᴇɴᴜ ꜰᴏʀ ʏᴏᴜ, ᴀɴᴅ ʜᴇʀᴇ ʏᴏᴜ ᴡɪʟʟ ʙᴇ ᴀʙʟᴇ ᴛᴏ ꜱᴇᴇ'
+      - '$text$<dark_gray><bold>| <gray>ᴅᴇᴛᴀɪʟꜱ ᴀʙᴏᴜᴛ ᴇᴀᴄʜ ꜰᴇᴀᴛᴜʀᴇ.'
+      - '$text$<white>'
+      - '$text$<white> <green>ɢᴜɪᴅᴇ ᴍᴇɴᴜ ᴡɪʟʟ ʙᴇ ᴏᴘᴇɴᴇᴅ ɪɴ ᴀ ꜰᴇᴡ sᴇᴄᴏɴᴅs'
+      - '$text$<white>'
+      - '$delay$<120>'
+      - '/bs open guide'
+  Sylvia3:
+    command: /sylvia3
+    type: RUN_COMMAND
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ sʏʟᴠɪᴀ ᴀɢᴀɪɴ"
+    runcmd:
+      - '$text$<white>'
+      - '$text$<#8D580F><bold>ɴᴘᴄ <#8D580F>sʏʟᴠɪᴀ・<white>ᴛᴀʟᴋɪɴɢ.. '
+      - '$text$<dark_gray><bold>| <gray>sᴏ.. ʏᴏᴜ ɴᴇᴇᴅ ᴛʜᴇ sᴇʀᴠᴇʀ ʟɪɴᴋs ʀɪɢʜᴛ? ɪ ᴡɪʟʟ ɪᴍᴍᴇᴅɪᴀᴛᴇʟʏ'
+      - '$text$<dark_gray><bold>| <gray>sᴇɴᴅ ʏᴏᴜ ᴛʜᴇ ɪᴍᴘᴏʀᴛᴀɴᴛ ʟɪɴᴋs ʏᴏᴜ ᴡɪʟʟ ɴᴇᴇᴅ ɪɴ ᴛʜᴇ ᴄʜᴀᴛ'
+      - '$text$<white>'
+      - '$text$<white> <green>ʟɪɴᴋs ᴡɪʟʟ ᴀᴘᴘᴇᴀʀ ɪᴍᴍᴇᴅɪᴀᴛᴇʟʏ ɪɴ ᴛʜᴇ ᴄʜᴀᴛ'
+      - '$text$<white>'
+      - '$delay$<120>'
+      - '/links'
+  August:
+    command: /august
+    type: RAW_TEXT
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴀᴜɢᴜsᴛ ᴀɢᴀɪɴ"
+    text:
+      - ''
+      - '<white><#FFEC15><bold>                ɴᴘᴄ <#FFEC15>ᴀᴜɢᴜsᴛ'
+      - '<white>⻔ <gray>ʜᴇʏ, ᴀᴅᴠᴇɴᴛᴜʀᴇʀ! ɪɴ ᴏʀᴅᴇʀ ᴛᴏ ꜱᴜʀᴠɪᴠᴇ ɪɴ ᴛʜɪꜱ'
+      - '<gray>                   ᴡᴏʀʟᴅ, ʏᴏᴜ ɴᴇᴇᴅ ᴍᴏɴᴇʏ. ɪ ᴄᴀɴ ʜᴇʟᴘ ʏᴏᴜ ꜰɪɴᴅ'
+      - '<gray>                   ᴀ ᴊᴏʙ ꜱᴏ ʏᴏᴜ ᴄᴀɴ ɢᴇᴛ ᴍᴏɴᴇʏ, ᴡʜᴀᴛ ᴅᴏ ʏᴏᴜ ꜱᴀʏ?'
+      - ''
+      - '<white>                    <click:run_command:/august2>▪ ʏᴇꜱ, ᴘʟᴇᴀꜱᴇ! <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - '<white>                    <click:run_command:/august3>▪ ɪ ᴅᴏɴ''ᴛ ɴᴇᴇᴅ ᴍᴏɴᴇʏ! <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - ''
+      - '<white>                    <red>ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ʜᴏᴠᴇʀ ᴀɴᴅ ᴄʟɪᴄᴋ ᴛʜᴇ ᴏᴘᴛɪᴏɴs'
+      - ''
+  August2:
+    command: /august2
+    type: RUN_COMMAND
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴀᴜɢᴜsᴛ ᴀɢᴀɪɴ"
+    runcmd:
+      - '$text$<white>'
+      - '$text$<#FFEC15><bold>ɴᴘᴄ <#FFEC15>ᴀᴜɢᴜsᴛ・<white>ᴛᴀʟᴋɪɴɢ.. '
+      - '$text$<dark_gray><bold>| <gray>ɪ''ᴍ ɢʟᴀᴅ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ɢᴇᴛ ᴀ ᴊᴏʙ, ɪ''ʟʟ ꜱʜᴏᴡ ʏᴏᴜ ᴡʜᴀᴛ ᴊᴏʙꜱ'
+      - '$text$<dark_gray><bold>| <gray>ᴀʀᴇ ᴀᴠᴀɪʟᴀʙʟᴇ, ᴀɴᴅ ʏᴏᴜ ᴄᴀɴ ᴄʜᴏᴏꜱᴇ ᴛʜᴇ ᴏɴᴇꜱ ʏᴏᴜ ᴡᴀɴᴛ!'
+      - '$text$<white>'
+      - '$text$<white> <green>ᴊᴏʙs ᴍᴇɴᴜ ᴡɪʟʟ ʙᴇ ᴏᴘᴇɴᴇᴅ ɪɴ ᴀ ꜰᴇᴡ sᴇᴄᴏɴᴅs'
+      - '$text$<white>'
+      - '$delay$<100>'
+      - '/bs open jobs'
+  August3:
+    command: /august3
+    type: RUN_COMMAND
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴀᴜɢᴜsᴛ ᴀɢᴀɪɴ"
+    runcmd:
+      - '$text$<white>'
+      - '$text$<#FFEC15><bold>ɴᴘᴄ <#FFEC15>ᴀᴜɢᴜsᴛ・<white>ᴛᴀʟᴋɪɴɢ.. '
+      - '$text$<dark_gray><bold>| <gray>ɪᴛ''ꜱ ꜰɪɴᴇ ɪꜰ ʏᴏᴜ ᴅᴏɴ''ᴛ ɴᴇᴇᴅ ᴛʜᴇ ᴍᴏɴᴇʏ,'
+      - '$text$<dark_gray><bold>| <gray>ʙᴜᴛ ɪꜰ ʏᴏᴜ ᴇᴠᴇʀ ɴᴇᴇᴅ ɪᴛ, ɪ''ᴍ ꜱᴛɪʟʟ ʜᴇʀᴇ.'
+      - '$text$<white>'
+  Gandalf:
+    command: /gandalf
+    type: RAW_TEXT
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ɢᴀɴᴅᴀʟꜰ ᴀɢᴀɪɴ"
+    text:
+      - ''
+      - '<white><#630193><bold>                ɴᴘᴄ <#630193>ɢᴀɴᴅᴀʟꜰ'
+      - '<white>⻔ <gray>ɪ''ᴍ ɢᴀɴᴅᴀʟꜰ ᴛʜᴇ ᴡɪᴢᴀʀᴅ. ɪ ᴄᴀɴ ʜᴇʟᴘ ʏᴏᴜ ᴛᴏ'
+      - '<gray>                   ᴛᴇʟᴇᴘᴏʀᴛ ɪɴ ꜱᴏᴍᴇ ᴀʀᴇᴀꜱ ᴏꜰ ᴛʜɪꜱ ᴠɪʟʟᴀɢᴇ'
+      - '<gray>                   ᴏʀ ᴛᴏ ᴛᴇʟᴇᴘᴏʀᴛ ʀᴀɴᴅᴏᴍʟʏ ɪɴ ᴛʜɪꜱ ᴡᴏʀʟᴅ!'
+      - ''
+      - '<white>                    <click:run_command:/gandalf2>▪ sᴇʀᴠᴇʀ ᴡᴀʀᴘs <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - '<white>                    <click:run_command:/gandalf3>▪ ʀᴀɴᴅᴏᴍ ᴛᴇʟᴇᴘᴏʀᴛ <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - ''
+      - '<white>                    <red>ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ʜᴏᴠᴇʀ ᴀɴᴅ ᴄʟɪᴄᴋ ᴛʜᴇ ᴏᴘᴛɪᴏɴs'
+      - ''
+  Gandalf2:
+    command: /gandalf2
+    type: RUN_COMMAND
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ɢᴀɴᴅᴀʟꜰ ᴀɢᴀɪɴ"
+    runcmd:
+      - '$text$<white>'
+      - '$text$<#630193><bold>ɴᴘᴄ <#630193>ɢᴀɴᴅᴀʟꜰ・<white>ᴛᴀʟᴋɪɴɢ.. '
+      - '$text$<dark_gray><bold>| <gray>ꜱᴏ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴛᴇʟᴇᴘᴏʀᴛ ᴛᴏ ᴛʜᴇ ᴘʀᴇꜱᴇᴛ ᴀʀᴇᴀꜱ, ᴛᴇʟʟ'
+      - '$text$<dark_gray><bold>| <gray>ᴍᴇ ᴡʜᴇʀᴇ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ɢᴏ ᴀɴᴅ ɪ''ʟʟ ᴛᴀᴋᴇ ʏᴏᴜ!'
+      - '$text$<white>'
+      - '$text$<white> <green>ᴡᴀʀᴘs ᴍᴇɴᴜ ᴡɪʟʟ ʙᴇ ᴏᴘᴇɴᴇᴅ ɪɴ ᴀ ꜰᴇᴡ sᴇᴄᴏɴᴅs'
+      - '$text$<white>'
+      - '$delay$<100>'
+      - '/bs open warps'
+  Gandalf3:
+    command: /gandalf3
+    type: RUN_COMMAND
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ɢᴀɴᴅᴀʟꜰ ᴀɢᴀɪɴ"
+    runcmd:
+      - '$text$<white>'
+      - '$text$<#630193><bold>ɴᴘᴄ <#630193>ɢᴀɴᴅᴀʟꜰ・<white>ᴛᴀʟᴋɪɴɢ.. '
+      - '$text$<dark_gray><bold>| <gray>ʜᴍᴍ, ꜱᴏ ʏᴏᴜ ᴡᴀɴᴛ ᴍᴇ ᴛᴏ ʀᴀɴᴅᴏᴍʟʏ ᴛᴇʟᴇᴘᴏʀᴛ ʏᴏᴜ'
+      - '$text$<dark_gray><bold>| <gray>ᴛᴏ ᴛʜɪꜱ ᴡᴏʀʟᴅ? ᴀʟʟ ʀɪɢʜᴛ, ʙᴜᴛ ʙᴇ ᴄᴀʀᴇꜰᴜʟ!'
+      - '$text$<white>'
+      - '$text$<white> <red>ɪꜰ ʏᴏᴜ ᴍᴏᴠᴇ, ᴛʜᴇ ᴛᴇʟᴇᴘᴏʀᴛᴀᴛɪᴏɴ ᴡɪʟʟ ʙᴇ ᴄᴀɴᴄᴇʟᴇᴅ'
+      - '$text$<white> <green>ʏᴏᴜ ᴡɪʟʟ ʙᴇ ʀᴀɴᴅᴏᴍʟʏ ᴛᴇʟᴇᴘᴏʀᴛᴇᴅ ɪɴ ᴀ ꜰᴇᴡ sᴇᴄᴏɴᴅs'
+      - '$text$<white>'
+      - '$delay$<120>'
+      - '/bs open randomteleport'
+  Mark:
+    command: /mark
+    type: RAW_TEXT
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴍᴀʀᴋ ᴀɢᴀɪɴ"
+    text:
+      - ''
+      - '<white><#FFC800><bold>                ɴᴘᴄ <#FFC800>ᴍᴀʀᴋ'
+      - '<white>⻔ <gray>ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴍʏ ꜱᴛᴏʀᴇ, ɪ''ᴍ ᴍᴀʀᴋ! ᴅᴏ ʏᴏᴜ ʜᴀᴠᴇ'
+      - '<gray>                   ꜱᴏᴍᴇᴛʜɪɴɢ ᴏꜰ ᴠᴀʟᴜᴇ ᴛʜᴀᴛ ɪ ᴄᴀɴ ʙᴜʏ ᴏʀ ᴀʀᴇ'
+      - '<gray>                   ʏᴏᴜ ɪɴᴛᴇʀᴇꜱᴛᴇᴅ ɪɴ ꜱᴏᴍᴇᴛʜɪɴɢ ᴛʜᴀᴛ ɪ ꜱᴇʟʟ?'
+      - ''
+      - '<white>                    <click:run_command:/mark2>▪ ɪᴛᴇᴍ sʜᴏᴘ <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - '<white>                    <click:run_command:/mark3>▪ ɴᴏ, ᴛʜᴀɴᴋ ʏᴏᴜ! <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - ''
+      - '<white>                    <red>ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ʜᴏᴠᴇʀ ᴀɴᴅ ᴄʟɪᴄᴋ ᴛʜᴇ ᴏᴘᴛɪᴏɴs'
+      - ''
+  Mark2:
+    command: /mark2
+    type: RUN_COMMAND
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴍᴀʀᴋ ᴀɢᴀɪɴ"
+    runcmd:
+      - '$text$<white>'
+      - '$text$<#FFC800><bold>ɴᴘᴄ <#FFC800>ᴍᴀʀᴋ・<white>ᴛᴀʟᴋɪɴɢ.. '
+      - '$text$<dark_gray><bold>| <gray>ɪ''ᴍ ɢʟᴀᴅ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ꜱᴇᴇ ᴡʜᴀᴛ''ꜱ ɪɴ ᴍʏ ꜱᴛᴏʀᴇ! ɪ'
+      - '$text$<dark_gray><bold>| <gray>ᴡɪʟʟ ᴏᴘᴇɴ ᴀ ᴍᴇɴᴜ ꜰᴏʀ ʏᴏᴜ ᴀɴᴅ ᴛʜᴇʀᴇ ʏᴏᴜ ᴡɪʟʟ'
+      - '$text$<dark_gray><bold>| <gray>ꜱᴇᴇ ᴇᴠᴇʀʏ ɪᴛᴇᴍ ᴛʜᴀᴛ ʏᴏᴜ ᴄᴀɴ ꜱᴇʟʟ ᴏʀ ʙᴜʏ ꜰʀᴏᴍ ᴍᴇ.'
+      - '$text$<white>'
+      - '$text$<white> <green>ɪᴛᴇᴍ sʜᴏᴘ ᴡɪʟʟ ʙᴇ ᴏᴘᴇɴᴇᴅ ɪɴ ᴀ ꜰᴇᴡ sᴇᴄᴏɴᴅs'
+      - '$text$<white>'
+      - '$delay$<120>'
+      - '/bs open itemshop'
+  Mark3:
+    command: /mark3
+    type: RUN_COMMAND
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴍᴀʀᴋ ᴀɢᴀɪɴ"
+    runcmd:
+      - '$text$<white>'
+      - '$text$<#FFC800><bold>ɴᴘᴄ <#FFC800>ᴍᴀʀᴋ・<white>ᴛᴀʟᴋɪɴɢ.. '
+      - '$text$<dark_gray><bold>| <gray>ᴏᴋᴀʏ... ᴍᴀʏʙᴇ ʏᴏᴜ ᴡɪʟʟ ᴄʜᴀɴɢᴇ ʏᴏᴜʀ ᴍɪɴᴅ'
+      - '$text$<dark_gray><bold>| <gray>ꜱᴏᴍᴇᴅᴀʏ, ɪ''ʟʟ ʙᴇ ᴡᴀɪᴛɪɴɢ ꜰᴏʀ ʏᴏᴜ ᴀɴʏᴛɪᴍᴇ!'
+      - '$text$<white>'
+  Marcus:
+    command: /marcus
+    type: RAW_TEXT
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴍᴀʀᴄᴜs ᴀɢᴀɪɴ"
+    text:
+      - ''
+      - '<white><#FFEC15><bold>                ɴᴘᴄ <#FFEC15>ᴍᴀʀᴄᴜs'
+      - '<white>⻔ <gray>ɪ''ᴍ ᴍᴀʀᴄᴜꜱ ᴛʜᴇ ꜰᴀʀᴍᴇʀ! ᴍʏ ꜰᴀʀᴍ ᴡᴀꜱ ʙᴇᴡɪᴛᴄʜᴇᴅ'
+      - '<gray>                   ʙʏ ɢᴀɴᴅᴀʟꜰ ᴀɴᴅ ɴᴏᴡ ᴛʜᴇ ꜱᴇᴇᴅʟɪɴɢꜱ ɢʀᴏᴡ'
+      - '<gray>                   ꜰᴀꜱᴛᴇʀ! ʜᴏᴡ ᴀʙᴏᴜᴛ ʏᴏᴜ ᴘɪᴄᴋ ꜱᴏᴍᴇ ᴜᴘ?'
+      - ''
+      - '<white>                    <click:run_command:/marcus1>▪ ʏᴇs, ᴘʟᴇᴀsᴇ! <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - '<white>                    <click:run_command:/marcus2>▪ ɴᴏ, ᴛʜᴀɴᴋ ʏᴏᴜ! <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - ''
+      - '<white>                    <red>ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ʜᴏᴠᴇʀ ᴀɴᴅ ᴄʟɪᴄᴋ ᴛʜᴇ ᴏᴘᴛɪᴏɴs'
+      - '<white> <gold>ᴏɴʟʏ ᴘʟᴀʏᴇʀs ᴡɪᴛʜ ʟᴇss ᴛʜᴀɴ 5 ʜᴏᴜʀs ᴘʟᴀʏᴇᴅ ᴄᴀɴ ᴇɴᴛᴇʀ'
+      - ''
+  Marcus1:
+    command: /marcus1
+    type: RUN_CONSOLE
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴍᴀʀᴄᴜs ᴀɢᴀɪɴ"
+    runcmd:
+      - '/openfarm %player_name%'
+  Marcus2:
+    command: /marcus2
+    type: RAW_TEXT
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴍᴀʀᴄᴜs ᴀɢᴀɪɴ"
+    text:
+      - '<white>'
+      - '<#FFEC15><bold>ɴᴘᴄ <#FFEC15>ᴍᴀʀᴄᴜs・<white>ᴛᴀʟᴋɪɴɢ.. '
+      - '<dark_gray><bold>| <gray>ɪ ᴜɴᴅᴇʀsᴛᴀɴᴅ, sᴏ ʏᴏᴜ ᴅᴏɴ''ᴛ ɴᴇᴇᴅ ɪᴛ.. sᴇᴇ ʏᴏᴜ ᴛʜᴇɴ'
+      - '<white>'
+  Farmer:
+    command: /farmer
+    type: RUN_CONSOLE
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ꜰᴀʀᴍᴇʀ ᴀɢᴀɪɴ"
+    runcmd:
+      - '/openfarm2 %player_name%'
+  Cassian:
+    command: /cassian
+    type: RAW_TEXT
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴄᴀssɪᴀɴ ᴀɢᴀɪɴ"
+    text:
+      - ''
+      - '<white><#E58E02><bold>                ɴᴘᴄ <#E58E02>ᴄᴀssɪᴀɴ'
+      - '<white>⻔ <gray>ʜᴏᴡᴅʏ! ɪ ᴀᴍ ᴄᴀꜱꜱɪᴀɴ, ɪ ᴡɪʟʟ ʀᴇᴡᴀʀᴅ ʏᴏᴜ ꜰᴏʀ'
+      - '<gray>                   ᴛʜᴇ ʜᴏᴜʀꜱ ʏᴏᴜ ꜱᴘᴇɴᴅ ᴏɴ ᴛʜᴇ ꜱᴇʀᴠᴇʀ. ᴅᴏ'
+      - '<gray>                   ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ꜱᴇᴇ ᴡʜᴀᴛ ɪ ᴄᴀɴ ᴏꜰꜰᴇʀ ʏᴏᴜ?'
+      - ''
+      - '<white>                    <click:run_command:/cassian2>▪ sᴜʀᴇ! <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - '<white>                    <click:run_command:/cassian3>▪ ᴍᴀʏʙᴇ ʟᴀᴛᴇʀ <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - ''
+      - '<white>                    <red>ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ʜᴏᴠᴇʀ ᴀɴᴅ ᴄʟɪᴄᴋ ᴛʜᴇ ᴏᴘᴛɪᴏɴs'
+      - ''
+  Cassian2:
+    command: /cassian2
+    type: RUN_COMMAND
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴄᴀssɪᴀɴ ᴀɢᴀɪɴ"
+    runcmd:
+      - '$text$<white>'
+      - '$text$<#E58E02><bold>ɴᴘᴄ <#E58E02>ᴄᴀssɪᴀɴ・<white>ᴛᴀʟᴋɪɴɢ.. '
+      - '$text$<dark_gray><bold>| <gray>ᴛʜᴀᴛ''ꜱ ɢʀᴇᴀᴛ! ɪ ᴡɪʟʟ ꜱʜᴏᴡ ʏᴏᴜ ᴡʜᴀᴛ ʀᴇᴡᴀʀᴅꜱ ʏᴏᴜ'
+      - '$text$<dark_gray><bold>| <gray>ᴡɪʟʟ ʀᴇᴄᴇɪᴠᴇ ꜰᴏʀ ʏᴏᴜʀ ᴛɪᴍᴇ ᴘʟᴀʏᴇᴅ ᴏɴ ᴛʜᴇ ꜱᴇʀᴠᴇʀ'
+      - '$text$<white>'
+      - '$text$<white> <green>ʀᴇᴡᴀʀᴅs ᴍᴇɴᴜ ᴡɪʟʟ ʙᴇ ᴏᴘᴇɴᴇᴅ ɪɴ ᴀ ꜰᴇᴡ sᴇᴄᴏɴᴅs'
+      - '$text$<white>'
+      - '$delay$<80>'
+      - '/bs open rewards'
+  Cassian3:
+    command: /cassian3
+    type: RUN_COMMAND
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴄᴀssɪᴀɴ ᴀɢᴀɪɴ"
+    runcmd:
+      - '$text$<white>'
+      - '$text$<#E58E02><bold>ɴᴘᴄ <#E58E02>ᴄᴀssɪᴀɴ・<white>ᴛᴀʟᴋɪɴɢ.. '
+      - '$text$<dark_gray><bold>| <gray>ᴀʟʀɪɢʜᴛ, ɪ''ʟʟ ᴡᴀɪᴛ ʜᴇʀᴇ ᴜɴᴛɪʟ'
+      - '$text$<dark_gray><bold>| <gray>ʏᴏᴜ ᴄʜᴀɴɢᴇ ʏᴏᴜʀ ᴍɪɴᴅ!'
+      - '$text$<white>'
+  Petra:
+    command: /petra
+    type: RAW_TEXT
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴘᴇᴛʀᴀ ᴀɢᴀɪɴ"
+    text:
+      - ''
+      - '<white><#F1E04A><bold>                ɴᴘᴄ <#F1E04A>ᴘᴇᴛʀᴀ'
+      - '<white>⻔ <gray>ʜɪ, ɪ''ᴍ ᴘᴇᴛʀᴀ! ɪ ᴀᴍ ᴛʜᴇ ᴀᴜᴄᴛɪᴏɴᴇᴇʀ, ɪ'
+      - '<gray>                   ᴄᴀɴ ʜᴇʟᴘ ʏᴏᴜ ᴀᴜᴄᴛɪᴏɴ ʏᴏᴜʀ ɪᴛᴇᴍꜱ ᴏʀ'
+      - '<gray>                   ᴇᴠᴇɴ ʙɪᴅ ꜰᴏʀ ᴏᴛʜᴇʀꜱ'
+      - ''
+      - '<white>                    <click:run_command:/petra2>▪ ᴀᴜᴄᴛɪᴏɴs <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - '<white>                    <click:run_command:/petra3>▪ ᴍᴏʀᴇ ɪɴꜰᴏ <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - ''
+      - '<white>                    <red>ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ʜᴏᴠᴇʀ ᴀɴᴅ ᴄʟɪᴄᴋ ᴛʜᴇ ᴏᴘᴛɪᴏɴs'
+      - ''
+  Petra2:
+    command: /petra2
+    type: RUN_COMMAND
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴘᴇᴛʀᴀ ᴀɢᴀɪɴ"
+    runcmd:
+      - '$text$<white>'
+      - '$text$<#F1E04A><bold>ɴᴘᴄ <#F1E04A>ᴘᴇᴛʀᴀ・<white>ᴛᴀʟᴋɪɴɢ.. '
+      - '$text$<dark_gray><bold>| <gray>ɪ ᴡɪʟʟ ᴏᴘᴇɴ ᴀ ᴍᴇɴᴜ ᴡʜᴇʀᴇ ʏᴏᴜ ᴄᴀɴ ᴅᴏ ᴀʟʟ ᴛʜᴇ ᴛʜɪɴɢꜱ'
+      - '$text$<dark_gray><bold>| <gray>ᴘᴜᴛ ɪᴛᴇᴍꜱ ᴜᴘ ꜰᴏʀ ᴀᴜᴄᴛɪᴏɴ, ʙɪᴅ ꜰᴏʀ ɪᴛᴇᴍꜱ ᴀɴᴅ ᴏᴛʜᴇʀꜱ.'
+      - '$text$<white>'
+      - '$text$<white> <green>ᴀᴜᴄᴛɪᴏɴs ᴍᴇɴᴜ ᴡɪʟʟ ʙᴇ ᴏᴘᴇɴᴇᴅ ɪɴ ᴀ ꜰᴇᴡ sᴇᴄᴏɴᴅs'
+      - '$text$<white>'
+      - '$delay$<100>'
+      - '/ah'
+  Petra3:
+    command: /petra3
+    type: RUN_COMMAND
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴘᴇᴛʀᴀ ᴀɢᴀɪɴ"
+    runcmd:
+      - '$text$<white>'
+      - '$text$<#F1E04A><bold>ɴᴘᴄ <#F1E04A>ᴘᴇᴛʀᴀ・<white>ᴛᴀʟᴋɪɴɢ.. '
+      - '$text$<dark_gray><bold>| <gray>ʏᴏᴜ ᴅᴏɴ''ᴛ ʀᴇᴀʟʟʏ ᴋɴᴏᴡ ʜᴏᴡ ᴀᴜᴄᴛɪᴏɴꜱ ᴡᴏʀᴋ? ʏᴏᴜ ᴄᴀɴ ꜰɪɴᴅ'
+      - '$text$<dark_gray><bold>| <gray>ᴏᴜᴛ ᴍᴏʀᴇ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ʜᴏᴡ ɪᴛ ᴡᴏʀᴋꜱ ɪɴ ɢᴜɪᴅᴇ'
+      - '$text$<white>'
+      - '$text$<white> <green>ɢᴜɪᴅᴇ ᴍᴇɴᴜ ᴡɪʟʟ ʙᴇ ᴏᴘᴇɴᴇᴅ ɪɴ ᴀ ꜰᴇᴡ sᴇᴄᴏɴᴅs'
+      - '$text$<white>'
+      - '$delay$<100>'
+      - '/bs open guide'
+  Thyra:
+    command: /thyra
+    type: RAW_TEXT
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴛʜʏʀᴀ ᴀɢᴀɪɴ"
+    text:
+      - ''
+      - '<white><#0077FF><bold>                ɴᴘᴄ <#0077FF>ᴛʜʏʀᴀ'
+      - '<white>⻔ <gray>ꜱᴏ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴠᴇɴᴛᴜʀᴇ ɪɴᴛᴏ ᴛʜᴇ ᴅᴜɴɢᴇᴏɴ?'
+      - '<gray>                   ɪ ᴡɪʟʟ ɴᴇᴇᴅ ᴀ ᴋᴇʏ ᴛᴏ ʟᴇᴛ ʏᴏᴜ ɪɴ.'
+      - ''
+      - '<white>                    <click:run_command:/thyra2>▪ ɢɪᴠᴇ ᴇᴀsʏ ᴋᴇʏ <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - '<white>                    <click:run_command:/thyra3>▪ ɢɪᴠᴇ ᴍᴇᴅɪᴜᴍ ᴋᴇʏ <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - '<white>                    <click:run_command:/thyra4>▪ ɢɪᴠᴇ ʜᴀʀᴅ ᴋᴇʏ <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - ''
+      - '<white>                    <red>ʜᴏʟᴅ ᴋᴇʏ ɪɴ ʜᴀɴᴅ ᴀɴᴅ ᴄʟɪᴄᴋ ᴛʜᴇ ᴏᴘᴛɪᴏɴs'
+      - ''
+  Thyra2:
+    command: /thyra2
+    type: RUN_CONSOLE
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴛʜʏʀᴀ ᴀɢᴀɪɴ"
+    runcmd:
+      - '/opendungeoneasy %player_name%'
+  Thyra3:
+    command: /thyra3
+    type: RUN_CONSOLE
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴛʜʏʀᴀ ᴀɢᴀɪɴ"
+    runcmd:
+      - '/opendungeonmedium %player_name%'
+  Thyra4:
+    command: /thyra4
+    type: RUN_CONSOLE
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴛʜʏʀᴀ ᴀɢᴀɪɴ"
+    runcmd:
+      - '/opendungeonhard %player_name%'
+  Noah:
+    command: /noah
+    type: RAW_TEXT
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ɴᴏᴀʜ ᴀɢᴀɪɴ"
+    text:
+      - ''
+      - '<white><#C78C2E><bold>                ɴᴘᴄ <#C78C2E>ɴᴏᴀʜ'
+      - '<white>⻔ <gray>ɪ ᴀᴍ ɴᴏᴀʜ ᴛʜᴇ ᴍɪɴᴇʀ! ᴛʜɪꜱ ɪꜱ ᴍʏ ᴍɪɴᴇ, ɪᴛ''ꜱ ɴᴏᴛ'
+      - '<gray>                   ᴀ ʙɪɢ ᴏɴᴇ, ʙᴜᴛ ʏᴏᴜ ᴄᴀɴ ɢᴇᴛ ꜱᴏᴍᴇ ʀᴇꜱᴏᴜʀᴄᴇꜱ!'
+      - '<gray>                   ᴡᴏᴜʟᴅ ʏᴏᴜ ʟɪᴋᴇ ᴛᴏ ᴄᴏᴍᴇ ɪɴꜱɪᴅᴇ?'
+      - ''
+      - '<white>                    <click:run_command:/noah1>▪ ʏᴇs, ᴘʟᴇᴀsᴇ! <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - '<white>                    <click:run_command:/noah2>▪ ɴᴏ, ᴛʜᴀɴᴋ ʏᴏᴜ! <dark_gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ</click>'
+      - ''
+      - '<white>                    <red>ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ʜᴏᴠᴇʀ ᴀɴᴅ ᴄʟɪᴄᴋ ᴛʜᴇ ᴏᴘᴛɪᴏɴs'
+      - '<white> <gold>ᴏɴʟʏ ᴘʟᴀʏᴇʀs ᴡɪᴛʜ ʟᴇss ᴛʜᴀɴ 5 ʜᴏᴜʀs ᴘʟᴀʏᴇᴅ ᴄᴀɴ ᴇɴᴛᴇʀ'
+      - ''
+  Noah1:
+    command: /noah1
+    type: RUN_CONSOLE
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ɴᴏᴀʜ ᴀɢᴀɪɴ"
+    runcmd:
+      - '/openmine %player_name%'
+  Noah2:
+    command: /noah2
+    type: RAW_TEXT
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ɴᴏᴀʜ ᴀɢᴀɪɴ"
+    text:
+      - ''
+      - '<#C78C2E><bold>ɴᴘᴄ <#C78C2E>ɴᴏᴀʜ・<white>ᴛᴀʟᴋɪɴɢ.. '
+      - '<dark_gray><bold>| <gray>ɪ ᴜɴᴅᴇʀsᴛᴀɴᴅ, sᴏ ʏᴏᴜ ᴅᴏɴ''ᴛ ɴᴇᴇᴅ ɪᴛ.. sᴇᴇ ʏᴏᴜ ᴛʜᴇɴ'
+      - '<white>'
+  Miner:
+    command: /miner
+    type: RUN_CONSOLE
+    cooldown: 5
+    cooldown-message: "<white> <red>ᴡᴀɪᴛ 5s ᴛᴏ ᴛᴀʟᴋ ᴡɪᴛʜ ᴍɪɴᴇʀ ᴀɢᴀɪɴ"
+    runcmd:
+      - '/openmine2 %player_name%'
+
+# GUI Menu Definitions
+# Define custom GUI menus that can be opened via commands
+# Action types: command:<cmd>, console:<cmd>, close, open:<gui_id>
+# Note: Menu titles use resource pack font characters for custom backgrounds
+# Format: '&f' + negative spaces (⻔) + menu character
+gui-menus:
+  server-menu:
+    title: '&f⻔⻔⻔⻔⻔⻔⻔⻔'
+    size: 27
+    open-sound:
+      type: BLOCK_CHEST_OPEN
+      volume: 1.0
+      pitch: 1.0
+    click-sound:
+      type: UI_BUTTON_CLICK
+      volume: 0.5
+      pitch: 1.0
+    buttons:
+      10:
+        item:
+          material: COMPASS
+          name: '<aqua><bold>Teleport Hub</bold></aqua>'
+          lore:
+            - '<gray>Click to open teleport menu'
+            - ''
+            - '<yellow>Available destinations:'
+            - '<white>• Spawn'
+            - '<white>• Warps'
+            - '<white>• Player Homes'
+        action: 'command:warp'
+        click-sound:
+          type: ENTITY_ENDERMAN_TELEPORT
+          volume: 0.6
+          pitch: 1.2
+      11:
+        item:
+          material: PLAYER_HEAD
+          name: '<green><bold>Player Stats</bold></green>'
+          lore:
+            - '<gray>View your statistics'
+            - ''
+            - '<yellow>Playtime: <white>%statistic_time_played%'
+            - '<yellow>Level: <white>%player_level%'
+        action: 'command:stats'
+      12:
+        item:
+          material: EMERALD
+          name: '<gold><bold>Economy</bold></gold>'
+          lore:
+            - '<gray>Check your balance and shop'
+            - ''
+            - '<yellow>Balance: <white>$%vault_eco_balance%'
+        action: 'command:balance'
+      13:
+        item:
+          material: BOOK
+          name: '<red><bold>Server Rules</bold></red>'
+          lore:
+            - '<gray>Click to view server rules'
+        action: 'command:rules'
+      14:
+        item:
+          material: NETHER_STAR
+          name: '<light_purple><bold>Vote Rewards</bold></light_purple>'
+          lore:
+            - '<gray>Vote for the server!'
+            - ''
+            - '<yellow>Rewards per vote:'
+            - '<white>• $500'
+            - '<white>• 1x Vote Key'
+        action: 'command:vote'
+      15:
+        item:
+          material: DIAMOND
+          name: '<aqua><bold>Server Store</bold></aqua>'
+          lore:
+            - '<gray>Support the server!'
+            - ''
+            - '<yellow>Visit: <white>store.example.com'
+        action: 'command:store'
+      16:
+        item:
+          material: ENDER_CHEST
+          name: '<dark_purple><bold>Backpack</bold></dark_purple>'
+          lore:
+            - '<gray>Open your backpack'
+        action: 'command:backpack'
+      22:
+        item:
+          material: BARRIER
+          name: '<red><bold>Close</bold></red>'
+          lore:
+            - '<gray>Click to close this menu'
+        action: 'close'
+
+  player-menu:
+    title: '&f⻔⻔⻔⻔⻔⻔⻔⻔'
+    size: 45
+    open-sound:
+      type: BLOCK_ENDER_CHEST_OPEN
+      volume: 1.0
+      pitch: 1.0
+    buttons:
+      10:
+        item:
+          material: RED_BED
+          name: '<yellow>Set Home</yellow>'
+          lore:
+            - '<gray>Set your home location'
+            - ''
+            - '<white>Homes: <green>%player_homes%/%max_homes%'
+        action: 'command:sethome'
+      11:
+        item:
+          material: OAK_DOOR
+          name: '<green>Go Home</green>'
+          lore:
+            - '<gray>Teleport to your home'
+        action: 'command:home'
+      12:
+        item:
+          material: ENDER_PEARL
+          name: '<aqua>Teleport Request</aqua>'
+          lore:
+            - '<gray>Send a teleport request'
+            - ''
+            - '<yellow>Usage: /tpa <player>'
+        action: 'close'
+      13:
+        item:
+          material: RECOVERY_COMPASS
+          name: '<red>Back</red>'
+          lore:
+            - '<gray>Return to last location'
+        action: 'command:back'
+      19:
+        item:
+          material: GOLDEN_APPLE
+          name: '<gold>Heal</gold>'
+          lore:
+            - '<gray>Restore your health'
+            - ''
+            - '<red>Cooldown: 60 seconds'
+        action: 'command:heal'
+        click-sound:
+          type: ENTITY_PLAYER_LEVELUP
+          volume: 0.8
+          pitch: 1.2
+      20:
+        item:
+          material: COOKED_BEEF
+          name: '<yellow>Feed</yellow>'
+          lore:
+            - '<gray>Restore your hunger'
+        action: 'command:feed'
+      21:
+        item:
+          material: ELYTRA
+          name: '<aqua>Toggle Fly</aqua>'
+          lore:
+            - '<gray>Enable or disable flight'
+        action: 'command:fly'
+      22:
+        item:
+          material: CLOCK
+          name: '<gold>Playtime</gold>'
+          lore:
+            - '<gray>Check your playtime'
+            - ''
+            - '<yellow>Time played: <white>%statistic_time_played%'
+        action: 'command:playtime'
+      28:
+        item:
+          material: CRAFTING_TABLE
+          name: '<brown>Crafting Table</brown>'
+          lore:
+            - '<gray>Open a portable crafting table'
+        action: 'command:craft'
+      29:
+        item:
+          material: ENDER_CHEST
+          name: '<dark_purple>Ender Chest</dark_purple>'
+          lore:
+            - '<gray>Open your ender chest'
+        action: 'command:enderchest'
+      30:
+        item:
+          material: CHEST
+          name: '<yellow>View Backpack</yellow>'
+          lore:
+            - '<gray>Open your backpack inventory'
+        action: 'command:backpack'
+      40:
+        item:
+          material: ARROW
+          name: '<yellow>Back to Server Menu</yellow>'
+          lore:
+            - '<gray>Return to main server menu'
+        action: 'open:server-menu'
+        click-sound:
+          type: BLOCK_WOODEN_BUTTON_CLICK_ON
+          volume: 0.5
+          pitch: 1.0
+      44:
+        item:
+          material: BARRIER
+          name: '<red>Close</red>'
+        action: 'close'

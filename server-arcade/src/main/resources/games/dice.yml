@@ -1,0 +1,60 @@
+##################################
+##          Dice Roll           ##
+##################################
+gameType: "dice"
+name: "Dice Roll"
+config_key: "dice"
+
+######## Command Settings ########
+
+command: "dice"
+
+########  Dice Settings  ########
+
+# Betting limits
+min_bet: 100
+max_bet: 100000
+
+# Multipliers (90% RTP)
+multipliers:
+  over:
+    1: 1.2    # 83% win chance
+    2: 1.5    # 66% win chance
+    3: 2.0    # 50% win chance
+    4: 3.0    # 33% win chance
+    5: 6.0    # 16% win chance
+  under:
+    6: 1.2    # 83% win chance
+    5: 1.5    # 66% win chance
+    4: 2.0    # 50% win chance
+    3: 3.0    # 33% win chance
+    2: 6.0    # 16% win chance
+  exact: 5.4  # Any exact number (16.67% win chance)
+  odd: 1.8    # Odd number (50% win chance)
+  even: 1.8   # Even number (50% win chance)
+
+# Animation
+animation_duration: 1000    # 1 second total animation
+roll_frames: 5              # Number of random rolls shown
+frame_delay: 200            # 200ms between frames
+
+# Unicode faces
+die_faces:
+  1: "⚀"
+  2: "⚁"
+  3: "⚂"
+  4: "⚃"
+  5: "⚄"
+  6: "⚅"
+
+# Messages
+messages:
+  rolling: "&e&lRolling... %face%"
+  result: "&6&l🎲 You rolled: %face% (%number%)"
+  win: "&a&l✓ YOU WIN! &7+$%payout%"
+  lose: "&c&l✗ YOU LOSE! &7-$%bet%"
+  invalid_bet: "&c&lInvalid bet type! Use: over, under, exact, odd, even"
+  invalid_number: "&c&lInvalid number! Must be between 1 and 6"
+  insufficient_funds: "&c&lYou don't have enough money!"
+  bet_too_low: "&c&lMinimum bet is $%min%"
+  bet_too_high: "&c&lMaximum bet is $%max%"

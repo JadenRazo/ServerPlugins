@@ -1,0 +1,118 @@
+# ServerParkour Configuration
+
+# NPC Settings
+npc:
+  enabled: true
+  location:
+    world: "lobby"
+    x: 876.5
+    y: 168.0
+    z: 736.5
+    yaw: 0.0
+    pitch: 0.0
+  skin: "Notch"
+  display-name: "&d&lParkour"
+  # Where player teleports after game ends
+  teleport-location:
+    x: 881.0
+    y: 167.0
+    z: 736.5
+    yaw: -90.0
+
+# Hologram above NPC
+hologram:
+  enabled: true
+  offset-y: 4.5
+  lines:
+    - "&d&lPARKOUR"
+    - ""
+    - "&6#1 &e%serverparkour_top_1_name% &7- &f%serverparkour_top_1_score%"
+    - "&f#2 &7%serverparkour_top_2_name% &7- &f%serverparkour_top_2_score%"
+    - "&c#3 &7%serverparkour_top_3_name% &7- &f%serverparkour_top_3_score%"
+    - ""
+    - "&fYour Best: &e%serverparkour_highscore%"
+
+# Game Settings
+game:
+  # Starting height above player when spawning first block
+  start-height: 50
+  # How many blocks ahead to generate
+  blocks-ahead: 5
+  # Blocks behind player before removal
+  blocks-behind: 5
+  # Fall distance before ending game
+  fall-threshold: 8
+
+# Jump difficulty is now hardcoded based on real Minecraft physics:
+# - Going UP 1 block: max 2 blocks horizontal
+# - Same level: max 3 blocks horizontal
+# - Going DOWN: max 4 blocks horizontal
+# - Diagonal jumps are automatically reduced to safe distances
+
+# Block Types (weighted selection)
+blocks:
+  normal:
+    - material: STONE
+      weight: 30
+    - material: OAK_PLANKS
+      weight: 25
+    - material: QUARTZ_BLOCK
+      weight: 20
+    - material: SMOOTH_STONE
+      weight: 15
+    - material: BIRCH_PLANKS
+      weight: 10
+  special:
+    backward:
+      material: BLACK_CONCRETE
+      weight: 8
+      description: "&8Backward Jump!"
+    speed:
+      material: GOLD_BLOCK
+      weight: 5
+      description: "&eSpeed Boost!"
+    double-jump:
+      material: DIAMOND_BLOCK
+      weight: 3
+      description: "&bDouble Jump!"
+    slime:
+      weight: 5
+      description: "&aBoing!"
+    tnt:
+      weight: 5
+      description: "&cTNT! Jump quick!"
+
+# XP System
+xp:
+  enabled: true
+  # XP per block reached
+  per-block: 5
+  # Bonus XP for beating personal best
+  personal-best-bonus: 50
+  # Bonus for reaching milestones (every N blocks)
+  milestone-interval: 25
+  milestone-bonus: 100
+
+# Rewards
+rewards:
+  enabled: false
+  # Economy rewards per block
+  per-block: 0
+  # Milestone rewards
+  milestone-reward: 0
+
+# Messages (supports MiniMessage format)
+messages:
+  prefix: "<light_purple><bold>[Parkour]</bold></light_purple> "
+  game-start: "<green>✓ Game started! Jump to climb higher!"
+  game-end: "<gray>Game over! You reached <gold>{score}</gold> blocks!"
+  new-highscore: "<green>★ <bold>NEW HIGHSCORE!</bold> You reached <gold>{score}</gold> blocks!"
+  backward-block: "<dark_gray>→ Go BACK! Jump behind you!"
+  speed-block: "<yellow>→ Speed boost activated!"
+  double-jump-block: "<aqua>→ Double jump ready!"
+  slime-block: "<green>→ Boing! Slime bounce!"
+  tnt-block: "<red><bold>→ TNT! Jump quick!"
+  milestone-reached: "<gold>★ Milestone reached: <white>{milestone}</white> blocks!"
+  xp-gain: "<gray>→ +<yellow>{xp}</yellow> Lobby XP"
+  already-playing: "<red>✗ You are already playing!"
+  not-playing: "<red>✗ You are not in a parkour game!"

@@ -1,0 +1,81 @@
+# Casino NPC Dialog Configuration
+# Head of the Casino - arcade game guide
+
+npc:
+  name: "casino"
+  display-name: "⻔<gold><bold>CASINO BOSS"
+
+dialog:
+  greeting:
+    message:
+      - "<white>"
+      - "⻔<gold><bold>━━━━━━━━━━━━━━━━━━━━━━"
+      - "⻔<gold><bold>THE CASINO"
+      - "⻔<gray>WELCOME, <white>{player}<gray>!"
+      - "⻔<gray>BETS: <gold>$100 <gray>— <gold>$100,000"
+      - "⻔<gold><bold>━━━━━━━━━━━━━━━━━━━━━━"
+      - "<white>"
+
+    choices:
+      1:
+        text: "⻔<green><bold>» <green>OPEN ARCADE MENU"
+        command: "arcade"
+        permission: ""
+        delay: 0
+        close: true
+
+      2:
+        text: "⻔<aqua><bold>» <aqua>MY GAMBLING STATS"
+        command: "gamble stats"
+        permission: ""
+        delay: 0
+        close: true
+
+      3:
+        text: "⻔<yellow><bold>» <yellow>PLAY SLOTS"
+        command: "slots"
+        permission: "serverarcade.command.slots"
+        delay: 0
+        close: true
+
+      4:
+        text: "⻔<light_purple><bold>» <light_purple>PLAY BLACKJACK"
+        command: "blackjack"
+        permission: "serverarcade.command.blackjack"
+        delay: 0
+        close: true
+
+      5:
+        text: "⻔<gold><bold>» <gold>PLAY CRASH"
+        command: "crash"
+        permission: "serverarcade.command.crash"
+        delay: 0
+        close: true
+
+      6:
+        text: "⻔<blue><bold>» <blue>PLAY DICE"
+        command: "dice"
+        permission: "serverarcade.command.dice"
+        delay: 0
+        close: true
+
+      7:
+        text: "⻔<dark_aqua><bold>» <dark_aqua>COINFLIP"
+        command: "coinflip"
+        permission: "serverarcade.command.coinflip"
+        delay: 0
+        close: true
+
+      8:
+        text: "⻔<dark_purple><bold>» <dark_purple>JACKPOT"
+        command: "jackpot"
+        permission: "serverarcade.command.jackpot"
+        delay: 0
+        close: true
+
+      9:
+        text: "⻔<red><bold>» <red>EXIT"
+        command: ""
+        permission: ""
+        delay: 0
+        close: true

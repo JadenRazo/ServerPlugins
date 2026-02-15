@@ -1,0 +1,100 @@
+# ============================================================
+# ServerPlugins Standard Message Configuration Template
+# ============================================================
+#
+# This file provides a template for standardized messaging across
+# all ServerPlugins plugins. Copy this structure to your plugin's
+# config.yml under the 'messages:' section.
+#
+# Color Scheme Guide:
+#   <red>         - Errors, denials, failures
+#   <green>       - Success, confirmations, completion
+#   <yellow>      - Warnings, notices, important info
+#   <gold>        - Emphasis, highlights, values
+#   <gray>        - Secondary info, descriptions, hints
+#   <white>       - Primary info, player names, data
+#   <dark_gray>   - Tertiary info, subtle hints
+#   <aqua>        - Commands, clickable text
+#
+# Placeholders:
+#   Use {placeholder} format, e.g., "Hello {player}!"
+#   Replace with Placeholder.of("player", playerName)
+#
+# Icons:
+#   ✓ (checkmark) - Success
+#   ✗ (cross)     - Error
+#   ⚠ (warning)   - Warning
+#   → (arrow)     - Info
+#   • (bullet)    - List items
+#   ★ (star)      - Special/premium
+#
+# Gradients:
+#   <gradient:#start:#end>Text</gradient>
+#
+# ============================================================
+
+messages:
+  # Plugin prefix (shown before all messages)
+  # Example: "<gradient:#ff6b6b:#feca57>[YourPlugin]</gradient> "
+  prefix: "<gradient:#ff6b6b:#feca57>[Plugin]</gradient> "
+
+  # ========== COMMON MESSAGES ==========
+  # These can be overridden per-plugin but use CommonMessages enum by default
+
+  no-permission: "<red>You don't have permission to do that!"
+  console-only: "<red>This command can only be executed from console!"
+  players-only: "<red>This command can only be used by players!"
+  player-not-found: "<red>Player not found or is offline!"
+  player-offline: "<red>That player is not online!"
+  cannot-target-self: "<red>You cannot target yourself!"
+
+  invalid-usage: "<red>Invalid usage! <gray>{usage}"
+  invalid-number: "<red>Invalid number: <white>{input}"
+  invalid-player: "<red>Invalid player: <white>{player}"
+  invalid-arguments: "<red>Invalid arguments!"
+
+  on-cooldown: "<red>You must wait <white>{time}<red> before using this again!"
+  processing: "<yellow>Processing... please wait."
+
+  insufficient-funds: "<red>You don't have enough money! <gray>Need: <gold>${amount}"
+  purchase-success: "<green>✓ Purchased for <gold>${amount}"
+
+  world-disabled: "<red>This action is not allowed in this world!"
+  region-disabled: "<red>You cannot do that in this region!"
+
+  database-error: "<red>A database error occurred. Please contact an administrator."
+  something-went-wrong: "<red>Something went wrong! Please try again."
+
+  # ========== PLUGIN-SPECIFIC MESSAGES ==========
+  # Add your custom messages below this line
+  # Example:
+  # claim-created: "<green>✓ Claim created successfully!"
+  # claim-deleted: "<red>✗ Claim deleted."
+  # claim-info: |
+  #   <gray>→ <white>Claim Information
+  #   <gray>→ Owner: <gold>{owner}
+  #   <gray>→ Size: <gold>{size} chunks
+  #   <gray>→ Members: <gold>{members}
+
+# ============================================================
+# Example Plugin-Specific Configuration
+# ============================================================
+#
+# For a claims plugin, you might add:
+#
+# messages:
+#   prefix: "<gradient:#e74c3c:#9b59b6>[Claims]</gradient> "
+#
+#   claim-created: "<green>✓ Claim created! <gray>Size: <gold>{chunks} chunks"
+#   claim-deleted: "<red>✗ Claim deleted."
+#   claim-full: "<red>You've reached the maximum number of claims!"
+#   claim-overlap: "<red>This area overlaps with another claim!"
+#
+#   trust-added: "<green>✓ Added <white>{player}<green> to your claim."
+#   trust-removed: "<red>✗ Removed <white>{player}<red> from your claim."
+#   trust-list: "<gray>→ Trusted players: <gold>{players}"
+#
+#   upgrade-success: "<green>✓ Claim upgraded! <gray>New size: <gold>{size} chunks"
+#   upgrade-cost: "<yellow>⚠ This upgrade costs <gold>${amount}"
+#
+# ============================================================

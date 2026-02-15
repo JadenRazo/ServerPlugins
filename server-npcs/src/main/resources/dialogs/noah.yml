@@ -1,0 +1,37 @@
+# Noah NPC Dialog Configuration
+# Builder NPC
+
+npc:
+  name: "noah"
+  display-name: "⻔<gold><bold>NOAH"
+
+dialog:
+  greeting:
+    message:
+      - "<white>"
+      - "⻔<gold><bold>━━━━━━━━━━━━━━━━━━━━━━"
+      - "⻔"
+      - "⻔<gold><bold>NPC NOAH"
+      - "⻔<gray>HEY THERE, {player}!"
+      - "⻔<gray>I'M NOAH, THE BUILDER."
+      - "⻔<gray>NEED HELP WITH CONSTRUCTION?"
+      - "⻔"
+      - "⻔<white>• OPEN MENU"
+      - "⻔"
+      - "⻔<red><bold>! <red>YOU NEED TO HOVER AND CLICK THE OPTIONS"
+      - "<white>"
+
+    choices:
+      1:
+        text: "⻔<green>OPEN MENU"
+        command: "noah"
+        permission: ""
+        delay: 0
+        close: true
+
+      2:
+        text: "⻔<red>EXIT"
+        command: ""
+        permission: ""
+        delay: 0
+        close: true

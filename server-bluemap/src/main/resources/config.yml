@@ -1,0 +1,104 @@
+# ServerBlueMap Configuration
+
+# Enable or disable the bluemap integration
+enabled: true
+
+# How often to update markers (in seconds)
+update-interval-seconds: 300
+
+# Claim polygon settings
+claims:
+  # Layer name shown in BlueMap
+  layer-name: "Claims"
+  # Whether the layer is visible by default
+  default-visible: true
+  # Fill color for claims (hex format)
+  fill-color: "#3399FF"
+  # Fill opacity (0.0 to 1.0)
+  fill-opacity: 0.35
+  # Border color (hex format)
+  border-color: "#1166CC"
+  # Border width in pixels
+  border-width: 3
+  # Height where markers are displayed (Y coordinate)
+  # Set to 350 to render above all blocks (max build height is 320)
+  marker-height: 350
+  # Show claim owner in popup
+  show-owner: true
+  # Show claim name in popup
+  show-name: true
+  # Show member count in popup
+  show-members: true
+
+# Nation overlay settings
+nations:
+  # Layer name shown in BlueMap
+  layer-name: "Nations"
+  # Whether the layer is visible by default
+  default-visible: false
+  # Fill color for nations (hex format)
+  fill-color: "#FFD700"
+  # Fill opacity for nation territory
+  fill-opacity: 0.15
+  # Border color (hex format)
+  border-color: "#CC9900"
+  # Border width in pixels
+  border-width: 2
+  # Height where markers are displayed
+  marker-height: 350
+  # Show nation tag in popup
+  show-tag: true
+  # Show nation leader in popup
+  show-leader: true
+  # Show member count in popup
+  show-members: true
+
+# War zone settings
+war-zones:
+  # Layer name shown in BlueMap
+  layer-name: "War Zones"
+  # Whether the layer is visible by default
+  default-visible: true
+  # Fill color for war zones (hex)
+  fill-color: "#FF0000"
+  # Fill opacity
+  fill-opacity: 0.4
+  # Border color
+  border-color: "#990000"
+  # Border width
+  border-width: 4
+  # Height where markers are displayed
+  marker-height: 350
+  # Pulse animation (blink) for active war zones
+  pulse-animation: true
+
+# Points of Interest settings
+pois:
+  # Layer name shown in BlueMap
+  layer-name: "Points of Interest"
+  # Whether the layer is visible by default
+  default-visible: true
+  # Marker height above ground
+  marker-height: 350
+  # POI categories with colors and icons
+  categories:
+    shop:
+      name: "Shop"
+      color: "#FFD700"
+      icon: "assets/poi_shop.png"
+    warp:
+      name: "Warp"
+      color: "#00FF00"
+      icon: "assets/poi_warp.png"
+    landmark:
+      name: "Landmark"
+      color: "#00FFFF"
+      icon: "assets/poi_landmark.png"
+    resource:
+      name: "Resource"
+      color: "#FF8C00"
+      icon: "assets/poi_resource.png"
+    event:
+      name: "Event"
+      color: "#FF00FF"
+      icon: "assets/poi_event.png"

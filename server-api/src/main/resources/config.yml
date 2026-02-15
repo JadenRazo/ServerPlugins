@@ -1,0 +1,19 @@
+# ServerAPI Configuration
+
+# Special character used in GUI titles to trigger inventory hiding
+# When a GUI title contains this character, the player's inventory will be hidden
+invisible-inventory-title: "\uF000"
+
+database:
+  type: H2
+  h2:
+    path: plugins/ServerAPI/data
+    name: server
+  sqlite:
+    path: plugins/ServerAPI/data.db
+  mysql:
+    host: localhost
+    port: 3306
+    database: serverplugins
+    username: root
+    password: ""

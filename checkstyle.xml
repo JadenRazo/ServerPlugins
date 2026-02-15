@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC
+    "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+    "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<!--
+    ServerPlugins Checkstyle Configuration
+    Based on Google Java Style Guide with Minecraft plugin adjustments
+-->
+<module name="Checker">
+    <property name="charset" value="UTF-8"/>
+    <property name="severity" value="warning"/>
+    <property name="fileExtensions" value="java"/>
+
+    <!-- File length check -->
+    <module name="FileLength">
+        <property name="max" value="2000"/>
+        <property name="severity" value="warning"/>
+    </module>
+
+    <!-- No tabs - spaces only -->
+    <module name="FileTabCharacter">
+        <property name="eachLine" value="true"/>
+    </module>
+
+    <!-- Line length - must be under Checker, not TreeWalker -->
+    <module name="LineLength">
+        <property name="max" value="150"/>
+        <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
+    </module>
+
+    <!-- Newline at end of file -->
+    <module name="NewlineAtEndOfFile">
+        <property name="lineSeparator" value="lf"/>
+    </module>
+
+    <module name="TreeWalker">
+        <!-- Annotations -->
+        <module name="AnnotationLocation">
+            <property name="allowSamelineMultipleAnnotations" value="false"/>
+            <property name="allowSamelineSingleParameterlessAnnotation" value="true"/>
+            <property name="allowSamelineParameterizedAnnotation" value="false"/>
+        </module>
+        <module name="MissingOverride"/>
+
+        <!-- Block Checks -->
+        <module name="AvoidNestedBlocks"/>
+        <module name="EmptyBlock">
+            <property name="option" value="TEXT"/>
+        </module>
+        <module name="EmptyCatchBlock">
+            <property name="exceptionVariableName" value="expected|ignore"/>
+        </module>
+        <module name="LeftCurly"/>
+        <module name="NeedBraces"/>
+        <module name="RightCurly">
+            <property name="option" value="same"/>
+        </module>
+
+        <!-- Coding -->
+        <module name="DefaultComesLast"/>
+        <module name="EmptyStatement"/>
+        <module name="EqualsHashCode"/>
+        <module name="FallThrough"/>
+        <module name="IllegalInstantiation"/>
+        <module name="MissingSwitchDefault"/>
+        <module name="MultipleVariableDeclarations"/>
+        <module name="NoFinalizer"/>
+        <module name="OneStatementPerLine"/>
+        <module name="OverloadMethodsDeclarationOrder"/>
+        <module name="SimplifyBooleanExpression"/>
+        <module name="SimplifyBooleanReturn"/>
+        <module name="StringLiteralEquality"/>
+        <module name="UnnecessaryParentheses"/>
+        <module name="UnnecessarySemicolonAfterOuterTypeDeclaration"/>
+        <module name="UnnecessarySemicolonAfterTypeMemberDeclaration"/>
+        <module name="UnnecessarySemicolonInEnumeration"/>
+        <module name="UnnecessarySemicolonInTryWithResources"/>
+
+        <!-- Imports (error severity - must fix) -->
+        <module name="AvoidStarImport">
+            <property name="excludes" value="java.util.*,java.sql.*,org.bukkit.*,org.bukkit.entity.*,org.bukkit.event.*,org.bukkit.event.entity.*,org.bukkit.event.player.*,org.bukkit.event.block.*,org.bukkit.inventory.*"/>
+            <property name="severity" value="error"/>
+        </module>
+        <module name="RedundantImport">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="UnusedImports">
+            <property name="severity" value="error"/>
+        </module>
+
+        <!-- Javadoc - relaxed for plugin code -->
+        <module name="InvalidJavadocPosition"/>
+        <module name="JavadocMethod">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="JavadocType">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="MissingJavadocMethod">
+            <property name="severity" value="ignore"/>
+        </module>
+
+        <!-- Miscellaneous -->
+        <module name="ArrayTypeStyle"/>
+        <module name="CommentsIndentation"/>
+        <module name="Indentation">
+            <property name="basicOffset" value="4"/>
+            <property name="caseIndent" value="4"/>
+            <property name="arrayInitIndent" value="4"/>
+        </module>
+        <module name="OuterTypeFilename"/>
+        <module name="UpperEll"/>
+
+        <!-- Modifiers -->
+        <module name="ModifierOrder"/>
+        <module name="RedundantModifier"/>
+
+        <!-- Naming Conventions (error severity - must fix) -->
+        <module name="AbbreviationAsWordInName">
+            <property name="allowedAbbreviationLength" value="3"/>
+            <property name="allowedAbbreviations" value="API,NPC,UUID,SQL,GUI,HUD"/>
+            <property name="severity" value="error"/>
+        </module>
+        <module name="CatchParameterName">
+            <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
+        </module>
+        <module name="ClassTypeParameterName">
+            <property name="format" value="^[A-Z][0-9]?$"/>
+        </module>
+        <module name="ConstantName">
+            <property name="format" value="^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$"/>
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="InterfaceTypeParameterName">
+            <property name="format" value="^[A-Z][0-9]?$"/>
+        </module>
+        <module name="LambdaParameterName">
+            <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
+        </module>
+        <module name="LocalFinalVariableName">
+            <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
+        </module>
+        <module name="LocalVariableName">
+            <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
+        </module>
+        <module name="MemberName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+        </module>
+        <module name="MethodName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+        </module>
+        <module name="MethodTypeParameterName">
+            <property name="format" value="^[A-Z][0-9]?$"/>
+        </module>
+        <module name="PackageName">
+            <property name="format" value="^[a-z]+(\.[a-z][a-z0-9]*)*$"/>
+            <property name="severity" value="error"/>
+        </module>
+        <module name="ParameterName">
+            <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
+        </module>
+        <module name="PatternVariableName">
+            <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
+        </module>
+        <module name="RecordComponentName">
+            <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
+        </module>
+        <module name="RecordTypeParameterName">
+            <property name="format" value="^[A-Z][0-9]?$"/>
+        </module>
+        <module name="StaticVariableName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+        </module>
+        <module name="TypeName">
+            <property name="format" value="^[A-Z][a-zA-Z0-9]*$"/>
+            <property name="severity" value="error"/>
+        </module>
+
+        <!-- Size Violations -->
+        <module name="MethodLength">
+            <property name="max" value="200"/>
+        </module>
+        <module name="ParameterNumber">
+            <property name="max" value="10"/>
+            <property name="ignoreOverriddenMethods" value="true"/>
+        </module>
+
+        <!-- Whitespace -->
+        <module name="EmptyForInitializerPad"/>
+        <module name="EmptyForIteratorPad"/>
+        <module name="EmptyLineSeparator">
+            <property name="allowNoEmptyLineBetweenFields" value="true"/>
+            <property name="allowMultipleEmptyLines" value="false"/>
+        </module>
+        <module name="GenericWhitespace"/>
+        <module name="MethodParamPad"/>
+        <module name="NoLineWrap"/>
+        <module name="NoWhitespaceAfter"/>
+        <module name="NoWhitespaceBefore"/>
+        <module name="OperatorWrap">
+            <property name="option" value="NL"/>
+            <property name="tokens" value="BAND,BOR,BSR,BXOR,DIV,EQUAL,GE,GT,LAND,LE,LITERAL_INSTANCEOF,LOR,LT,MINUS,MOD,NOT_EQUAL,PLUS,QUESTION,SL,SR,STAR"/>
+        </module>
+        <module name="ParenPad"/>
+        <module name="SeparatorWrap">
+            <property name="tokens" value="DOT"/>
+            <property name="option" value="nl"/>
+        </module>
+        <module name="SeparatorWrap">
+            <property name="tokens" value="COMMA"/>
+            <property name="option" value="EOL"/>
+        </module>
+        <module name="SingleSpaceSeparator"/>
+        <module name="TypecastParenPad"/>
+        <module name="WhitespaceAfter"/>
+        <module name="WhitespaceAround">
+            <property name="allowEmptyConstructors" value="true"/>
+            <property name="allowEmptyMethods" value="true"/>
+            <property name="allowEmptyTypes" value="true"/>
+            <property name="allowEmptyLoops" value="true"/>
+            <property name="allowEmptyLambdas" value="true"/>
+            <property name="allowEmptyCatches" value="true"/>
+        </module>
+    </module>
+</module>

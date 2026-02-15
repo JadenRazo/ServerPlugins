@@ -1,0 +1,58 @@
+# ServerBlueMap Messages
+# POI (Points of Interest) command messages
+
+messages:
+  prefix: "<gradient:#4169e1:#1e90ff>[BlueMap]</gradient> "
+
+  # Permission errors
+  no-permission: "<red>You don't have permission to use this command."
+  players-only: "<red>Only players can add POIs."
+
+  # Usage errors
+  usage-add: "<red>Usage: /poi add <name> <category> [description]"
+  usage-remove: "<red>Usage: /poi remove <name>"
+  usage-info: "<red>Usage: /poi info <name>"
+  usage-hide: "<red>Usage: /poi hide <name>"
+  usage-show: "<red>Usage: /poi show <name>"
+
+  # Categories
+  valid-categories: "<red>Categories: {categories}"
+  invalid-category: "<red>Invalid category. Valid categories: {categories}"
+
+  # POI operations
+  poi-exists: "<red>A POI with the name '{name}' already exists."
+  poi-not-found: "<red>POI '{name}' not found."
+  poi-created: "<green>✓ Successfully created POI '{name}' at your location."
+  poi-location: "<gray>Type: {category} | Location: {x}, {y}, {z}"
+  poi-removed: "<green>✓ Successfully removed POI '{name}'."
+  poi-hidden: "<green>✓ Hidden POI '{name}'."
+  poi-shown: "<green>✓ Shown POI '{name}'."
+  poi-operation-failed: "<red>✗ Failed to {operation} POI. Check console for errors."
+
+  # List command
+  no-pois-found: "<gray>No POIs found{filter}."
+  list-header: "<gold>=== Points of Interest{filter} ==="
+  list-total: "<gray>Total: {count} POIs"
+
+  # Info command
+  info-header: "<gold>=== POI Info: {name} ==="
+  info-id: "<gray>ID: <white>{id}"
+  info-category: "<gray>Category: <white>{category}"
+  info-location: "<gray>Location: <white>{world} ({x}, {y}, {z})"
+  info-visible: "<gray>Visible: <white>{visible}"
+  info-created: "<gray>Created: <white>{created}"
+  info-description: "<gray>Description: <white>{description}"
+
+  # Reload command
+  config-reloaded: "<green>✓ Reloaded ServerBlueMap configuration and updated markers."
+
+  # Help command
+  help-header: "<gold>=== ServerBlueMap POI Commands ==="
+  help-add: "<gray>/poi add <name> <category> [description] <white>- Create a POI at your location"
+  help-remove: "<gray>/poi remove <name> <white>- Remove a POI"
+  help-list: "<gray>/poi list [category] <white>- List all POIs"
+  help-info: "<gray>/poi info <name> <white>- Show detailed POI information"
+  help-hide: "<gray>/poi hide <name> <white>- Hide a POI from the map"
+  help-show: "<gray>/poi show <name> <white>- Show a hidden POI on the map"
+  help-reload: "<gray>/poi reload <white>- Reload configuration"
+  help-categories: "<gray>Categories: <white>{categories}"

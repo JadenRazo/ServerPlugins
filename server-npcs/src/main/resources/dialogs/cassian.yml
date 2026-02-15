@@ -1,0 +1,45 @@
+# Cassian NPC Dialog Configuration
+# Rewards NPC
+
+npc:
+  name: "cassian"
+  display-name: "⻔<red><bold>CASSIAN"
+
+dialog:
+  greeting:
+    message:
+      - "<white>"
+      - "⻔<red><bold>━━━━━━━━━━━━━━━━━━━━━━"
+      - "⻔"
+      - "⻔<red><bold>NPC CASSIAN"
+      - "⻔<gray>GREETINGS, {player}!"
+      - "⻔<gray>I AM CASSIAN, THE KING."
+      - "⻔<gray>YOU MAY CLAIM YOUR REWARDS HERE."
+      - "⻔"
+      - "⻔<white>• VIEW REWARDS"
+      - "⻔<white>• OPEN MENU"
+      - "⻔"
+      - "⻔<red><bold>! <red>YOU NEED TO HOVER AND CLICK THE OPTIONS"
+      - "<white>"
+
+    choices:
+      1:
+        text: "⻔<green>VIEW REWARDS"
+        command: "rewards"
+        permission: ""
+        delay: 80
+        close: true
+
+      2:
+        text: "⻔<yellow>OPEN MENU"
+        command: "cassian"
+        permission: ""
+        delay: 0
+        close: true
+
+      3:
+        text: "⻔<red>EXIT"
+        command: ""
+        permission: ""
+        delay: 0
+        close: true

@@ -1,0 +1,468 @@
+name: ServerCommands
+version: ${project.version}
+main: net.serverplugins.commands.ServerCommands
+api-version: "1.21"
+description: Custom commands for ServerPlugins
+author: ServerPlugins
+website: https://example.com
+depend: [ServerAPI]
+softdepend: [ServerAdmin, server-bridge, Multiverse-Core]
+
+commands:
+  links:
+    description: Show all ServerPlugins links
+    usage: /<command>
+    aliases: [socials, discord, website]
+  spawn:
+    description: Teleport to spawn
+    usage: /<command>
+    aliases: [s, hub, lobby]
+  survivalmenu:
+    description: Manage your survival guide book
+    usage: /<command> [give|remove]
+    aliases: [survivalguide, guide, book]
+  toggleguide:
+    description: Toggle the survival guide on/off
+    usage: /<command>
+    aliases: [guidetoggle, tguide]
+  rules:
+    description: View server rules
+    usage: /<command>
+    aliases: [serverrules, info]
+  vote:
+    description: View voting links
+    usage: /<command>
+    aliases: [voting, votelinks, votes]
+  rtpmenu:
+    description: Open the RTP dimension selector menu
+    usage: /<command>
+    aliases: [rtp-menu, rtpgui, rtp, wild, wilderness, random]
+
+  # Home commands
+  home:
+    description: Teleport to a home
+    usage: /<command> [name]
+    aliases: [h, gohome]
+  sethome:
+    description: Set a home at your location
+    usage: /<command> [name] [icon]
+    aliases: [sh, createhome, addhome, newhome]
+  delhome:
+    description: Delete a home
+    usage: /<command> <name>
+    aliases: [deletehome, removehome, rmhome]
+  homes:
+    description: Open the homes GUI
+    usage: /<command>
+    aliases: [homemenu, homesgui, myhomes, listhomes]
+  renamehome:
+    description: Rename a home
+    usage: /<command> <oldname> <newname>
+    aliases: [rhome, mvhome, movehome]
+  sethomedesc:
+    description: Set a description for a home
+    usage: /<command> <home> [description]
+    aliases: [homedesc, homedescription, hd]
+
+  # Warp commands
+  warp:
+    description: Teleport to a warp
+    usage: /<command> <name>
+    aliases: [w, gotowarp]
+  setwarp:
+    description: Set a warp at your location
+    usage: /<command> <name>
+    aliases: [createwarp, addwarp, newwarp]
+  delwarp:
+    description: Delete a warp
+    usage: /<command> <name>
+    aliases: [deletewarp, removewarp, rmwarp]
+  warps:
+    description: List all warps
+    usage: /<command>
+    aliases: [warplist, warpsmenu, listwarps]
+
+  # Teleport commands
+  back:
+    description: Return to your previous location
+    usage: /<command>
+    aliases: [return, b, lastloc, previous]
+  tpa:
+    description: Request to teleport to a player
+    usage: /<command> <player>
+    aliases: [tprequest, teleport]
+  tpahere:
+    description: Request a player to teleport to you
+    usage: /<command> <player>
+    aliases: [tphere, tpaskhere, tprequesthere]
+  tpaccept:
+    description: Accept a teleport request
+    usage: /<command>
+    aliases: [tpyes, tpac, accept, yes]
+  tpdeny:
+    description: Deny a teleport request
+    usage: /<command>
+    aliases: [tpno, tpd, deny, no]
+
+  # Moderation commands
+  kick:
+    description: Kick a player from the server
+    usage: /<command> <player> [reason]
+  ban:
+    description: Permanently ban a player
+    usage: /<command> <player> [reason]
+  tempban:
+    description: Temporarily ban a player
+    usage: /<command> <player> <duration> [reason]
+  unban:
+    description: Unban a player
+    usage: /<command> <player>
+  mute:
+    description: Mute a player
+    usage: /<command> <player> [duration] [reason]
+  unmute:
+    description: Unmute a player
+    usage: /<command> <player>
+  warn:
+    description: Warn a player
+    usage: /<command> <player> [reason]
+
+  # Admin commands
+  gamemode:
+    description: Change gamemode
+    usage: /<command> <mode> [player]
+    aliases: [gm]
+  gmc:
+    description: Switch to creative mode
+    usage: /<command> [player]
+  gms:
+    description: Switch to survival mode
+    usage: /<command> [player]
+  gma:
+    description: Switch to adventure mode
+    usage: /<command> [player]
+  gmsp:
+    description: Switch to spectator mode
+    usage: /<command> [player]
+  fly:
+    description: Toggle flight mode
+    usage: /<command> [player]
+    aliases: [flight, togglefly]
+  heal:
+    description: Heal yourself or a player
+    usage: /<command> [player]
+    aliases: [health, hp]
+  feed:
+    description: Feed yourself or a player
+    usage: /<command> [player]
+    aliases: [eat, food, hunger]
+  announce:
+    description: Broadcast a message to all players
+    usage: /<command> <message>
+    aliases: [alert, servercast, wbroadcast, wbc]
+  god:
+    description: Toggle god mode (invincibility)
+    usage: /<command> [player]
+    aliases: [godmode, invincible]
+  speed:
+    description: Change walk or fly speed
+    usage: /<command> <walk|fly> <1-10> [player]
+    aliases: [setspeed, movespeed]
+
+  # Inventory commands
+  invsee:
+    description: View a player's inventory
+    usage: /<command> <player>
+    aliases: [openinv, inv, inventory, seeinv]
+  enderchest:
+    description: Open your or a player's enderchest
+    usage: /<command> [player]
+    aliases: [ec, echest, ender]
+  clear:
+    description: Clear your or a player's inventory
+    usage: /<command> [player]
+    aliases: [ci, clearinv, clearinventory]
+  repair:
+    description: Repair items in your hand or all items
+    usage: /<command> [all]
+    aliases: [fix, fixall, mend]
+
+  # World commands
+  time:
+    description: Change the world time
+    usage: /<command> <day|night|set> [ticks]
+    aliases: [settime, worldtime]
+  weather:
+    description: Change the world weather
+    usage: /<command> <clear|rain|thunder> [duration]
+    aliases: [setweather, worldweather]
+
+  # Info commands
+  playtime:
+    description: View your or a player's playtime
+    usage: /<command> [player]
+    aliases: [pt, onlinetime, timeplayed]
+  seen:
+    description: Check when a player was last online
+    usage: /<command> <player>
+    aliases: [lastseen, lastlogin, lookup]
+
+  # Economy commands
+  eco:
+    description: Manage player economy
+    usage: /<command> <give|take|set|balance> <player> [amount]
+    aliases: [economy, money]
+  gems:
+    description: View and manage your gems
+    usage: /<command> [balance|pay|top|give|take|set] [player] [amount]
+    aliases: [gem]
+  givekey:
+    description: Give crate keys to a player
+    usage: /<command> <player> <crate> [amount]
+    aliases: [key, cratekey]
+  adminmenu:
+    description: Open the comprehensive admin control panel
+    usage: /<command>
+    aliases: [admin, ap, panel]
+
+  # Punishment history commands
+  history:
+    description: View a player's punishment history
+    usage: /<command> <player> [type|gui] [page]
+    aliases: [punishhistory, ph]
+  staffhistory:
+    description: View punishments issued by a staff member
+    usage: /<command> <staff> [page]
+    aliases: [sh, modhistory]
+
+permissions:
+  servercommands.links:
+    description: Access to /links command
+    default: true
+  servercommands.spawn:
+    description: Access to /spawn command
+    default: true
+  servercommands.rules:
+    description: Access to /rules command
+    default: true
+  servercommands.vote:
+    description: Access to /vote command
+    default: true
+  servercommands.rtp:
+    description: Access to /rtpmenu command
+    default: true
+
+  # Home permissions
+  servercommands.home:
+    description: Access to /home command
+    default: true
+  servercommands.sethome:
+    description: Access to /sethome command
+    default: true
+  servercommands.delhome:
+    description: Access to /delhome command
+    default: true
+  servercommands.homes:
+    description: Access to /homes command
+    default: true
+  servercommands.renamehome:
+    description: Access to /renamehome command
+    default: true
+  servercommands.sethomedesc:
+    description: Access to /sethomedesc command
+    default: true
+  servercommands.homes.unlimited:
+    description: Unlimited homes
+    default: op
+
+  # Warp permissions
+  servercommands.warp:
+    description: Access to /warp command
+    default: true
+  servercommands.warps:
+    description: Access to /warps command
+    default: true
+  servercommands.setwarp:
+    description: Access to /setwarp command
+    default: op
+  servercommands.delwarp:
+    description: Access to /delwarp command
+    default: op
+
+  # Teleport permissions
+  servercommands.back:
+    description: Access to /back command
+    default: true
+  servercommands.tpa:
+    description: Access to /tpa command
+    default: true
+  servercommands.tpahere:
+    description: Access to /tpahere command
+    default: true
+  servercommands.tpaccept:
+    description: Access to /tpaccept command
+    default: true
+  servercommands.tpdeny:
+    description: Access to /tpdeny command
+    default: true
+  servercommands.teleport.bypass:
+    description: Bypass teleport warmup
+    default: op
+
+  # Moderation permissions
+  servercommands.kick:
+    description: Access to /kick command
+    default: op
+  servercommands.kick.exempt:
+    description: Cannot be kicked
+    default: false
+  servercommands.ban:
+    description: Access to /ban, /tempban, and /unban commands
+    default: op
+  servercommands.ban.exempt:
+    description: Cannot be banned
+    default: false
+  servercommands.mute:
+    description: Access to /mute command
+    default: op
+  servercommands.mute.exempt:
+    description: Cannot be muted
+    default: false
+  servercommands.unmute:
+    description: Access to /unmute command
+    default: op
+  servercommands.warn:
+    description: Access to /warn command
+    default: op
+  servercommands.warn.clear:
+    description: Access to clear warnings
+    default: op
+
+  # Admin permissions
+  servercommands.gamemode:
+    description: Access to /gamemode command
+    default: op
+  servercommands.gamemode.others:
+    description: Change others' gamemode
+    default: op
+  servercommands.gamemode.*:
+    description: Access to all gamemodes
+    default: op
+  servercommands.fly:
+    description: Access to /fly command
+    default: op
+  servercommands.fly.others:
+    description: Toggle flight for others
+    default: op
+  servercommands.heal:
+    description: Access to /heal command
+    default: op
+  servercommands.heal.others:
+    description: Heal other players
+    default: op
+  servercommands.feed:
+    description: Access to /feed command
+    default: op
+  servercommands.feed.others:
+    description: Feed other players
+    default: op
+  servercommands.announce:
+    description: Access to /announce command
+    default: op
+  servercommands.broadcast:
+    description: Legacy permission for /announce command (backward compatibility)
+    default: op
+  servercommands.god:
+    description: Access to /god command
+    default: op
+  servercommands.god.others:
+    description: Toggle god mode for others
+    default: op
+  servercommands.speed:
+    description: Access to /speed command
+    default: op
+  servercommands.speed.others:
+    description: Change speed for others
+    default: op
+
+  # Inventory permissions
+  servercommands.invsee:
+    description: Access to /invsee command
+    default: op
+  servercommands.invsee.edit:
+    description: Edit player inventories via /invsee
+    default: op
+  servercommands.enderchest:
+    description: Access to /enderchest command
+    default: true
+  servercommands.enderchest.others:
+    description: View others' enderchests
+    default: op
+  servercommands.enderchest.edit:
+    description: Edit your own enderchest
+    default: true
+  servercommands.enderchest.edit.others:
+    description: Edit others' enderchests
+    default: op
+  servercommands.clear:
+    description: Access to /clear command
+    default: op
+  servercommands.clear.others:
+    description: Clear others' inventories
+    default: op
+  servercommands.repair:
+    description: Access to /repair command
+    default: op
+  servercommands.repair.all:
+    description: Repair all items at once
+    default: op
+
+  # World permissions
+  servercommands.time:
+    description: Access to /time command
+    default: op
+  servercommands.weather:
+    description: Access to /weather command
+    default: op
+
+  # Info permissions
+  servercommands.playtime:
+    description: Access to /playtime command
+    default: true
+  servercommands.playtime.others:
+    description: View others' playtime
+    default: op
+  servercommands.seen:
+    description: Access to /seen command
+    default: true
+
+  # Economy permissions
+  servercommands.eco:
+    description: Access to /eco command
+    default: op
+  servercommands.gems:
+    description: Access to /gems command (balance, pay, top)
+    default: true
+  servercommands.gems.admin:
+    description: Admin access to /gems (give, take, set)
+    default: op
+  servercommands.givekey:
+    description: Access to /givekey command
+    default: op
+  servercommands.admin:
+    description: Access to /admin comprehensive control panel
+    default: op
+
+  # Punishment history permissions
+  servercommands.history:
+    description: Access to /history command
+    default: op
+  servercommands.history.gui:
+    description: Use GUI for punishment history
+    default: op
+  servercommands.history.lift:
+    description: Lift punishments from history GUI
+    default: op
+  servercommands.staffhistory:
+    description: Access to /staffhistory command
+    default: op

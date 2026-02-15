@@ -1,0 +1,48 @@
+# ServerNpcs Configuration
+# NPC and Dialog Management System
+
+# Enable debug logging
+debug: false
+
+# Dialog Settings
+dialog:
+  # Enable GUI dialogs for Java Edition players
+  gui-enabled: true
+
+  # Enable form dialogs for Bedrock Edition players
+  form-enabled: true
+
+  # Timeout in seconds for dialog sessions
+  timeout-seconds: 60
+
+  # Folder containing dialog YAML files
+  dialogs-folder: "dialogs"
+
+# Integration Settings
+integrations:
+  # FancyNpcs integration
+  fancynpcs: true
+
+  # Citizens integration
+  citizens: false
+
+# Messages
+messages:
+  # Prefix for all plugin messages (supports MiniMessage format)
+  prefix: "<gradient:#9b59b6:#e91e63>[ServerNpcs]</gradient> "
+
+  # Error messages
+  no-permission: "<red>You don't have permission to use this command!"
+  player-not-found: "<red>Player not found!"
+  npc-not-found: "<red>NPC not found!"
+  dialog-not-found: "<red>Dialog not found!"
+
+  # Success messages
+  reload-success: "<green>Configuration reloaded successfully!"
+  npc-created: "<green>NPC created successfully!"
+  npc-deleted: "<green>NPC deleted successfully!"
+
+  # Dialog messages
+  dialog-closed: "<gray>Dialog closed."
+  dialog-timeout: "<red>Dialog timed out."
+  no-permission-choice: "<red>You don't have permission for this choice."

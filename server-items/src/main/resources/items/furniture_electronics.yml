@@ -1,0 +1,146 @@
+# Electronics - Page 3
+# Default furniture definitions for ServerItems plugin
+
+beveragemachine:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<gray>Coffee Machine"
+  lore:
+    - "<gray>A coffee machine"
+    - "<gray>Essential for your morning routine"
+  custom_model_data: 30035
+  furniture:
+    hitbox:
+      width: 0.4
+      height: 0.8
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+computer:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<white>Desk Computer"
+  lore:
+    - "<gray>An all-in-one desk computer"
+    - "<gray>Modern workspace essential"
+  custom_model_data: 30036
+  furniture:
+    hitbox:
+      width: 0.8
+      height: 0.6
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+gamingdesk:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<gold>Gaming Desk"
+  lore:
+    - "<gray>An entire gaming desk setup"
+    - "<gray>Complete battlestation for gamers"
+  custom_model_data: 30037
+  furniture:
+    hitbox:
+      width: 2.0
+      height: 1.0
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+refrigerator:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<white>Interactive Refrigerator"
+  lore:
+    - "<gray>An interactive refrigerator"
+    - "<gray>Keep your food fresh in style"
+  custom_model_data: 30038
+  furniture:
+    hitbox:
+      width: 0.6
+      height: 1.5
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+studio:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<gold>Entertainment Center"
+  lore:
+    - "<gray>A full furniture set with TV and speakers"
+    - "<gray>Complete home entertainment system"
+  custom_model_data: 30039
+  furniture:
+    hitbox:
+      width: 2.5
+      height: 1.5
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+tv:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<white>Simple TV"
+  lore:
+    - "<gray>A simple TV"
+    - "<gray>Watch your favorite shows"
+  custom_model_data: 30040
+  furniture:
+    hitbox:
+      width: 0.8
+      height: 0.6
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+washingmachine:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<white>Washing Machine"
+  lore:
+    - "<gray>A decorative washing machine"
+    - "<gray>Modern laundry appliance"
+  custom_model_data: 30041
+  furniture:
+    hitbox:
+      width: 0.6
+      height: 0.8
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+gascooker:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<gray>Kitchen Stove"
+  lore:
+    - "<gray>A kitchen stove"
+    - "<gray>Cook up a storm"
+  custom_model_data: 30042
+  furniture:
+    hitbox:
+      width: 0.6
+      height: 0.8
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false

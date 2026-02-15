@@ -1,0 +1,29 @@
+name: ServerEnchants
+version: ${project.version}
+main: net.serverplugins.enchants.ServerEnchants
+api-version: "1.21"
+description: Custom enchantment system with mini-games
+author: ServerPlugins
+website: https://example.com
+depend: [ServerAPI]
+
+commands:
+  enchanter:
+    description: Open the enchanter GUI
+    usage: /<command>
+    permission: server.enchants.use
+    aliases: [ench, enchant]
+
+permissions:
+  server.enchants.use:
+    description: Access the enchanter system
+    default: true
+  server.enchants.admin:
+    description: Admin permissions for enchants
+    default: op
+  server.enchants.bypass.cooldown:
+    description: Bypass game cooldowns
+    default: op
+  server.enchants.bypass.cost:
+    description: Bypass game costs
+    default: op

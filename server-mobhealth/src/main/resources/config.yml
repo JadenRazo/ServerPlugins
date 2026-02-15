@@ -1,0 +1,42 @@
+# ServerMobHealth Configuration
+
+# Display format - {name} = mob name, {health} = colored health, {max} = max health
+display-format: "{name} {health}"
+
+# How long the health bar stays visible (seconds)
+display-duration: 5
+
+# Y-offset above mob for the TextDisplay
+y-offset: 0.3
+
+# Health color thresholds (percentage-based)
+colors:
+  high: "<green>"       # Above 66% health
+  medium: "<yellow>"    # 33% - 66% health
+  low: "<red>"          # Below 33% health
+
+# Heart symbol appended to health number
+heart-symbol: "\u2764"
+
+# Only show health bars when damaged by a player (ignores environmental/mob damage)
+player-damage-only: true
+
+# Entity types to exclude from health bar display
+excluded-entities:
+  - ARMOR_STAND
+  - ITEM_FRAME
+  - GLOW_ITEM_FRAME
+  - PAINTING
+  - MARKER
+  - INTERACTION
+  - TEXT_DISPLAY
+  - BLOCK_DISPLAY
+  - ITEM_DISPLAY
+
+messages:
+  prefix: "<gradient:#e74c3c:#ff6b6b>[MobHealth]</gradient> "
+  reloaded: "<green>Configuration reloaded."
+  toggled-on: "<green>Mob health bars enabled."
+  toggled-off: "<yellow>Mob health bars disabled."
+  cleared: "<green>All active health bars cleared."
+  no-permission: "<red>You don't have permission to do that."

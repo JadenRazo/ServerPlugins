@@ -1,0 +1,50 @@
+name: ServerKeys
+version: ${project.version}
+main: net.serverplugins.keys.ServerKeys
+api-version: "1.21"
+description: Key management and distribution system for ServerPlugins
+author: ServerPlugins
+website: https://example.com
+depend: [ServerAPI]
+softdepend: [PlaceholderAPI, ExcellentCrates]
+
+commands:
+  keyall:
+    description: Give keys to all online players
+    usage: /<command> <crate|dungeon> <keyname> [amount]
+    aliases: [giveallkeys, keysall, masskey]
+  keys:
+    description: View your key statistics
+    usage: /<command> [player]
+    aliases: [mykeys, keybalance, k, key, cratekeys]
+  keyadmin:
+    description: Admin key management
+    usage: /<command> <give|history|reload> [args...]
+    aliases: [kadmin, keysa, keysadmin]
+  claimkeys:
+    description: Claim unclaimed keys from overflow
+    usage: /<command>
+    aliases: [claimkey, ck]
+
+permissions:
+  serverkeys.keyall:
+    description: Give keys to all online players
+    default: op
+  serverkeys.keys:
+    description: View your own key statistics
+    default: true
+  serverkeys.keys.others:
+    description: View other players key statistics
+    default: op
+  serverkeys.admin:
+    description: Full admin access to key management
+    default: op
+  serverkeys.admin.give:
+    description: Give keys to specific players
+    default: op
+  serverkeys.admin.history:
+    description: View key transaction history
+    default: op
+  serverkeys.claim:
+    description: Claim unclaimed keys
+    default: true

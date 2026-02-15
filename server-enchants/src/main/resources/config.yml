@@ -1,0 +1,125 @@
+# ServerEnchants Configuration
+
+# Economy costs for game attempts by tier
+costs:
+  common: 500
+  uncommon: 2000
+  rare: 5000
+  legendary: 20000
+
+# Fragment rewards for games
+fragments:
+  win:
+    common: 10
+    uncommon: 25
+    rare: 50
+    legendary: 100
+  loss:
+    common: 2
+    uncommon: 5
+    rare: 10
+    legendary: 20
+
+# XP rewards for games
+experience:
+  win:
+    common: 15
+    uncommon: 30
+    rare: 60
+    legendary: 120
+  loss:
+    common: 3
+    uncommon: 8
+    rare: 15
+    legendary: 30
+
+# Tier unlock requirements
+tiers:
+  uncommon:
+    level: 5
+    common-unlocks: 2
+  rare:
+    level: 15
+    uncommon-unlocks: 2
+  legendary:
+    level: 30
+    rare-unlocks: 2
+
+# Daily free attempt
+daily-attempts: 1
+
+# Fragment shop prices
+shop:
+  upgrade-scroll: 50
+  enchant-dust: 25
+  random-scroll: 100
+
+# Enchantment settings
+enchantments:
+  auto-smelt:
+    chances: [50, 65, 80, 90, 100]
+  vein-miner:
+    max-blocks: [5, 10, 20, 35, 50]
+  magnet:
+    range: [2, 4, 6, 8, 10]
+    tick-interval: 10
+  soulbound:
+    max-level: 3
+
+# Game settings
+games:
+  memory:
+    pairs:
+      common: 6
+      uncommon: 9
+      rare: 12
+      legendary: 15
+    time-limit: 60
+    move-limit-multiplier: 3
+  forge:
+    runes:
+      common: 3
+      uncommon: 5
+      rare: 7
+      legendary: 9
+    time-limit: 45
+  alchemy:
+    properties:
+      common: 2
+      uncommon: 3
+      rare: 4
+      legendary: 5
+    essences:
+      common: 4
+      uncommon: 6
+      rare: 8
+      legendary: 10
+    time-limit: 60
+  decryption:
+    code-length:
+      common: 4
+      uncommon: 5
+      rare: 6
+      legendary: 7
+    guesses:
+      common: 8
+      uncommon: 7
+      rare: 6
+      legendary: 5
+    rune-pool-size:
+      common: 6
+      uncommon: 7
+      rare: 8
+      legendary: 9
+
+# Messages
+messages:
+  prefix: "<gradient:#9B59B6:#8E44AD>[Enchanter]</gradient> "
+  game-win: "<green>You won! <gold>+{fragments} fragments, +{xp} XP"
+  game-loss: "<red>Game over! <gold>+{fragments} fragments, +{xp} XP"
+  not-enough-money: "<red>You need <gold>{cost} <red>to play this game!"
+  tier-locked: "<red>You need <gold>Level {level} <red>and <gold>{unlocks} {tier} unlocks <red>to access this tier!"
+  daily-used: "<yellow>You've used your free attempt today. Cost: <gold>{cost}"
+  enchant-applied: "<green>Applied <gold>{enchant} {level} <green>to your item!"
+  enchant-upgraded: "<green>Upgraded <gold>{enchant} <green>to level <gold>{level}<green>!"
+  max-level: "<yellow>This enchantment is already at max level!"

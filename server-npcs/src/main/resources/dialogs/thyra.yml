@@ -1,0 +1,37 @@
+# Thyra NPC Dialog Configuration
+# Viking warrior NPC
+
+npc:
+  name: "thyra"
+  display-name: "⻔<blue><bold>THYRA"
+
+dialog:
+  greeting:
+    message:
+      - "<white>"
+      - "⻔<blue><bold>━━━━━━━━━━━━━━━━━━━━━━"
+      - "⻔"
+      - "⻔<blue><bold>NPC THYRA"
+      - "⻔<gray>GREETINGS, {player}!"
+      - "⻔<gray>I AM THYRA, A WARRIOR."
+      - "⻔<gray>WHAT BRINGS YOU HERE?"
+      - "⻔"
+      - "⻔<white>• OPEN MENU"
+      - "⻔"
+      - "⻔<red><bold>! <red>YOU NEED TO HOVER AND CLICK THE OPTIONS"
+      - "<white>"
+
+    choices:
+      1:
+        text: "⻔<green>OPEN MENU"
+        command: "thyra"
+        permission: ""
+        delay: 0
+        close: true
+
+      2:
+        text: "⻔<red>EXIT"
+        command: ""
+        permission: ""
+        delay: 0
+        close: true

@@ -1,0 +1,32 @@
+name: ServerEvents
+version: ${project.version}
+main: net.serverplugins.events.ServerEvents
+api-version: '1.21'
+description: Server events and mini-games for ServerPlugins
+author: ServerPlugins
+website: https://example.com
+
+depend:
+  - ServerAPI
+
+softdepend:
+  - Vault
+  - server-bridge
+  - ProtocolLib
+  - packetevents
+  - Multiverse-Core
+
+commands:
+  event:
+    description: Events management command
+    usage: /<command> <trigger|random|stop|reload|gui>
+    aliases: [events, we]
+    permission: serverevents.admin
+
+permissions:
+  serverevents.admin:
+    description: Admin access to events management
+    default: op
+  serverevents.join:
+    description: Ability to participate in events
+    default: true

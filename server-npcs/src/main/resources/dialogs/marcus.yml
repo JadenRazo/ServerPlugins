@@ -1,0 +1,37 @@
+# Marcus NPC Dialog Configuration
+# Farmer NPC
+
+npc:
+  name: "marcus"
+  display-name: "⻔<dark_green><bold>MARCUS"
+
+dialog:
+  greeting:
+    message:
+      - "<white>"
+      - "⻔<dark_green><bold>━━━━━━━━━━━━━━━━━━━━━━"
+      - "⻔"
+      - "⻔<dark_green><bold>NPC MARCUS"
+      - "⻔<gray>HOWDY, {player}!"
+      - "⻔<gray>I'M MARCUS, A FARMER HERE."
+      - "⻔<gray>LOOKING FOR SOME FRESH PRODUCE?"
+      - "⻔"
+      - "⻔<white>• OPEN MENU"
+      - "⻔"
+      - "⻔<red><bold>! <red>YOU NEED TO HOVER AND CLICK THE OPTIONS"
+      - "<white>"
+
+    choices:
+      1:
+        text: "⻔<green>OPEN MENU"
+        command: "marcus"
+        permission: ""
+        delay: 0
+        close: true
+
+      2:
+        text: "⻔<red>EXIT"
+        command: ""
+        permission: ""
+        delay: 0
+        close: true

@@ -1,0 +1,199 @@
+name: ServerAdmin
+version: ${project.version}
+main: net.serverplugins.admin.ServerAdmin
+api-version: "1.21"
+description: Staff administration tools for ServerPlugins
+author: ServerPlugins
+website: https://example.com
+depend: [ServerAPI]
+softdepend: [ProtocolLib, NBTAPI, ServerBridge]
+
+commands:
+  vanish:
+    description: Toggle vanish mode
+    usage: /<command> [off|staff|full]
+    aliases: [v]
+  spectate:
+    description: Spectate a player
+    usage: /<command> <player>
+    aliases: [spec]
+  pov:
+    description: View from a player's perspective
+    usage: /<command> <player>
+  freecam:
+    description: Enter free camera spectator mode
+    usage: /<command>
+  xrayalerts:
+    description: Toggle xray detection alerts
+    usage: /<command>
+  xraycheck:
+    description: Check player mining statistics
+    usage: /<command> <player>
+  freeze:
+    description: Freeze a player for inspection
+    usage: /<command> <player> [reason]
+  unfreeze:
+    description: Unfreeze a player
+    usage: /<command> <player>
+  invsee:
+    description: View a player's inventory
+    usage: /<command> <player>
+  ecsee:
+    description: View a player's ender chest
+    usage: /<command> <player>
+  sc:
+    description: Send a message to staff chat
+    usage: /<command> <message>
+    aliases: [staffchat]
+  sctoggle:
+    description: Toggle staff chat mode
+    usage: /<command>
+  alts:
+    description: Check a player's alt accounts
+    usage: /<command> <player>
+  nightvision:
+    description: Toggle night vision effect
+    usage: /<command>
+    aliases: [nv]
+  xray:
+    description: Toggle xray vision (see ores through walls)
+    usage: /<command>
+  punish:
+    description: Open punishment GUI or issue punishment directly
+    usage: /<command> <player> [type] [duration] [reason]
+    aliases: [p]
+  unpunish:
+    description: View and pardon active punishments
+    usage: /<command> <player> [id] [reason]
+    aliases: [pardon]
+  history:
+    description: View punishment history for a player
+    usage: /<command> <player>
+    aliases: [ph, punishhistory]
+  reset:
+    description: Reset player data (claims, economy, playtime, rank)
+    usage: /<command> <player> [type]
+    aliases: [resetplayer]
+  shutdown:
+    description: Shutdown the server gracefully
+    usage: /<command> [delay] [reason]
+    aliases: [stopserver]
+  restart:
+    description: Restart the server
+    usage: /<command> [delay] [reason]
+    aliases: [reboot]
+  impersonate:
+    description: Send a chat message as another player
+    usage: /<command> <player> <message>
+    aliases: [imp, mimic]
+  disguise:
+    description: Change your display name to another player's name
+    usage: /<command> <player|off>
+    aliases: [dis, looklike, fakename]
+
+permissions:
+  serveradmin.vanish:
+    description: Use vanish commands
+    default: op
+  serveradmin.vanish.see:
+    description: See other vanished staff members
+    default: op
+  serveradmin.spectate:
+    description: Use spectate and POV commands
+    default: op
+  serveradmin.xray:
+    description: Receive xray alerts and check players
+    default: op
+  serveradmin.freeze:
+    description: Use freeze and unfreeze commands
+    default: op
+  serveradmin.freeze.exempt:
+    description: Cannot be frozen by other staff
+    default: false
+  serveradmin.invsee:
+    description: Use invsee and ecsee commands
+    default: op
+  serveradmin.invsee.modify:
+    description: Modify items in invsee/ecsee
+    default: op
+  serveradmin.staffchat:
+    description: Use staff chat
+    default: op
+  serveradmin.alts:
+    description: Check alt accounts
+    default: op
+  serveradmin.nightvision:
+    description: Use night vision command
+    default: op
+  serveradmin.xrayvision:
+    description: Use xray vision to see ores
+    default: op
+  serveradmin.punish:
+    description: Access to /punish command and GUI
+    default: op
+  serveradmin.punish.warn:
+    description: Can issue warnings
+    default: op
+  serveradmin.punish.kick:
+    description: Can kick players
+    default: op
+  serveradmin.punish.mute:
+    description: Can mute players
+    default: op
+  serveradmin.punish.ban:
+    description: Can ban players
+    default: op
+  serveradmin.punish.permanent:
+    description: Can issue permanent punishments
+    default: op
+  serveradmin.punish.override:
+    description: Can override escalation presets
+    default: op
+  serveradmin.punish.exempt:
+    description: Cannot be punished
+    default: false
+  serveradmin.unpunish:
+    description: Access to /unpunish command
+    default: op
+  serveradmin.history:
+    description: View punishment history
+    default: op
+  serveradmin.reset:
+    description: Access to /reset command
+    default: op
+  serveradmin.reset.claims:
+    description: Can reset player claims
+    default: op
+  serveradmin.reset.economy:
+    description: Can reset player economy
+    default: op
+  serveradmin.reset.playtime:
+    description: Can reset player playtime
+    default: op
+  serveradmin.reset.rank:
+    description: Can reset player rank
+    default: op
+  serveradmin.reset.punishments:
+    description: Can reset player punishment history
+    default: op
+  serveradmin.reset.all:
+    description: Can reset all player data
+    default: op
+  serveradmin.shutdown:
+    description: Can shutdown the server
+    default: op
+  serveradmin.restart:
+    description: Can restart the server
+    default: op
+  serveradmin.impersonate:
+    description: Can impersonate other players in chat
+    default: op
+  serveradmin.impersonate.notify:
+    description: Receives notifications when impersonation is used
+    default: op
+  serveradmin.disguise:
+    description: Can disguise as another player
+    default: op
+  serveradmin.disguise.notify:
+    description: Receives notifications when disguise is used
+    default: op

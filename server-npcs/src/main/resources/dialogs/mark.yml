@@ -1,0 +1,45 @@
+# Mark NPC Dialog Configuration
+# Shop NPC
+
+npc:
+  name: "mark"
+  display-name: "⻔<yellow><bold>MARK"
+
+dialog:
+  greeting:
+    message:
+      - "<white>"
+      - "⻔<yellow><bold>━━━━━━━━━━━━━━━━━━━━━━"
+      - "⻔"
+      - "⻔<yellow><bold>NPC MARK"
+      - "⻔<gray>WELCOME, {player}!"
+      - "⻔<gray>I'M MARK, THE SHOPKEEPER."
+      - "⻔<gray>WHAT CAN I GET FOR YOU?"
+      - "⻔"
+      - "⻔<white>• OPEN SHOP"
+      - "⻔<white>• OPEN MENU"
+      - "⻔"
+      - "⻔<red><bold>! <red>YOU NEED TO HOVER AND CLICK THE OPTIONS"
+      - "<white>"
+
+    choices:
+      1:
+        text: "⻔<green>OPEN SHOP"
+        command: "shop"
+        permission: ""
+        delay: 120
+        close: true
+
+      2:
+        text: "⻔<yellow>OPEN MENU"
+        command: "mark"
+        permission: ""
+        delay: 0
+        close: true
+
+      3:
+        text: "⻔<red>EXIT"
+        command: ""
+        permission: ""
+        delay: 0
+        close: true

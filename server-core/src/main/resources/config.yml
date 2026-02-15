@@ -1,0 +1,291 @@
+# ServerCore Configuration
+
+# Plugin messages
+messages:
+  prefix: '<gradient:#ff6b6b:#4ecdc4>[Core]</gradient> '
+  hat-equipped: '<green>You are now wearing a {item} as a hat!'
+
+  # Feature-specific messages
+  silk-spawner:
+    mined: '<green>You mined a <yellow>{mob} Spawner<green>!'
+
+  # Auto-totem feature messages
+  auto-totem:
+    activated: '<green>Auto-totem activated! Totem saved you from death.'
+    cooldown: '<yellow>Auto-totem is on cooldown for {seconds} more seconds.'
+
+  # Error messages
+  feature-disabled: '<red>The {feature} feature is currently disabled!'
+  hat-must-hold-item: '<red>You must be holding an item to wear as a hat!'
+  hat-no-armor: '<red>You cannot wear armor as a hat!'
+  hat-not-allowed: '<red>This item is not allowed to be worn as a hat!'
+  editable-signs:
+    no-permission: '<red>You do not have permission to edit this sign!'
+
+features:
+  auto-totem:
+    enabled: true
+  double-door:
+    enabled: true
+  drop-to-inventory:
+    enabled: true
+  editable-signs:
+    enabled: true
+  hat:
+    enabled: true
+  anvil-colors:
+    enabled: true
+  emojis:
+    enabled: true
+  worldguard-flags:
+    enabled: true
+  plugin-list:
+    enabled: true
+  resource-pack:
+    enabled: false
+  platform-command:
+    enabled: true
+  custom-inventory:
+    enabled: true
+  auto-complete:
+    enabled: true
+  spawner-enhancement:
+    enabled: true
+    disable-ai-on-placed-spawners: true
+  silk-spawner:
+    enabled: true
+  hammer-pickaxe:
+    enabled: true
+
+settings:
+  auto-totem:
+    cooldown: 100
+  double-door:
+    max-distance: 2
+  drop-to-inventory:
+    play-sound: true
+  editable-signs:
+    allow-others: false
+  hat:
+    keep-on-death: false
+    allowed-materials:
+      - DIAMOND
+      - GOLD_INGOT
+      - EMERALD
+      - IRON_INGOT
+      - NETHERITE_INGOT
+    custom-model-data:
+      - min: 1000
+        max: 1999
+      - min: 5000
+        max: 5999
+  anvil-colors:
+    allow-formatting: true
+  emojis:
+    list:
+      clown:
+        trigger: ':clown:'
+        value: '&f&7'
+      dead:
+        trigger: ':dead:'
+        value: '&f&7'
+      eyes:
+        trigger: ':eyes:'
+        value: '&f&7'
+      flushed:
+        trigger: ':flushed:'
+        value: '&f&7'
+      forme:
+        trigger: ':forme:'
+        value: '&f&7'
+      hearteyes:
+        trigger: ':hearteyes:'
+        value: '&f&7'
+      laugh:
+        trigger: ':laugh:'
+        value: '&f&7'
+      look:
+        trigger: ':look:'
+        value: '&f&7'
+      money:
+        trigger: ':money:'
+        value: '&f&7'
+      ohyeah:
+        trigger: ':ohyeah:'
+        value: '&f&7'
+      party:
+        trigger: ':party:'
+        value: '&f&7'
+      shock:
+        trigger: ':shock:'
+        value: '&f&7'
+      sick:
+        trigger: ':sick:'
+        value: '&f&7'
+      thumbsup:
+        trigger: ':thumbsup:'
+        value: '&f&7'
+      thumbsdown:
+        trigger: ':thumbsdown:'
+        value: '&f&7'
+      unamused:
+        trigger: ':unamused:'
+        value: '&f&7'
+      sunglasses:
+        trigger: ':sunglasses:'
+        value: '&f&7'
+  worldguard-flags:
+    rtp-world: playworld
+    block-break-message: '<red>You cannot break this block here!'
+    custom-blocks:
+      '1':
+        - carrots[age=7]
+        - potatoes[age=7]
+        - wheat[age=7]
+        - beetroots[age=3]
+      '2':
+        - coal_ore
+        - iron_ore
+        - copper_ore
+        - gold_ore
+        - redstone_ore
+        - lapis_ore
+        - diamond_ore
+        - emerald_ore
+    # BetterRTP Integration for random-tp flag
+    # When enabled, uses BetterRTP API instead of basic random teleportation
+    random-tp:
+      enabled: true
+      # Cooldown in seconds between random teleports
+      cooldown: 60
+      # Permission to grant temporarily for bypassing BetterRTP restrictions
+      bypass-permission: 'betterrtp.bypass'
+      # Whether to grant the bypass permission temporarily
+      grant-bypass-permission: true
+      # Duration in seconds for the temporary bypass permission
+      bypass-duration: 10
+      # Messages
+      teleport-message: '<green>You have been randomly teleported!'
+      cooldown-message: '<red>Please wait <seconds> seconds before using random teleport again.'
+      # Potion effects to apply on teleport (optional)
+      # Format: type, duration (in ticks, 20 ticks = 1 second), amplifier (0 = level 1)
+      potion-effects:
+        - type: 'REGENERATION'
+          duration: 100
+          amplifier: 0
+        - type: 'DAMAGE_RESISTANCE'
+          duration: 100
+          amplifier: 0
+  resource-pack:
+    # Default resource pack (used if no version-specific pack is configured)
+    url: ''
+    hash: ''
+    prompt: '&cGet our resource pack to see all the custom content!'
+    force: true
+    delay: 60  # Delay in ticks before sending pack (20 ticks = 1 second)
+    only-on-first-join: false
+
+    # Version-specific packs (optional)
+    # The plugin will automatically select the best matching version using Paper's protocol version API
+    # Protocol version reference: https://minecraft.wiki/w/Protocol_version
+    #
+    # Common protocol versions:
+    #   774 - Minecraft 1.21.4
+    #   767 - Minecraft 1.21.3
+    #   766 - Minecraft 1.21.2/1.21.1
+    #   765 - Minecraft 1.21
+    #   764 - Minecraft 1.20.5/1.20.6
+    #   763 - Minecraft 1.20.2/1.20.3/1.20.4
+    #   762 - Minecraft 1.20/1.20.1
+    #   761 - Minecraft 1.19.4
+    #   760 - Minecraft 1.19.3
+    #
+    # Example configuration:
+    versions:
+      '774':  # Minecraft 1.21.4
+        url: 'https://example.com/pack-1.21.4.zip'
+        hash: ''
+      '766':  # Minecraft 1.21.2/1.21.1
+        url: 'https://example.com/pack-1.21.zip'
+        hash: ''
+      '0':    # Fallback for any unlisted version
+        url: 'https://example.com/pack-default.zip'
+        hash: ''
+  custom-inventory:
+    # Legacy format (deprecated - use titles instead)
+    enderchest: ''
+    shulker: ''
+    chest: ''
+    # New format - preferred method
+    titles:
+      ender_chest: '<white>⻔⻔⻔⻔⻔⻔⻔⻔\uE71F'  # ENDERCHEST
+      bookshelf: '<white>⻔⻔⻔⻔⻔⻔⻔⻔\uE6C2'     # BOOKSHELF
+      shulker: ''                                # Leave empty - vanilla texture works
+      chest: ''                                  # Leave empty - too generic
+      washing_machine: ''                        # Future furniture support
+      fridge: ''                                 # Future furniture support
+    # Custom title mappings for title-based matching
+    custom:
+      washingMachine:
+        strip-colors: true
+        original-title: 'washing machine'
+        new-title: '&f'
+      fridge:
+        strip-colors: true
+        original-title: 'refrigerator'
+        new-title: '&f'
+  plugin-list:
+    hover-text: '<gray>Click to view plugin details'
+  give-command:
+    enabled: true
+    send-with-errors: false
+    messages:
+      item-received: '<green>You received <item>!'
+      item-given: '<green>Gave <item> to <player>!'
+      item-dropped: '<yellow>Item was dropped on the ground.'
+  placeholders:
+    # Text returned for enabled/disabled status placeholders
+    enabled-text: '<green>Enabled'
+    disabled-text: '<red>Disabled'
+    # Skript variable for points placeholder (%servercore_points%)
+    # Use {uuid} for player UUID replacement
+    points-variable: 'points::{uuid}'
+  per-player-toggles:
+    # Show first-join hint about per-player feature toggles
+    show-first-join-hint: true
+  welcome-broadcast:
+    # Broadcast a welcome message to all players when someone joins
+    enabled: true
+    # Message format (supports MiniMessage formatting)
+    # Placeholder: {player} = player name
+    message: "<yellow>Welcome <gold>{player}<yellow> to ServerPlugins!"
+  silk-spawner:
+    # Whether to require permission (servercore.silkspawner) to mine spawners
+    require-permission: false
+    # Send a message when a spawner is mined
+    send-messages: true
+  hammer-pickaxe:
+    cooldown-ms: 1000
+    # Containers (chests, shulkers, furnaces, hoppers, etc.) are excluded automatically.
+    # This list is for additional non-container blocks to exclude.
+    excluded-blocks:
+      - SPAWNER
+    tiers:
+      1:
+        name: "<gradient:#FF6B35:#FFB347>Hammer Pickaxe</gradient>"
+        radius: 1
+        lore:
+          - "<gray>Mines a <white>3x3</white> area"
+          - "<gray>Tier <gold>I</gold>"
+      2:
+        name: "<gradient:#FF6B35:#FFB347>Hammer Pickaxe II</gradient>"
+        radius: 2
+        lore:
+          - "<gray>Mines a <white>5x5</white> area"
+          - "<gray>Tier <gold>II</gold>"
+      3:
+        name: "<gradient:#FF6B35:#FFB347>Hammer Pickaxe III</gradient>"
+        radius: 3
+        lore:
+          - "<gray>Mines a <white>7x7</white> area"
+          - "<gray>Tier <gold>III</gold>"

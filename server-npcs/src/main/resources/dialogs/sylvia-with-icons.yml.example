@@ -1,0 +1,64 @@
+# Example: Sylvia Dialog with NPC Portrait Icons
+# This shows how to use custom Unicode icons in dialogs
+
+npc:
+  name: "sylvia"
+  display-name: "퀁⻔⻔&d&lSylvia"  # 퀁 = Sylvia's portrait icon (90px)
+
+dialog:
+  greeting:
+    message:
+      - "&f"
+      - "퀁⻔⻔&d&l━━━━━━━━━━━━━━━━━━━━━━"
+      - "퀁⻔⻔"
+      - "퀁⻔⻔&d&lNPC SYLVIA"
+      - "퀁⻔⻔&7ARE YOU NEW HERE? I CAN GIVE YOU THE WISEST"
+      - "퀁⻔⻔&7ADVICE TO MAKE YOUR ADVENTURE MUCH EASIER."
+      - "퀁⻔⻔&7DO YOU WANT TO KNOW SOMETHING FROM ME?"
+      - "퀁⻔⻔"
+      - "퀁⻔⻔&f• SERVER GUIDE"
+      - "퀁⻔⻔&f• SERVER LINKS"
+      - "퀁⻔⻔&f• VIEW MENU"
+      - "퀁⻔⻔"
+      - "⻔⻔&c&l! &cYOU NEED TO HOVER AND CLICK THE OPTIONS"
+      - "&f"
+
+    choices:
+      1:
+        text: "퀁⻔⻔&aOPEN SERVER GUIDE"
+        command: "guide"
+        delay: 0
+        close: true
+
+      2:
+        text: "퀁⻔⻔&bSHOW SERVER LINKS"
+        command: "links"
+        delay: 120
+        close: true
+
+      3:
+        text: "퀁⻔⻔&eVIEW MENU"
+        command: "sylvia"
+        delay: 0
+        close: true
+
+      4:
+        text: "퀁⻔⻔&cEXIT"
+        close: true
+
+# Icon Reference (90px NPC portraits, ascent 25):
+# 퀁 = Sylvia (U+D001)   - item/ui/npcs/sylvia.png
+# 퀂 = August (U+D002)   - item/ui/npcs/august.png
+# 퀃 = Cassian (U+D003)  - item/ui/npcs/cassian.png
+# 퀄 = Gandalf (U+D004)  - item/ui/npcs/gandalf.png
+# 퀅 = Marcus (U+D005)   - item/ui/npcs/marcus.png
+# 퀆 = Mark (U+D006)     - item/ui/npcs/mark.png
+# 퀇 = Noah (U+D007)     - item/ui/npcs/noah.png
+# 퀈 = Petra (U+D008)    - item/ui/npcs/petra.png
+# 퀉 = Thyra (U+D009)    - item/ui/npcs/thyra.png
+
+# Core UI Elements:
+# ⻔ = Space (U+2ED4)     - item/ui/space.png
+#  = Coin (U+E001)      - item/ui/coin.png
+
+# You can copy these characters directly or use \uD001 format in Java

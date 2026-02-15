@@ -1,0 +1,7 @@
+name: ServerStats
+version: ${project.version}
+main: net.serverplugins.stats.ServerStats
+api-version: '1.21'
+depend:
+  - ServerAPI
+description: Player statistics tracking and HTTP API for ServerPlugins

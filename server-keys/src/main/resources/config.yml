@@ -1,0 +1,80 @@
+# ServerKeys Configuration
+
+# Database settings (uses ServerAPI database by default)
+database:
+  use-api-database: true
+
+# Key definitions
+keys:
+  crate:
+    daily:
+      display: "Daily"
+      description: "Daily reward crate key"
+    balanced:
+      display: "Balanced"
+      description: "Balanced crate key"
+    diversity:
+      display: "Diversity"
+      description: "Diversity crate key"
+    epic:
+      display: "Epic"
+      description: "Epic rare rewards key"
+  dungeon:
+    easy:
+      display: "Easy Dungeon"
+      description: "Entry key for easy dungeon arena"
+      custom-model-data: 145
+    medium:
+      display: "Medium Dungeon"
+      description: "Entry key for medium dungeon arena"
+      custom-model-data: 146
+    hard:
+      display: "Hard Dungeon"
+      description: "Entry key for hard dungeon arena"
+      custom-model-data: 147
+
+# Scheduled key distributions
+schedules:
+  morning-daily:
+    enabled: false
+    type: crate
+    key: daily
+    amount: 1
+    times:
+      - "09:00"
+      - "21:00"
+    broadcast: "<gold>[Keys]</gold> <yellow>Daily keys distributed to all players!"
+
+  weekend-bonus:
+    enabled: false
+    type: crate
+    key: balanced
+    amount: 2
+    days:
+      - SATURDAY
+      - SUNDAY
+    times:
+      - "12:00"
+    broadcast: "<gold>[Weekend]</gold> <yellow>Bonus keys for everyone!"
+
+# Messages (supports MiniMessage format)
+messages:
+  prefix: "<gradient:#FFD700:#FFA500>[Keys]</gradient> "
+
+  # Key distribution messages
+  key-received: "<green>You received <white>{amount}x {key} Key</white>!"
+  key-broadcast: "<yellow>{count} players received <white>{amount}x {key} Key</white>!"
+  key-given: "<green>Gave <white>{amount}x {key} Key</white> to <white>{player}</white>!"
+
+  # Error messages
+  invalid-key-type: "<red>Invalid key type. Use 'crate' or 'dungeon'."
+  invalid-key-name: "<red>Invalid key: <white>{key}</white>"
+
+  # Unclaimed key messages
+  keys-unclaimed: "<yellow>You have <white>{count}</white> unclaimed key(s)! Use <white>/claimkeys</white> to claim them."
+  keys-claimed: "<green>Claimed <white>{amount}</white> key(s)!"
+  no-unclaimed: "<red>You have no unclaimed keys."
+  inventory-full-overflow: "<yellow>Your inventory is full! Use <white>/claimkeys</white> to claim your keys later."
+
+  # Admin messages
+  reload-success: "<green>Configuration reloaded successfully!"

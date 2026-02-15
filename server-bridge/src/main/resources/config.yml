@@ -1,0 +1,38 @@
+server-name: "lobby"
+
+redis:
+  enabled: true  # Set to false to disable Redis (for servers that can't reach Redis)
+  host: "127.0.0.1"
+  port: 6379
+  password: ""
+
+database:
+  host: "localhost"
+  port: 3306
+  database: "my_database"
+  username: "db_user"
+  password: "${DB_PASSWORD}"
+
+chat-bridge:
+  enabled: true
+  format: "<dark_aqua>[Discord]</dark_aqua> <white>%player%:</white> <gray>%message%</gray>"
+
+cross-server-chat:
+  enabled: true
+  # Format for messages received from other servers
+  # Placeholders: %server%, %prefix%, %player%, %suffix%, %message%
+  # Supports MiniMessage formatting and legacy color codes in prefix/suffix
+  format: "<dark_gray>[<gray>%server%</gray>]</dark_gray> %prefix%%player%%suffix%<gray>: <white>%message%"
+
+role-sync:
+  enabled: true
+  check-interval: 60
+
+messages:
+  prefix: "<gradient:#00CED1:#20B2AA>[Bridge]</gradient> "
+  link-success: "<green>✓ Your account has been linked to Discord!"
+  link-expired: "<red>✗ That code has expired. Please generate a new one on Discord."
+  link-invalid: "<red>✗ Invalid code. Please check and try again."
+  link-already-linked: "<yellow>⚠ Your account is already linked to Discord."
+  unlink-success: "<green>✓ Your Discord account has been unlinked."
+  unlink-not-linked: "<red>✗ Your account is not linked to Discord."

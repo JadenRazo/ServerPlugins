@@ -1,0 +1,111 @@
+# ServerFilter Configuration
+
+# Default filter level for new players
+# Options: STRICT, MODERATE, RELAXED, MINIMAL
+default-filter-level: STRICT
+
+# Messages Configuration
+# Use MiniMessage format: https://docs.advntr.dev/minimessage/format.html
+messages:
+  prefix: "<gradient:#ff6b6b:#feca57>🛡 Filter</gradient> "
+
+  # Violation Messages
+  slur-blocked: "<red>Your message was blocked for containing prohibited language."
+  advertising-blocked: "<red>Advertising is not allowed."
+  spam-warning: "<yellow>⚠ {reason}"
+  caps-warning: "<yellow>⚠ Your message was converted to lowercase (excessive caps)."
+
+  # Command Messages
+  reload-success: "<green>✓ Configuration and word lists reloaded."
+  filter-level-set: "<green>✓ Your filter level has been set to <white>{level}<green>."
+  filter-level-info: "<gold>→ Your current filter level: <white>{level}"
+  filter-level-no-permission: "<red>✗ You don't have permission for that filter level."
+  unknown-option: "<red>✗ Unknown option. Use: strict, moderate, relaxed, minimal"
+
+  # Admin Messages
+  admin-stats-title: "<gold>Filter Statistics"
+  admin-stats-words: "  <gray>Total words: <white>{count}"
+  admin-stats-patterns: "  <gray>Total patterns: <white>{count}"
+  admin-stats-whitelist: "  <gray>Whitelisted: <white>{count}"
+  admin-test-message: "<gold>→ Testing message: <white>{message}"
+  admin-test-level: "  <yellow>{level}: {result}"
+  admin-test-matches: "    <dark_gray>Matched: <gray>{matches}"
+  admin-test-slurs: "  <red>Contains slurs: {result}"
+  admin-invalid-usage: "<red>✗ Usage: /filteradmin test <message>"
+
+# Chat Format Settings
+# Enables custom chat formatting with rank prefixes
+chat-format:
+  enabled: true
+  # Format string - supports PlaceholderAPI placeholders
+  # Common placeholders:
+  #   %vault_prefix% - Player's prefix from Vault/LuckPerms (omit if TAB handles prefix via scoreboard teams)
+  #   %vault_suffix% - Player's suffix from Vault/LuckPerms
+  #   %player_name% - Player's name
+  #   %player_displayname% - Player's display name
+  #   %luckperms_meta_chatcolor% - Custom chat color from LuckPerms meta
+  format: "{nickname}<gray>: %luckperms_meta_chatcolor%{message}"
+
+# Character used to censor filtered words
+censor-character: "*"
+
+# Words that should never be filtered (prevents false positives)
+# Example: "assassin" contains "ass" but shouldn't be filtered
+whitelist:
+  - "assassin"
+  - "assume"
+  - "bass"
+  - "class"
+  - "classic"
+  - "grass"
+  - "mass"
+  - "pass"
+  - "assist"
+  - "cockatoo"
+  - "cocktail"
+  - "peacock"
+  - "scunthorpe"
+  - "penistone"
+  - "an alt"
+
+# Chat Protection Settings
+protection:
+  # Anti-Spam: Prevent message flooding
+  anti-spam:
+    enabled: true
+    message-delay-ms: 1000
+    duplicate-message-count: 3
+    duplicate-window-seconds: 30
+
+  # Anti-Caps: Prevent excessive capitalization
+  anti-caps:
+    enabled: true
+    min-message-length: 5
+    max-caps-percentage: 70
+
+  # Anti-Advertising: Block server ads and IPs
+  anti-advertising:
+    enabled: true
+    block-urls: true
+    block-ips: true
+    whitelisted-domains:
+      - "example.com"
+      - "discord.gg"
+      - "youtube.com"
+      - "youtu.be"
+      - "twitch.tv"
+      - "twitter.com"
+      - "x.com"
+      - "reddit.com"
+      - "imgur.com"
+      - "minecraft.net"
+      - "spigotmc.org"
+      - "papermc.io"
+
+# Violation Handling
+violations:
+  # Log violations to file
+  log-to-file: true
+
+  # Permission required to receive staff notifications
+  staff-notification-permission: "serverfilter.notify"

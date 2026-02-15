@@ -1,0 +1,33 @@
+name: ServerItems
+version: ${project.version}
+main: net.serverplugins.items.ServerItems
+api-version: "1.21"
+description: Custom items, blocks, and furniture system for ServerPlugins
+author: ServerPlugins
+website: https://example.com
+depend: [ServerAPI]
+softdepend: [WorldGuard, PlaceholderAPI, ProtocolLib]
+
+commands:
+  witems:
+    description: Manage custom items
+    usage: /<command> <give|list|info|reload|pack> [args...]
+    aliases: [serveritems, wi]
+  wfurniture:
+    description: Manage furniture
+    usage: /<command> <place|remove|list> [args...]
+    aliases: [wf]
+
+permissions:
+  serveritems.give:
+    description: Give custom items to players
+    default: op
+  serveritems.admin:
+    description: Admin access to item management
+    default: op
+  serveritems.reload:
+    description: Reload item configurations
+    default: op
+  serveritems.place:
+    description: Place and remove furniture/custom blocks
+    default: op

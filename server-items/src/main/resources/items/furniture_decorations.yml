@@ -1,0 +1,308 @@
+# Decorations - Page 2
+# Default furniture definitions for ServerItems plugin
+
+beartrap:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<gray>Bear Trap"
+  lore:
+    - "<gray>A small functional trap"
+    - "<gray>Decorative hazard for your builds"
+  custom_model_data: 30018
+  furniture:
+    hitbox:
+      width: 0.6
+      height: 0.3
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+cactusplant:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<green>Cactus Plant"
+  lore:
+    - "<gray>A decorative cactus"
+    - "<gray>Desert decoration without the prickles"
+  custom_model_data: 30019
+  furniture:
+    hitbox:
+      width: 0.4
+      height: 0.8
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+catapult:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#8B4513>Catapult"
+  lore:
+    - "<gray>A functional catapult"
+    - "<gray>Medieval siege decoration"
+  custom_model_data: 30020
+  furniture:
+    hitbox:
+      width: 1.5
+      height: 1.2
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+crossbow:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#8B4513>Crossbow Decoration"
+  lore:
+    - "<gray>A functional bow decoration"
+    - "<gray>Display your archery prowess"
+  custom_model_data: 30021
+  furniture:
+    hitbox:
+      width: 0.8
+      height: 0.6
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+flag:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<white>Interactive Flag"
+  lore:
+    - "<gray>An interactive flag"
+    - "<gray>Show your colors with pride"
+  custom_model_data: 30022
+  furniture:
+    hitbox:
+      width: 0.4
+      height: 2.0
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+flowerpot:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#8B4513>Hanging Flower Pot"
+  lore:
+    - "<gray>A hanging flower pot"
+    - "<gray>Bring nature into your home"
+  custom_model_data: 30023
+  furniture:
+    hitbox:
+      width: 0.4
+      height: 0.5
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+lantern:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<gold>Fancy Lantern"
+  lore:
+    - "<gray>A small fancy light source"
+    - "<gray>Elegant lighting solution"
+  custom_model_data: 30024
+  furniture:
+    hitbox:
+      width: 0.3
+      height: 0.5
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+mailbox:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<gray>Mailbox"
+  lore:
+    - "<gray>A decorative mailbox"
+    - "<gray>Classic curb appeal"
+  custom_model_data: 30025
+  furniture:
+    hitbox:
+      width: 0.4
+      height: 1.0
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+scarecrow:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#8B4513>Farm Scarecrow"
+  lore:
+    - "<gray>A farm scarecrow"
+    - "<gray>Protect your crops in style"
+  custom_model_data: 30026
+  furniture:
+    hitbox:
+      width: 0.8
+      height: 1.8
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+snowgolem:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<white>Season-Resistant Snowman"
+  lore:
+    - "<gray>A season-resistant snowman"
+    - "<gray>Winter decoration year-round"
+  custom_model_data: 30027
+  furniture:
+    hitbox:
+      width: 0.6
+      height: 1.5
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+sunshade:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<white>Interactive Umbrella"
+  lore:
+    - "<gray>An interactive umbrella"
+    - "<gray>Shade for sunny days"
+  custom_model_data: 30028
+  furniture:
+    hitbox:
+      width: 1.5
+      height: 2.0
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+trashcan:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<gray>Trash Can"
+  lore:
+    - "<gray>A functional trash can"
+    - "<gray>Keep your space tidy"
+  custom_model_data: 30029
+  furniture:
+    hitbox:
+      width: 0.4
+      height: 0.6
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+waxcandle:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<gold>Fancy Candle"
+  lore:
+    - "<gray>A fancy light source"
+    - "<gray>Ambient lighting for any room"
+  custom_model_data: 30030
+  furniture:
+    hitbox:
+      width: 0.3
+      height: 0.4
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+weaponstand:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<gray>Weapon Display Stand"
+  lore:
+    - "<gray>A weapon display stand"
+    - "<gray>Showcase your arsenal"
+  custom_model_data: 30031
+  furniture:
+    hitbox:
+      width: 0.6
+      height: 1.2
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+simpleplate:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<white>Functional Plate"
+  lore:
+    - "<gray>A functional plate"
+    - "<gray>Perfect for table settings"
+  custom_model_data: 30032
+  furniture:
+    hitbox:
+      width: 0.4
+      height: 0.1
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+simplechoppingboard:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#8B4513>Kitchen Chopping Board"
+  lore:
+    - "<gray>A kitchen chopping board"
+    - "<gray>Essential kitchen decoration"
+  custom_model_data: 30033
+  furniture:
+    hitbox:
+      width: 0.5
+      height: 0.2
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+shelf2:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#8B4513>Wall Shelf"
+  lore:
+    - "<gray>A wall shelf"
+    - "<gray>Display your favorite items"
+  custom_model_data: 30034
+  furniture:
+    hitbox:
+      width: 1.0
+      height: 0.4
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false

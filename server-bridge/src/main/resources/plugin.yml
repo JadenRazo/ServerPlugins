@@ -1,0 +1,56 @@
+name: ServerBridge
+version: ${project.version}
+main: net.serverplugins.bridge.ServerBridge
+api-version: "1.21"
+author: ServerPlugins
+description: Discord-Minecraft bridge for ServerPlugins
+website: https://example.com
+
+depend:
+  - Vault
+  - ServerAPI
+
+softdepend:
+  - LuckPerms
+  - Essentials
+  - PlaceholderAPI
+  - TAB
+
+commands:
+  verifylink:
+    description: Verify your Discord account link
+    usage: /<command> <code>
+    permission: server.bridge.link
+    aliases: [verify, linkdiscord, link, discordlink, dclink]
+  discordunlink:
+    description: Unlink your Discord account
+    usage: /<command>
+    permission: server.bridge.unlink
+    aliases: [unlink, unlinkdiscord, dcunlink]
+  discorddaily:
+    description: Claim your daily Discord reward
+    usage: /<command>
+    permission: server.bridge.daily
+    aliases: [ddaily, dd, daily, dcreward, dcdaily]
+  changelog:
+    description: Add entries to the changelog via Discord bot
+    usage: /<command> <version> <platform> <category> <description>
+    permission: serverbridge.changelog
+    aliases: [cl]
+
+permissions:
+  server.bridge.link:
+    description: Allows linking Discord account
+    default: true
+  server.bridge.unlink:
+    description: Allows unlinking Discord account
+    default: true
+  server.bridge.daily:
+    description: Allows claiming daily Discord reward
+    default: true
+  server.bridge.admin:
+    description: Admin permissions for bridge
+    default: op
+  serverbridge.changelog:
+    description: Allows managing changelogs
+    default: op

@@ -1,0 +1,48 @@
+name: ServerFilter
+version: ${project.version}
+main: net.serverplugins.filter.ServerFilter
+api-version: "1.21"
+description: Personalized chat filtering for ServerPlugins
+author: ServerPlugins
+website: https://example.com
+depend: [ServerAPI]
+softdepend: [PlaceholderAPI]
+
+commands:
+  swearfilter:
+    description: Manage your chat filter preferences
+    usage: /<command> [level|status|reload]
+    aliases: [filter, chatfilter, cf]
+  filteradmin:
+    description: Filter administration commands
+    usage: /<command> <reload|stats|test>
+    permission: serverfilter.admin
+
+permissions:
+  serverfilter.use:
+    description: Use the /swearfilter command
+    default: true
+  serverfilter.admin:
+    description: Admin commands (reload, stats, test)
+    default: op
+  serverfilter.notify:
+    description: Receive staff notifications for violations
+    default: op
+  serverfilter.bypass.filter:
+    description: Messages are not filtered (player still sees others filtered)
+    default: false
+  serverfilter.bypass.protection:
+    description: Bypass anti-spam, anti-caps, anti-advertising
+    default: op
+  serverfilter.level.strict:
+    description: Can set filter level to STRICT
+    default: true
+  serverfilter.level.moderate:
+    description: Can set filter level to MODERATE
+    default: true
+  serverfilter.level.relaxed:
+    description: Can set filter level to RELAXED
+    default: true
+  serverfilter.level.minimal:
+    description: Can set filter level to MINIMAL
+    default: true

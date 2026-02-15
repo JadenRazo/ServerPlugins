@@ -1,0 +1,45 @@
+# ServerItems Configuration
+
+# Item definitions are loaded from the items/ folder
+# Place .yml files in plugins/ServerItems/items/ (supports subdirectories)
+
+# Database settings (uses ServerAPI shared database)
+database:
+  use-api-database: true
+
+# Resource pack generation
+pack:
+  # Auto-generate pack on reload
+  auto-generate: true
+  # Pack format version (46 = 1.21.4+)
+  format: 46
+  # Pack description
+  description: "ServerPlugins Custom Content"
+  # Output path (relative to plugin folder, used when multi-version is false)
+  output: "pack/generated/ServerPlugins-Items.zip"
+  # Generate version-specific packs for each supported MC version
+  multi-version: true
+  # Output directory for multi-version packs and manifest
+  output-dir: "pack/generated"
+
+# Custom blocks
+blocks:
+  # Enable custom block system
+  enabled: true
+
+# Furniture
+furniture:
+  # Enable furniture system
+  enabled: true
+  # Orphan cleanup interval in seconds
+  cleanup-interval: 300
+
+# Messages (supports MiniMessage format)
+messages:
+  prefix: "<gradient:#FF6B6B:#FFD93D>[Items]</gradient> "
+  item-given: "<green>Gave <white>{amount}x {item}</white> to <white>{player}</white>."
+  item-received: "<green>You received <white>{amount}x {item}</white>."
+  item-not-found: "<red>Item <white>{id}</white> not found."
+  reload-success: "<green>Reloaded <white>{count}</white> custom items."
+  no-items: "<yellow>No custom items are registered."
+  on-cooldown: "<red>This item is on cooldown for <white>{time}s</white>."

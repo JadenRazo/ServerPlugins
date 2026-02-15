@@ -1,0 +1,93 @@
+name: ServerClaim
+version: ${project.version}
+main: net.serverplugins.claim.ServerClaim
+api-version: "1.21"
+description: Chunk claiming system for ServerPlugins
+author: ServerPlugins
+website: https://example.com
+depend: [ServerAPI]
+softdepend: [Vault, LuckPerms, ProtocolLib]
+
+commands:
+  claim:
+    description: Open the claim menu or claim chunks
+    usage: /<command> [here|unclaim|info|help]
+    aliases: [claims, myclaims, claimmenu, land, territory, c]
+  claimrefund:
+    description: Issue refunds for chunk price changes (admin)
+    usage: /<command> <preview|execute>
+    permission: serverclaim.admin.refund
+  claimadmin:
+    description: Admin commands for managing claims
+    usage: /<command> <list|info|delete|deleteat> [args...]
+    permission: serverclaim.admin
+    aliases: [cadmin, claimsa]
+  playerwarps:
+    description: Browse and visit player claim warps
+    usage: /<command> [list|<name>]
+    aliases: [pw, pwarps, visitclaim, pwarp, visit, playerwarpmenu]
+  nation:
+    description: Nation management commands
+    usage: /<command> <subcommand> [args...]
+    aliases: [n, nations]
+  nc:
+    description: Nation chat shortcut
+    usage: /<command> <message>
+    aliases: [nationchat]
+  war:
+    description: War system commands
+    usage: /<command> <subcommand> [args...]
+  claimnotifications:
+    description: View your claim notifications
+    usage: /<command>
+    aliases: [notifications, notifs]
+  claimlog:
+    description: View claim activity logs
+    usage: /<command> [claimId] [page]
+    aliases: [clog]
+  claimstats:
+    description: View claim statistics
+    usage: /<command> [player]
+    aliases: [cstats]
+  claimshop:
+    description: Purchase chunks for your claim profiles
+    usage: /<command>
+    aliases: [chunkshop, buyshunks, shop]
+
+permissions:
+  serverclaim.claim:
+    description: Allows claiming chunks
+    default: true
+  serverclaim.admin:
+    description: Admin permissions for claims
+    default: op
+  serverclaim.admin.refund:
+    description: Issue chunk price refunds
+    default: op
+  serverclaim.admin.stats:
+    description: View server statistics
+    default: op
+  serverclaim.bypass:
+    description: Bypass claim protection
+    default: op
+  serverclaim.unlimited:
+    description: Unlimited claim chunks
+    default: op
+  serverclaim.nation:
+    description: Use nation commands
+    default: true
+  serverclaim.nation.create:
+    description: Create a nation
+    default: true
+  serverclaim.nation.admin:
+    description: Admin control over nations
+    default: op
+  serverclaim.war:
+    description: Use war commands
+    default: true
+  serverclaim.war.declare:
+    description: Declare war on other nations
+    default: true
+  serverclaim.war.admin:
+    description: Admin control over wars
+    default: op

@@ -1,0 +1,45 @@
+# August NPC Dialog Configuration
+# Jobs NPC
+
+npc:
+  name: "august"
+  display-name: "⻔<gold><bold>AUGUST"
+
+dialog:
+  greeting:
+    message:
+      - "<white>"
+      - "⻔<gold><bold>━━━━━━━━━━━━━━━━━━━━━━"
+      - "⻔"
+      - "⻔<gold><bold>NPC AUGUST"
+      - "⻔<gray>HEY THERE, {player}!"
+      - "⻔<gray>I'M AUGUST, THE FARMER."
+      - "⻔<gray>LOOKING FOR WORK?"
+      - "⻔"
+      - "⻔<white>• VIEW JOBS"
+      - "⻔<white>• OPEN MENU"
+      - "⻔"
+      - "⻔<red><bold>! <red>YOU NEED TO HOVER AND CLICK THE OPTIONS"
+      - "<white>"
+
+    choices:
+      1:
+        text: "⻔<green>VIEW JOBS"
+        command: "jobs"
+        permission: ""
+        delay: 100
+        close: true
+
+      2:
+        text: "⻔<yellow>OPEN MENU"
+        command: "august"
+        permission: ""
+        delay: 0
+        close: true
+
+      3:
+        text: "⻔<red>EXIT"
+        command: ""
+        permission: ""
+        delay: 0
+        close: true

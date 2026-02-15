@@ -1,0 +1,20 @@
+name: ServerMobHealth
+version: ${project.version}
+main: net.serverplugins.mobhealth.ServerMobHealth
+api-version: "1.21"
+description: Event-driven mob health display
+author: ServerPlugins
+depend: [ServerAPI]
+
+commands:
+  mobhealth:
+    description: Mob health display commands
+    usage: /<command> [reload|toggle|clear]
+
+permissions:
+  mobhealth.admin:
+    description: Access admin commands (reload, clear)
+    default: op
+  mobhealth.toggle:
+    description: Toggle personal health bar display
+    default: true

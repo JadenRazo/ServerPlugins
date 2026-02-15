@@ -1,0 +1,39 @@
+name: ServerAFK
+version: ${project.version}
+main: net.serverplugins.afk.ServerAFK
+api-version: "1.21"
+description: AFK zone reward system for ServerPlugins
+author: ServerPlugins
+website: https://example.com
+depend: [ServerAPI]
+softdepend: [Vault, DecentHolograms, CombatLogX, PlaceholderAPI]
+
+commands:
+  serverafk:
+    description: AFK zone management
+    usage: /<command> [p1|p2]
+    aliases: [wa, afkzone]
+  afk:
+    description: Toggle AFK status and view statistics
+    usage: /<command> [stats|top|zones|session]
+    aliases: [idle]
+
+permissions:
+  serverafk.admin:
+    description: Admin access to AFK zone management
+    default: op
+  serverafk.use:
+    description: Allows receiving AFK rewards
+    default: true
+  serverafk.afk:
+    description: Allows using /afk command
+    default: true
+  serverafk.stats:
+    description: Allows viewing own statistics
+    default: true
+  serverafk.stats.others:
+    description: Allows viewing other players' statistics
+    default: op
+  serverafk.top:
+    description: Allows viewing leaderboards
+    default: true

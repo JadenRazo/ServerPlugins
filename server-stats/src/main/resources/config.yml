@@ -1,0 +1,11 @@
+http:
+  port: 20090
+  allowed-origins:
+    - "https://example.com"
+    - "https://store.example.com"
+
+# Cache TTL in seconds for stats endpoint
+cache-ttl: 30
+
+messages:
+  stats-updated: "<green>Stats updated!"

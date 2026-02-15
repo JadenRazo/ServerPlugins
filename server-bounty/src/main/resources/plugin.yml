@@ -1,0 +1,40 @@
+name: ServerBounty
+version: ${project.version}
+main: net.serverplugins.bounty.ServerBounty
+api-version: "1.21"
+description: Player bounty system
+author: ServerPlugins
+depend: [ServerAPI]
+softdepend: [CombatLogX, Vault, server-bridge]
+
+commands:
+  bounty:
+    description: Bounty system commands
+    usage: /<command> [player] [amount]
+    aliases: [bounties, wanted, hunt, hitlist, bountyhunt]
+
+permissions:
+  bounty.use:
+    description: Place bounties on other players
+    default: true
+  bounty.view:
+    description: View active bounties
+    default: true
+  bounty.heads:
+    description: Claim trophy heads
+    default: true
+  bounty.admin:
+    description: Access admin commands
+    default: op
+  bounty.admin.remove:
+    description: Remove bounties from players
+    default: op
+  bounty.admin.reload:
+    description: Reload plugin configuration
+    default: op
+  bounty.bypass.cooldown:
+    description: Bypass bounty placement cooldown
+    default: op
+  bounty.bypass.tax:
+    description: Bypass bounty tax
+    default: false

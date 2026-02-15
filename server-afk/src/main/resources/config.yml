@@ -1,0 +1,162 @@
+# ========================================
+# SERVER AFK - ADMIN QUICK START
+# ========================================
+#
+# Basic Setup:
+#   1. Set positions: /wa p1 and /wa p2 (or use quickcreate)
+#   2. Open GUI: /wa
+#   3. Create zone and configure rewards
+#   4. Set hologram: Stand in zone and /wa holo
+#
+# Y-Level Setup:
+#   - Y-levels are automatically set from p1/p2 positions
+#   - OR use: /wa quickcreate <name> [radius] [height]
+#   - Example: /wa quickcreate "Mining Zone" 15 10
+#     Creates 31x21x31 zone (radius*2+1 by height*2+1)
+#   - The zone includes all blocks from minY to maxY (inclusive)
+#
+# Reward Chance Setup:
+#   - Use the GUI (/wa) to edit reward chances
+#   - Click on a reward, then Shift+Click to adjust chance
+#   - 100% = always give, 50% = half the time, 1% = rare
+#
+# Commands:
+#   /wa              - Open admin GUI
+#   /wa p1           - Set corner 1
+#   /wa p2           - Set corner 2
+#   /wa quickcreate  - Create zone at your location
+#   /wa holo         - Add hologram to zone
+#   /wa reload       - Reload configuration
+#   /afk             - Player AFK toggle
+#
+# ========================================
+
+# ServerAFK Configuration
+
+# Database settings
+# Supported types: H2, MARIADB (or MYSQL)
+database:
+  type: MARIADB
+  # H2 settings (only used if type is H2)
+  file: afkzones
+  # MariaDB/MySQL settings (only used if type is MARIADB or MYSQL)
+  host: localhost
+  port: 3306
+  name: my_database
+  username: db_user
+  password: ""
+
+# Default settings for new zones
+defaults:
+  time-interval: 300
+  reward-type: CURRENCY
+  currency-amount: 100
+  y-axis-forgiveness: 3  # Blocks of vertical movement allowed without leaving zone (for jumping)
+
+  # Y-Level Configuration Guide:
+  # - Y-levels are set when creating a zone with /wa p1 and /wa p2
+  # - The zone boundary includes minY to maxY (inclusive)
+  # - Use y-axis-forgiveness to allow jumping without exiting
+  # - Example: Zone from Y=60 to Y=80 allows 20 blocks vertical space
+  # - Tip: Use /wa quickcreate <name> [radius] [height] for easy setup
+  #   - height parameter creates ±height from player Y position
+  #   - /wa quickcreate "Mine" 10 5 = 10 block radius, ±5 blocks vertically
+
+# Rank reward multipliers (applied to currency rewards)
+# Players with these LuckPerms groups get multiplied rewards
+rank-multipliers:
+  default: 1.0
+  server: 1.25
+  serverplus: 1.5
+  servermaster: 2.0
+  servergoat: 3.0
+
+# Hologram settings
+holograms:
+  update-interval: 60  # Seconds between hologram updates
+  lines:
+    - "&e&l{zone_name}"
+    - "&7━━━━━━━━━━━━━━━━"
+    - "&fRewards every &e{interval}s"
+    - "&7━━━━━━━━━━━━━━━━"
+    - "&aPlayers: &f{count}"
+
+# ========================================
+# REWARD SYSTEM GUIDE
+# ========================================
+#
+# Reward Types:
+#   CURRENCY - Give money (uses Vault economy)
+#   ITEM     - Give items to player inventory
+#   COMMAND  - Execute console commands (use %player% and %uuid%)
+#   XP       - Give experience points
+#
+# Reward Chance System:
+#   - Each reward has a 'chance_percent' field (0-100)
+#   - Configure via GUI: /wa > Edit Zone > Edit Rewards > Shift+Click
+#   - 100 = guaranteed every interval
+#   - 50 = 50% chance per interval
+#   - 1 = 1% chance (rare rewards)
+#   - You can have multiple rewards with different chances
+#
+# Example Configurations:
+#
+# Guaranteed small reward + rare jackpot:
+#   Reward 1: 100 coins at 100% chance
+#   Reward 2: 5000 coins at 5% chance
+#
+# Item lottery:
+#   Reward 1: Common item at 70% chance
+#   Reward 2: Uncommon item at 25% chance
+#   Reward 3: Rare item at 5% chance
+#
+# ========================================
+
+# Global AFK Detection
+global-afk:
+  enabled: true
+  auto-afk-time-seconds: 300  # Auto-mark players as AFK after 5 minutes of inactivity
+
+# Anti-Exploit System
+anti-exploit:
+  enabled: true
+  analysis-interval-seconds: 120  # Run pattern analysis every 2 minutes
+  activity-window-seconds: 600  # Track last 10 minutes of activity
+  max-records-per-player: 100  # Maximum activity records to keep per player
+  suspicion-threshold: 0.7  # Confidence threshold for flagging (0.0-1.0)
+  verification-trigger-level: 3  # Suspicion level that triggers verification
+
+# Verification System
+verification:
+  enabled: true
+  interval-seconds: 600  # Request verification every 10 minutes
+  timeout-seconds: 60  # Player has 60 seconds to respond
+
+# Statistics System
+statistics:
+  enabled: true
+  cache-minutes: 5  # Cache player stats for 5 minutes
+  leaderboard-size: 10  # Number of players to show in leaderboards
+
+# Messages
+messages:
+  prefix: "<gradient:#9b59b6:#3498db>[AFK]</gradient> "
+  zone-enter: "<green>You entered the AFK zone: <yellow>{zone}"
+  zone-leave: "<gray>You left the AFK zone. Progress reset."
+  reward-currency: "<green>+{amount} coins <gray>for AFK time!"
+  reward-item: "<green>You received: <yellow>{item}"
+  reward-xp: "<green>+{amount} XP <gray>for AFK time!"
+  reward-gems: "<gradient:#9B59B6:#8E44AD>[AFK]</gradient> <white>+{amount} gems!"
+  reward-command: "<green>Reward executed!"
+  no-permission: "<red>You don't have permission to do that!"
+  zone-created: "<green>Zone '<yellow>{name}<green>' created!"
+  zone-deleted: "<red>Zone '<yellow>{name}<red>' deleted."
+  corner-set: "<green>Corner {corner} set at your location."
+  selection-incomplete: "<red>Set both corners first! Use /wa p1 and /wa p2"
+  manual-afk-enabled: "<green>✓ You are now AFK. Use /afk again to disable."
+  manual-afk-disabled: "<green>✓ You are no longer AFK."
+  auto-afk-activated: "<yellow>⚠ You are now AFK due to inactivity."
+  auto-afk-removed: "<green>✓ Welcome back! AFK status removed."
+  session-ended-combat: "<red>✗ Your AFK session ended because you entered combat!"
+  verification-required: "<yellow>⚠ Please verify you're present! Type /afk to continue receiving rewards."
+  suspicious-activity-warning: "<yellow>⚠ Warning: Suspicious AFK activity detected. Play normally to avoid restrictions."

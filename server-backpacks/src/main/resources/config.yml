@@ -1,0 +1,191 @@
+# ServerBackpacks Configuration
+
+# Backpack types - Tier progression system
+# Note: display-name is for the item itself (can use custom font chars)
+#       gui-title is for the inventory window (use normal text to avoid rendering issues)
+backpacks:
+  tier1:
+    display-name: "<white>⻔⻔⻔⻔⻔⻔⻔⻔"
+    gui-title: "<white>"
+    material: LEATHER_HORSE_ARMOR
+    size: 9
+    permission: "serverbackpacks.tier1"
+    custom-model-data: 100
+    crafting:
+      enabled: true
+      shape:
+        - "LLL"
+        - "LCL"
+        - "LLL"
+      ingredients:
+        L: LEATHER
+        C: CHEST
+
+  tier2:
+    display-name: "<white>⻔⻔⻔⻔⻔⻔⻔⻔"
+    gui-title: "<white>"
+    material: LEATHER_HORSE_ARMOR
+    size: 18
+    permission: "serverbackpacks.tier2"
+    custom-model-data: 101
+    crafting:
+      enabled: true
+      shape:
+        - "LLL"
+        - "IBI"
+        - "LLL"
+      ingredients:
+        L: LEATHER
+        I: IRON_INGOT
+        B: CHEST
+
+  tier3:
+    display-name: "<white>⻔⻔⻔⻔⻔⻔⻔⻔"
+    gui-title: "<white>"
+    material: LEATHER_HORSE_ARMOR
+    size: 27
+    permission: "serverbackpacks.tier3"
+    custom-model-data: 102
+    crafting:
+      enabled: true
+      shape:
+        - "III"
+        - "IBI"
+        - "III"
+      ingredients:
+        I: IRON_INGOT
+        B: CHEST
+
+  tier4:
+    display-name: "<white>⻔⻔⻔⻔⻔⻔⻔⻔"
+    gui-title: "<white>"
+    material: LEATHER_HORSE_ARMOR
+    size: 36
+    permission: "serverbackpacks.tier4"
+    custom-model-data: 105
+    crafting:
+      enabled: true
+      shape:
+        - "GGG"
+        - "GBG"
+        - "GGG"
+      ingredients:
+        G: GOLD_INGOT
+        B: CHEST
+
+  tier5:
+    display-name: "<white>⻔⻔⻔⻔⻔⻔⻔⻔"
+    gui-title: "<white>"
+    material: LEATHER_HORSE_ARMOR
+    size: 45
+    permission: "serverbackpacks.tier5"
+    custom-model-data: 104
+    crafting:
+      enabled: true
+      shape:
+        - "DDD"
+        - "DBD"
+        - "DDD"
+      ingredients:
+        D: DIAMOND
+        B: CHEST
+
+  tier6:
+    display-name: "<white>⻔⻔⻔⻔⻔⻔⻔⻔"
+    gui-title: "<white>"
+    material: LEATHER_HORSE_ARMOR
+    size: 54
+    permission: "serverbackpacks.tier6"
+    custom-model-data: 103
+    crafting:
+      enabled: true
+      shape:
+        - "NNN"
+        - "NBN"
+        - "NNN"
+      ingredients:
+        N: NETHERITE_INGOT
+        B: CHEST
+
+# Blacklisted items (cannot be stored in backpacks)
+blacklist:
+  - SHULKER_BOX
+  - WHITE_SHULKER_BOX
+  - ORANGE_SHULKER_BOX
+  - MAGENTA_SHULKER_BOX
+  - LIGHT_BLUE_SHULKER_BOX
+  - YELLOW_SHULKER_BOX
+  - LIME_SHULKER_BOX
+  - PINK_SHULKER_BOX
+  - GRAY_SHULKER_BOX
+  - LIGHT_GRAY_SHULKER_BOX
+  - CYAN_SHULKER_BOX
+  - PURPLE_SHULKER_BOX
+  - BLUE_SHULKER_BOX
+  - BROWN_SHULKER_BOX
+  - GREEN_SHULKER_BOX
+  - RED_SHULKER_BOX
+  - BLACK_SHULKER_BOX
+
+# Settings
+settings:
+  open-sound: BLOCK_CHEST_OPEN
+  close-sound: BLOCK_CHEST_CLOSE
+  prevent-nesting: true
+
+# Features
+features:
+  # Right-click to add items - Hold backpack in one hand and item in other, then shift+right-click
+  right-click-to-add: true
+  # Allow right-click to add in creative mode (disabled by default for balance)
+  allow-in-creative: false
+
+# Auto-save interval in ticks (20 ticks = 1 second)
+# Default: 60 ticks = 3 seconds
+auto-save-interval: 60
+
+# Performance settings
+performance:
+  # Enable inventory caching to improve performance by reducing NBT deserialization
+  # Cached inventories are stored in memory and cleared on plugin disable
+  cache-inventories: true
+
+# Auto-refill feature - automatically refills blocks from backpacks
+# When you place the last block of a type, it will automatically
+# refill from matching items in your backpacks
+auto-refill:
+  enabled: true
+
+# Item preview in lore - shows backpack contents without opening
+item-preview:
+  enabled: true
+  max-items: 5
+  format: "<gray>%amount%x %item%"
+
+# Upgrade costs for each tier transition
+# Players need these materials to upgrade their backpack while preserving contents
+upgrade-costs:
+  tier1-to-tier2:
+    IRON_INGOT: 8
+  tier2-to-tier3:
+    IRON_INGOT: 16
+  tier3-to-tier4:
+    GOLD_INGOT: 16
+  tier4-to-tier5:
+    DIAMOND: 8
+  tier5-to-tier6:
+    NETHERITE_INGOT: 4
+
+# Messages
+messages:
+  prefix: "<gradient:#ff6b6b:#feca57>[Backpacks]</gradient> "
+  opened: "<green>Opened your backpack!"
+  no-permission: "<red>You don't have permission to use this backpack!"
+  blacklisted-item: "<red>You cannot store that item in a backpack!"
+  region-denied: "<red>You cannot open backpacks in this region!"
+  given: "<green>Given a {type} backpack to {player}!"
+  received: "<green>You received a {type} backpack!"
+  upgrade-success: "<green>Backpack upgraded to <gold>Tier {tier}</gold>!"
+  upgrade-max-tier: "<red>This backpack is already at the maximum tier!"
+  upgrade-no-materials: "<red>You don't have the required materials to upgrade!"
+  upgrade-hold-backpack: "<red>You must hold a backpack in your main hand to upgrade it!"

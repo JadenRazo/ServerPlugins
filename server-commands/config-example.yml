@@ -1,0 +1,80 @@
+# ServerCommands Configuration Example
+# Shows both old and new command formats
+
+dynamic-commands:
+  # Example 1: Simple text message with delay
+  welcome:
+    command: /welcome
+    type: RUN_COMMAND
+    description: Welcome message with delay
+    runcmd:
+      - '$text$&6&lWelcome to ServerPlugins!'
+      - '$delay$<40>'
+      - '$text$&7We hope you enjoy your stay!'
+      - '$delay$<40>'
+      - '$text$&eType &b/help &efor commands'
+
+  # Example 2: Interactive clickable URLs
+  links:
+    command: /links
+    type: RAW_TEXT
+    description: Server links with clickable URLs
+    text:
+      - ''
+      - '&d&l            SERVERPLUGINS &7| &fOFFICIAL LINKS'
+      - ''
+      - '$OPEN_URL$&f            &b⬤ &fWEBSITE: &7example.com;&8Click to open;https://example.com'
+      - '$OPEN_URL$&f            &a⬤ &fSTORE: &7store.example.com;&8Click to open;https://store.example.com'
+      - '$OPEN_URL$&f            &d⬤ &fDISCORD: &7discord.gg/zzzn7dtv3z;&8Click to join;https://discord.gg/ZzZn7dTV3Z'
+      - ''
+
+  # Example 3: Interactive menu with clickable commands
+  menu:
+    command: /servermenu
+    type: RAW_TEXT
+    description: Interactive server menu
+    text:
+      - ''
+      - '&6&l=== SERVER MENU ==='
+      - '$RUN_COMMAND$&a[1] Server Guide;&7Click to view guide;&f/guide'
+      - '$RUN_COMMAND$&b[2] Server Rules;&7Click to view rules;&f/rules'
+      - '$RUN_COMMAND$&c[3] Jobs Menu;&7Click to view jobs;&f/jobs'
+      - '$RUN_COMMAND$&d[4] Warps Menu;&7Click to view warps;&f/warps'
+      - '&6&l==================='
+      - ''
+
+  # Example 4: NPC dialogue with sequential execution
+  npc-sylvia:
+    command: /sylvia
+    type: RUN_COMMAND
+    description: Talk to NPC Sylvia
+    cooldown: 60
+    cooldown-message: "&cWait 60s to talk with Sylvia again"
+    runcmd:
+      - '$text$&f'
+      - '$text$&d&lNPC SYLVIA・&ftalking..'
+      - '$text$&7Oh, so you want to know more about the server?'
+      - '$text$&7I will open the guide menu for you!'
+      - '$text$&f'
+      - '$text$&aGuide menu will open in a few seconds'
+      - '$delay$<120>'
+      - '/guide'
+
+  # Example 5: Console command execution
+  teleport-spawn:
+    command: /tpspawn
+    type: RUN_CONSOLE
+    description: Teleport player to spawn
+    permission: admin.teleport
+    runcmd:
+      - '/tp %player_name% world 0 64 0'
+      - '/tellraw %player_name% {"text":"You have been teleported to spawn!","color":"green"}'
+
+  # Example 6: Old style command (backward compatible)
+  oldstyle:
+    command: /oldstyle
+    type: COMMAND
+    description: Old style command (still works)
+    command: 'spawn'
+    permission: ''
+    cooldown: 0

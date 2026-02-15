@@ -1,0 +1,53 @@
+name: ServerBackpacks
+version: ${project.version}
+main: net.serverplugins.backpacks.ServerBackpacks
+api-version: "1.21"
+description: Portable storage system for ServerPlugins
+author: ServerPlugins
+website: https://example.com
+depend: [ServerAPI]
+softdepend: [WorldGuard]
+load: STARTUP
+
+commands:
+  backpack:
+    description: Open your backpack
+    usage: /<command> [type]
+    aliases: [bp, bag, pack, storage, bpack]
+  givebackpack:
+    description: Give a backpack to a player
+    usage: /<command> <player> <type>
+    aliases: [givebp, bpgive]
+  upgradebackpack:
+    description: Upgrade your backpack to the next tier
+    usage: /<command>
+    aliases: [upgradebp, bpupgrade, bpup, upgrade]
+
+permissions:
+  serverbackpacks.use:
+    description: Use backpacks
+    default: true
+  serverbackpacks.upgrade:
+    description: Upgrade backpacks to higher tiers
+    default: true
+  serverbackpacks.tier1:
+    description: Use Tier I backpacks (9 slots)
+    default: true
+  serverbackpacks.tier2:
+    description: Use Tier II backpacks (18 slots)
+    default: true
+  serverbackpacks.tier3:
+    description: Use Tier III backpacks (27 slots)
+    default: true
+  serverbackpacks.tier4:
+    description: Use Tier IV backpacks (36 slots)
+    default: true
+  serverbackpacks.tier5:
+    description: Use Tier V backpacks (45 slots)
+    default: op
+  serverbackpacks.tier6:
+    description: Use Tier VI backpacks (54 slots)
+    default: op
+  serverbackpacks.admin:
+    description: Admin permissions (give backpacks, cache commands)
+    default: op

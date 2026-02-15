@@ -1,0 +1,317 @@
+# ServerClaim Configuration
+
+# Starting chunks for new profiles (each new claim/profile gets this many free chunks)
+starting-chunks-per-profile: 2
+
+# Global chunk pricing - exponential based on total chunks owned
+# Price increases exponentially as players approach 100 chunks
+# Formula: min(base-price * (growth-rate ^ current_global_chunks), max-per-chunk)
+global-chunk-pricing:
+  enabled: true
+  base-price: 5000       # Starting price for first chunk
+  growth-rate: 1.15      # Exponential multiplier (1.15 = 15% increase per chunk)
+  max-per-chunk: 1000000 # Maximum price cap per chunk ($1M) - prevents astronomical prices
+  max-global-chunks: 100 # Soft cap - purchases still allowed but very expensive
+
+# Bulk chunk pricing (DEPRECATED - only used if global-chunk-pricing.enabled is false)
+# Players purchase chunks into a global pool, then allocate them to profiles
+bulk-pricing:
+  # Price per chunk when buying 1 chunk
+  price-1: 10000
+  # Price per chunk when buying 5 chunks (10% discount)
+  price-5: 9000
+  # Price per chunk when buying 10 chunks (15% discount)
+  price-10: 8500
+  # Price per chunk when buying 50 chunks (20% discount)
+  price-50: 8000
+  # Price per chunk when buying 100 chunks (25% discount)
+  price-100: 7500
+
+# Legacy pricing configuration (DEPRECATED - use global-chunk-pricing instead)
+pricing:
+  base-price: 5000
+  growth-rate: 1.20
+  max-chunks-per-profile: 999999
+  max-chunks: 50
+  claim-multiplier: 1.5
+
+# Chunk limits per profile
+chunks:
+  # Default maximum chunks per profile (players without permissions)
+  default-max-per-profile: 100
+  # Maximum value to check for LuckPerms permissions (serverclaim.chunks.<number>)
+  max-chunks-check: 1000
+  # Legacy settings (DEPRECATED)
+  unlimited: true
+  max-per-profile: 999999
+
+# Permission-based limits
+# Players need serverclaim.profiles.<number> for max profiles per claim
+# Players need serverclaim.claims.<number> for max separate claims
+# Players need serverclaim.chunks.<number> for max chunks per profile
+# Example LuckPerms setup for profiles:
+#   Default (2 profiles): Already configured in defaults.max-profiles
+#   /lp group vip permission set serverclaim.profiles.3
+#   /lp group mvp permission set serverclaim.profiles.4
+#   /lp group pro permission set serverclaim.profiles.6
+# Example LuckPerms setup for chunk capacity:
+#   Default (100 chunks):      Already configured in chunks.default-max-per-profile
+#   /lp group vip permission set serverclaim.chunks.150
+#   /lp group mvp permission set serverclaim.chunks.200
+#   /lp group pro permission set serverclaim.chunks.300
+
+# Default values for players without explicit permissions
+defaults:
+  # Default profiles per claim (increased from 1 to 2 for better UX)
+  max-profiles: 2
+  max-claims: 1
+
+# Maximum values to check (performance limit - checks from this number down to 1)
+limits:
+  max-profile-check: 10
+  max-claims-check: 10
+
+# Particle settings
+# Particle.EGG_CRACK with count=0 for completely static egg crack particles
+# Count=0 is THE KEY - makes offsetX/Y/Z become velocity vectors instead of random spread
+# This bypasses client-side "burst" physics, creating perfectly stagnant particles
+# With velocity (0,0,0), particles are 100% stationary with zero reproduction/doubling
+# ProtocolLib enforces count=0 in packets to prevent client-side randomization
+# Task checks every 5 ticks, renders every 20 ticks (1s) per player for constant visibility
+# Particles continuously respawn at cached Y position (5 overlapping generations)
+# Y position cache ONLY updates when player moves 0.75+ blocks vertically
+# When Y changes, throttle is bypassed for instant particle appearance at new height
+# Horizontal movement doesn't affect particles - they stay at cached Y level
+# Result: Constant consistent particles that smoothly follow vertical movement only
+particles:
+  enabled: true
+  type: BLOCK
+  density: 16.0  # Very high spacing = minimal particles (16.0 = only corners)
+  height: 2      # Vertical height from feet to head (2 blocks)
+  view-distance: 24  # Reduced from 32 to 24 for better performance
+  update-interval: 1
+
+# Default claim settings (for new claims/profiles)
+claim-settings:
+  pvp: false
+  fire-spread: false
+  explosions: false
+  hostile-spawns: true
+  mob-griefing: false
+  passive-spawns: true
+
+# Protection settings
+protection:
+  prevent-build: true
+  prevent-break: true
+  prevent-interact: true
+  prevent-container-access: true
+  prevent-entity-damage: true
+
+# Messages
+messages:
+  prefix: "<gradient:#ff6b6b:#feca57>[ServerClaim]</gradient> "
+  claim-success: "<green>Successfully claimed this chunk!"
+  unclaim-success: "<green>Successfully unclaimed this chunk!"
+  already-claimed: "<red>This chunk is already claimed!"
+  not-your-claim: "<red>This chunk belongs to someone else!"
+  no-claim-here: "<red>You don't have a claim here!"
+  no-chunks-left: "<red>You don't have any chunks left! Purchase more in /claimshop"
+  not-adjacent: "<red>You can only claim chunks adjacent to your existing profiles, or create a new profile!"
+  purchase-success: "<green>Purchased a new chunk slot for <gold>${price}</gold>!"
+  insufficient-funds: "<red>You need <gold>${price}</gold> to purchase this!"
+  max-chunks-reached: "<red>You've reached the maximum number of chunks for this profile!"
+  profile-created: "<green>New profile created!"
+  profile-list-header: "<gradient:#ff6b6b:#feca57>Your Profiles:</gradient>"
+  max-profiles-reached: "<red>You've reached your maximum profiles! Upgrade your rank for more."
+  no-permission: "<red>You don't have permission to do that!"
+  trusted-player: "<green>Trusted <yellow>${player}</yellow> on this claim!"
+  untrusted-player: "<green>Removed <yellow>${player}</yellow> from this claim!"
+  player-not-trusted: "<red>That player is not trusted on this claim!"
+  already-trusted: "<red>That player is already trusted!"
+  world-not-allowed: "<red>You cannot claim chunks in this world!"
+
+# Worlds where claiming is allowed
+# Claims can ONLY be made in these worlds (all others are protected)
+allowed-worlds:
+  - "playworld"
+  - "playworld_nether"
+  - "playworld_the_end"
+
+# Spawn protection radius in blocks (applies within allowed worlds)
+# Set to 0 to disable spawn protection radius
+spawn-protection-radius: 0
+
+# Chunk teleportation settings
+chunk-teleport:
+  enabled: true
+  owner-cost: 0           # Cost for owners to teleport to their chunks
+  member-cost: 25         # Cost for members with MANAGE_CHUNKS permission
+  cooldown-seconds: 30    # Cooldown between teleports (0 to disable)
+
+# Chunk transfer settings
+chunk-transfer:
+  enabled: true
+  cost-per-chunk: 100     # Cost to transfer each chunk to another player
+  allow-offline-recipients: true   # Allow transfers to offline players
+  require-confirmation: true       # Require confirmation before transfers
+
+# Database
+# Credentials can be set via environment variables (recommended for production):
+#   SERVERCLAIM_DB_HOST, SERVERCLAIM_DB_PORT, SERVERCLAIM_DB_NAME,
+#   SERVERCLAIM_DB_USER, SERVERCLAIM_DB_PASSWORD
+# Environment variables take priority over config values.
+database:
+  # Type: H2 (embedded) or MARIADB (remote MySQL/MariaDB)
+  type: MARIADB
+  # H2 settings (only used when type is H2)
+  file: claims
+  # MariaDB/MySQL settings (only used when type is MARIADB)
+  # Set these or use environment variables
+  host: "localhost"
+  port: 3306
+  name: "my_database"
+  username: "db_user"
+  password: ""
+
+# ==================== PHASE 1: LAND BANK & UPKEEP ====================
+
+# Land Bank settings - each claim has its own treasury
+land-bank:
+  enabled: true
+  # Balance threshold for low balance warnings
+  default-minimum-warning: 100
+
+# Upkeep settings - regular payments to maintain claims
+upkeep:
+  enabled: true
+  # Cost per chunk per payment cycle
+  cost-per-chunk: 10.0
+  # Hours between upkeep payments
+  payment-interval-hours: 24
+  # Days before auto-unclaim when balance is 0
+  grace-period-days: 7
+  # Automatically unclaim chunks when unable to pay
+  auto-unclaim-enabled: true
+  # How to choose which chunks to unclaim: furthest_first, oldest_first, random
+  unclaim-priority: "furthest_first"
+  # Hours before due to send notifications (72=3 days, 24=1 day, 12=12h)
+  notification-times: [72, 24, 12]
+  # Batch size for processing upkeep (prevents memory exhaustion with many claims)
+  # Higher values = faster but more memory, lower values = slower but less memory
+  # Recommended: 100-500 for most servers, 1000+ for servers with very few claims
+  batch-size: 100
+
+# ==================== PHASE 2: CLAIM LEVELS ====================
+
+# Level system settings - claims gain XP and level up for benefits
+levels:
+  enabled: true
+  # XP granted per minute of playtime in the claim
+  xp-per-minute-playtime: 1
+  # XP granted per 100 blocks placed/broken
+  xp-per-100-blocks: 2
+  # XP granted when a new member is added
+  xp-per-member-added: 50
+  # XP granted when upkeep is paid
+  xp-per-upkeep-paid: 100
+  # XP granted when claiming a new chunk
+  xp-per-chunk-claimed: 25
+
+# ==================== PHASE 3: NATIONS ====================
+
+# Nation system settings - groups of claims forming political entities
+nations:
+  enabled: true
+  # Cost to create a nation
+  creation-cost: 10000
+  # Maximum member claims per nation
+  max-members: 50
+  # Maximum tax rate leaders can set (percentage)
+  tax-rate-max: 25.0
+  # Hours before nation invites expire (0 = never)
+  invite-expiry-hours: 72
+
+# ==================== PHASE 4: WAR SYSTEM ====================
+
+# War system settings - territorial conflict between nations
+wars:
+  enabled: true
+  # Hours between declaration and war becoming active
+  declaration-notice-hours: 24
+  # Minutes to hold a chunk uncontested to capture it
+  capture-time-minutes: 10
+  # Days of immunity shield after losing a war
+  war-shield-days: 7
+  # Maximum tribute amount that can be offered
+  max-tribute-amount: 1000000
+
+# ==================== PHASE 8: QUALITY OF LIFE FEATURES ====================
+
+# Visual Boundaries Enhancement
+visual-boundaries:
+  # Performance mode: auto (based on claim count), high, medium, low
+  performance-mode: auto
+  # Claim count thresholds for auto mode
+  high-quality-threshold: 20   # <20 claims = high quality
+  medium-quality-threshold: 100  # 20-99 claims = medium quality
+  # Adaptive height rendering - follow player Y position
+  adaptive-height: true
+  # Preview duration in seconds when testing effects
+  preview-duration: 30
+
+# Claim Templates
+templates:
+  # Maximum templates per player
+  max-per-player: 10
+  # Allow sharing templates with others (future feature)
+  allow-sharing: false
+  # Include custom groups when saving templates
+  include-custom-groups: true
+
+# Bulk Operations
+bulk-operations:
+  # Maximum claims that can be modified in a single operation
+  max-claims-per-operation: 50
+  # Require confirmation before executing bulk operations
+  require-confirmation: true
+  # Allow regex pattern matching in rename operations (security risk - disabled by default)
+  allow-regex-rename: false
+
+# Notification System
+notifications:
+  enabled: true
+  # Upkeep warning notifications
+  upkeep-warnings:
+    24-hours: true
+    12-hours: true
+    6-hours: true
+    1-hour: true
+  # Maximum notifications per player (oldest auto-deleted)
+  max-per-player: 100
+  # Days before read notifications are auto-deleted
+  expire-read-after-days: 7
+  # Hours between cleanup task runs
+  cleanup-interval-hours: 6
+
+# Activity Log
+activity-log:
+  # Track player entry/exit to claims
+  track-access: true
+  # Track bank deposits/withdrawals
+  track-financial: true
+  # Track warp teleportation
+  track-teleports: true
+  # Days to retain log entries (older entries auto-deleted)
+  retention-days: 90
+  # Maximum entries returned per query
+  max-entries-per-query: 100
+
+# Statistics Dashboard
+statistics:
+  # Cache duration for server statistics (minutes)
+  cache-duration-minutes: 5
+  # Number of entries in top lists
+  top-list-size: 10
+  # Days to track for activity metrics
+  activity-days: 30

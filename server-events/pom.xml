@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.serverplugins</groupId>
+        <artifactId>server-parent</artifactId>
+        <version>1.1.0</version>
+    </parent>
+
+    <artifactId>server-events</artifactId>
+    <packaging>jar</packaging>
+    <name>ServerEvents</name>
+    <description>Server events and mini-games for ServerPlugins</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>net.serverplugins</groupId>
+            <artifactId>server-api</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.kyori</groupId>
+            <artifactId>adventure-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.kyori</groupId>
+            <artifactId>adventure-text-minimessage</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.MilkBowl</groupId>
+            <artifactId>VaultAPI</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.dmulloy2</groupId>
+            <artifactId>ProtocolLib</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.retrooper</groupId>
+            <artifactId>packetevents-spigot</artifactId>
+        </dependency>
+    </dependencies>
+</project>

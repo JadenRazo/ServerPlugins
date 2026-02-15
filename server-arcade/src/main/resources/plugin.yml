@@ -1,0 +1,116 @@
+name: ServerArcade
+version: ${project.version}
+main: net.serverplugins.arcade.ServerArcade
+api-version: "1.21"
+description: Casino games for ServerPlugins
+author: ServerPlugins
+website: https://example.com
+depend: [ServerAPI]
+softdepend: [Vault, DecentHolograms, PlaceholderAPI]
+
+commands:
+  arcade:
+    description: View your gambling stats and game info
+    usage: /<command>
+    aliases: [casino, games, gamble, gambling]
+  slots:
+    description: Open the slots machine GUI (perk required)
+    usage: /<command>
+    aliases: [slot, slotmachine]
+  blackjack:
+    description: Play blackjack vs dealer (perk required)
+    usage: /<command> <bet>
+    aliases: [bj, 21]
+  baccarat:
+    description: Play baccarat vs the house (perk required)
+    usage: /<command> <bet> <player|banker|tie>
+    aliases: [bacc, punto]
+  crash:
+    description: Open the crash game GUI (perk required)
+    usage: /<command>
+    aliases: [crashgame, rocket]
+  coinflip:
+    description: Coinflip against another player (perk required)
+    usage: /<command> <bet> [player]
+    aliases: [cf, flip, cflip]
+  jackpot:
+    description: Join the jackpot game (perk required)
+    usage: /<command>
+    aliases: [jp, pot, lottery]
+  dice:
+    description: Roll the dice and bet on the outcome (perk required)
+    usage: /<command> bet <amount> <over|under|exact|odd|even> [number]
+    aliases: [diceroll, rolldice]
+  gamble:
+    description: Gambling management commands (stats, exclusion)
+    usage: /<command> <stats|exclude> [args]
+    aliases: [gambling, gamblinghelp]
+  arcademachine:
+    description: Manage arcade machines
+    usage: /<command> <place|remove|list|reload>
+    permission: serverarcade.machine.admin
+    aliases: [am]
+  arcademigrate:
+    description: Migrate machines from DreamArcade
+    usage: /<command> [path-to-data]
+    permission: serverarcade.admin
+  spawnseat:
+    description: Spawn a debug slot machine seat
+    usage: /<command>
+    permission: serverarcade.admin
+  removeseat:
+    description: Remove nearby slot machine seats
+    usage: /<command> [radius]
+    permission: serverarcade.admin
+
+permissions:
+  serverarcade.play:
+    description: Access to play arcade machines (physical)
+    default: true
+  serverarcade.admin:
+    description: Admin permissions for arcade (bypasses command perms)
+    default: op
+  serverarcade.command.*:
+    description: Access to all game commands (purchasable perk)
+    default: false
+    children:
+      serverarcade.command.slots: true
+      serverarcade.command.blackjack: true
+      serverarcade.command.baccarat: true
+      serverarcade.command.crash: true
+      serverarcade.command.jackpot: true
+      serverarcade.command.coinflip: true
+      serverarcade.command.dice: true
+  serverarcade.command.slots:
+    description: Use /slots command to open slots GUI
+    default: false
+  serverarcade.command.blackjack:
+    description: Use /blackjack command to play vs dealer
+    default: false
+  serverarcade.command.baccarat:
+    description: Use /baccarat command to play baccarat
+    default: false
+  serverarcade.command.crash:
+    description: Use /crash command to open crash GUI
+    default: false
+  serverarcade.command.jackpot:
+    description: Use /jackpot command to join jackpot
+    default: false
+  serverarcade.command.coinflip:
+    description: Use /coinflip command to create coinflips
+    default: false
+  serverarcade.command.dice:
+    description: Use /dice command to roll dice bets
+    default: false
+  serverarcade.machine.admin:
+    description: Place and manage all arcade machines
+    default: op
+  serverarcade.machine.break.others:
+    description: Break other players' machines
+    default: op
+  serverarcade.place.personal:
+    description: Place personal (smaller) arcade machines
+    default: false
+  serverarcade.place.casino:
+    description: Place casino (larger) arcade machines
+    default: op

@@ -1,0 +1,220 @@
+# Miscellaneous - Page 4
+# Default furniture definitions for ServerItems plugin
+
+campfire:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<gold>Decorative Campfire"
+  lore:
+    - "<gray>A decorative campfire"
+    - "<gray>Gather around for stories"
+  custom_model_data: 30043
+  furniture:
+    hitbox:
+      width: 0.8
+      height: 0.4
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+rennwagen:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<gold>Collector's Car"
+  lore:
+    - "<gray>A collector's car"
+    - "<gray>Show off your luxury vehicle"
+  custom_model_data: 30044
+  furniture:
+    hitbox:
+      width: 3.0
+      height: 1.5
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+streetlamp2:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<white>Modern Street Lamp"
+  lore:
+    - "<gray>A modern simple lamp"
+    - "<gray>Illuminate your streets"
+  custom_model_data: 30045
+  furniture:
+    hitbox:
+      width: 0.4
+      height: 2.5
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+streetlamp3:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#8B4513>Rustic Street Lamp"
+  lore:
+    - "<gray>A rustic style lamp"
+    - "<gray>Classic street lighting"
+  custom_model_data: 30046
+  furniture:
+    hitbox:
+      width: 0.4
+      height: 2.5
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+sleepingbag:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#4169E1>Sleeping Bag"
+  lore:
+    - "<gray>A decorative sleeping bag"
+    - "<gray>Portable comfort for camping"
+  custom_model_data: 30047
+  furniture:
+    hitbox:
+      width: 0.8
+      height: 0.3
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+tent1:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<green>Modern Tent"
+  lore:
+    - "<gray>A modern useful tent"
+    - "<gray>Shelter for outdoor adventures"
+  custom_model_data: 30048
+  furniture:
+    hitbox:
+      width: 2.0
+      height: 1.5
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+tent2:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<gold>Grandiose Tent"
+  lore:
+    - "<gray>A grandiose tent with bed and chest"
+    - "<gray>Luxury camping experience"
+  custom_model_data: 30049
+  furniture:
+    hitbox:
+      width: 2.5
+      height: 2.0
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+toilet:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<white>Modern Toilet"
+  lore:
+    - "<gray>A modern practical toilet"
+    - "<gray>Essential bathroom fixture"
+  custom_model_data: 30050
+  furniture:
+    hitbox:
+      width: 0.5
+      height: 0.8
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: true
+    sit_height: 0.3
+
+trunk:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#8B4513>Interactive Log"
+  lore:
+    - "<gray>An interactive log"
+    - "<gray>Natural seating option"
+  custom_model_data: 30051
+  furniture:
+    hitbox:
+      width: 0.8
+      height: 0.4
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: true
+    sit_height: 0.2
+
+washstand:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<white>Sink with Mirror"
+  lore:
+    - "<gray>A sink with mirror"
+    - "<gray>Complete bathroom vanity"
+  custom_model_data: 30052
+  furniture:
+    hitbox:
+      width: 0.6
+      height: 1.2
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+well:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#8B4513>Rustic Fountain"
+  lore:
+    - "<gray>A rustic 4x4 fountain"
+    - "<gray>Classic village centerpiece"
+  custom_model_data: 30053
+  furniture:
+    hitbox:
+      width: 2.0
+      height: 1.5
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+dog:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#8B4513>Decorative Dog"
+  lore:
+    - "<gray>A decorative dog"
+    - "<gray>Man's best friend statue"
+  custom_model_data: 30054
+  furniture:
+    hitbox:
+      width: 0.5
+      height: 0.6
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false

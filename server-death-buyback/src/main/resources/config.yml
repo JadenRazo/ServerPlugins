@@ -1,0 +1,83 @@
+# Death Buyback Configuration
+
+# Pricing settings
+pricing:
+  # Markup multiplier on base sell value (1.5 = 150% of sell price)
+  markup: 1.5
+  # Maximum enchantment multiplier cap
+  max-enchant-multiplier: 3.0
+  # Minimum price for any inventory (prevents free/cheap buybacks)
+  minimum-price: 100.0
+
+# Rank-based slot limits (0 = feature disabled for that rank)
+slots:
+  default: 0
+  vip: 1
+  mvp: 2
+  pro: 3
+
+# Expiration settings
+expiration:
+  # How long inventories are kept (in hours)
+  duration-hours: 72
+  # Run cleanup task at this interval (in hours)
+  cleanup-interval: 24
+
+# Price sources (checked in order until a price is found)
+# Options: SELLGUI, ESSENTIALS, BUILTIN
+price-sources:
+  - SELLGUI
+  - ESSENTIALS
+  - BUILTIN
+
+# Notification settings
+notifications:
+  # Notify player when death is stored
+  on-death: true
+  # Notify on login about expired/overflow inventories
+  on-login: true
+
+# Database settings
+database:
+  # Use ServerAPI's shared database connection
+  use-api-database: true
+  # If not using API database, specify connection details
+  type: H2
+  host: localhost
+  port: 3306
+  database: serverplugins
+  username: root
+  password: ""
+
+# Rare item bonus values (added to base price)
+rare-items:
+  TOTEM_OF_UNDYING: 2500.0
+  ELYTRA: 5000.0
+  NETHER_STAR: 2500.0
+  DRAGON_EGG: 10000.0
+  TRIDENT: 3500.0
+  MACE: 4000.0
+  NETHERITE_INGOT: 550.0
+  ENCHANTED_GOLDEN_APPLE: 1000.0
+  SHULKER_BOX: 1300.0
+
+# Netherite gear bonus (added per item)
+netherite-bonus: 200.0
+
+# Messages (MiniMessage format)
+messages:
+  prefix: "<gradient:#e74c3c:#9b59b6>[DeathBuyback]</gradient> "
+  death-stored: "<green>Your death inventory has been stored! Use <gold>/buyback</gold> to recover it."
+  feature-disabled: "<red>Death buyback is not available for your rank."
+  not-enough-money: "<red>You need <gold>{price}</gold> to buy back this inventory."
+  purchase-success: "<green>Inventory restored! You paid <gold>{price}</gold>."
+  inventory-expired: "<yellow>A stored death inventory has expired and was removed."
+  slot-overflow: "<yellow>Your oldest stored death was removed to make room for this one."
+  no-deaths: "<gray>You have no stored death inventories."
+  inventory-full: "<red>Your inventory is too full to restore these items!"
+  no-permission: "<red>You don't have permission to do this."
+  login-reminder: "<gold>You have {count} stored death inventories worth <yellow>{value}</yellow>! Use <white>/buyback</white> to recover them."
+  death-not-found: "<red>That death inventory no longer exists."
+  already-purchased: "<red>That inventory has already been purchased."
+  transaction-failed: "<red>Transaction failed. Please try again."
+  purchase-failed: "<red>Failed to purchase inventory. Please try again."

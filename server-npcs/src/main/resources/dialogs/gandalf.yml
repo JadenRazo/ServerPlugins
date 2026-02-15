@@ -1,0 +1,53 @@
+# Gandalf NPC Dialog Configuration
+# Warp and teleportation NPC
+
+npc:
+  name: "gandalf"
+  display-name: "⻔<dark_purple><bold>GANDALF"
+
+dialog:
+  greeting:
+    message:
+      - "<white>"
+      - "⻔<dark_purple><bold>━━━━━━━━━━━━━━━━━━━━━━"
+      - "⻔"
+      - "⻔<dark_purple><bold>NPC GANDALF"
+      - "⻔<gray>GREETINGS, {player}!"
+      - "⻔<gray>I AM GANDALF THE GREY."
+      - "⻔<gray>I CAN HELP YOU TRAVEL ACROSS THE LAND."
+      - "⻔"
+      - "⻔<white>• VIEW WARPS"
+      - "⻔<white>• RANDOM TELEPORT"
+      - "⻔<white>• OPEN MENU"
+      - "⻔"
+      - "⻔<red><bold>! <red>YOU NEED TO HOVER AND CLICK THE OPTIONS"
+      - "<white>"
+
+    choices:
+      1:
+        text: "⻔<green>VIEW WARPS"
+        command: "warps"
+        permission: ""
+        delay: 100
+        close: true
+
+      2:
+        text: "⻔<aqua>RANDOM TELEPORT"
+        command: "rtp"
+        permission: ""
+        delay: 120
+        close: true
+
+      3:
+        text: "⻔<yellow>OPEN MENU"
+        command: "gandalf"
+        permission: ""
+        delay: 0
+        close: true
+
+      4:
+        text: "⻔<red>EXIT"
+        command: ""
+        permission: ""
+        delay: 0
+        close: true

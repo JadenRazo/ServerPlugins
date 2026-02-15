@@ -1,0 +1,49 @@
+name: ServerNpcs
+version: ${project.version}
+main: net.serverplugins.npcs.ServerNpcs
+api-version: 1.21
+author: ServerPlugins
+description: NPC and dialog management system for ServerPlugins
+website: https://example.com
+
+depend:
+  - ServerAPI
+
+softdepend:
+  - FancyNpcs
+  - Citizens
+  - Geyser-Spigot
+  - floodgate
+
+commands:
+  npc:
+    description: Main NPC management command
+    usage: /npc <reload|list|info|talk>
+    permission: servernpcs.use
+    aliases: [npcs, servernpcs]
+
+  dialog:
+    description: Open a dialog by ID
+    usage: /dialog <dialog-id>
+    permission: servernpcs.dialog
+
+permissions:
+  servernpcs.*:
+    description: Gives access to all ServerNpcs permissions
+    default: op
+    children:
+      servernpcs.use: true
+      servernpcs.admin: true
+      servernpcs.dialog: true
+
+  servernpcs.use:
+    description: Allows using basic NPC commands
+    default: true
+
+  servernpcs.admin:
+    description: Allows using admin NPC commands
+    default: op
+
+  servernpcs.dialog:
+    description: Allows opening dialogs
+    default: true

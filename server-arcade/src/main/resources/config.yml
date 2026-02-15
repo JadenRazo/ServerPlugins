@@ -1,0 +1,280 @@
+# ServerArcade Configuration
+
+# Database configuration for machine persistence
+# Leave host empty to use file-based storage
+#
+# SECURITY: It is STRONGLY RECOMMENDED to use environment variables instead of config.yml
+# Set these environment variables: DB_HOST, DB_PORT, DB_NAME, DB_USERNAME, DB_PASSWORD
+# Environment variables take priority over config.yml values
+database:
+  host: ""           # Or set DB_HOST environment variable
+  port: 3306         # Or set DB_PORT environment variable
+  database: ""       # Or set DB_NAME environment variable
+  username: ""       # Or set DB_USERNAME environment variable
+  password: ""       # Or set DB_PASSWORD environment variable
+
+# General settings
+settings:
+  min-bet: 100
+  max-bet: 1000000
+  cooldown: 5
+
+# Debug logging configuration
+# Enable these only when troubleshooting - they generate significant log spam
+debug:
+  enabled: false           # Master debug switch
+  machines: false          # Machine placement, seating, interactions
+  games: false             # Game mechanics, rewards, calculations
+
+# Legacy slots configuration (for chat commands)
+slots:
+  enabled: true
+  symbols:
+    cherry:
+      material: SWEET_BERRIES
+      weight: 30
+      multiplier: 2.0
+    lemon:
+      material: GOLD_NUGGET
+      weight: 25
+      multiplier: 3.0
+    orange:
+      material: ORANGE_DYE
+      weight: 20
+      multiplier: 5.0
+    bell:
+      material: BELL
+      weight: 15
+      multiplier: 10.0
+    seven:
+      material: DIAMOND
+      weight: 8
+      multiplier: 25.0
+    jackpot:
+      material: NETHER_STAR
+      weight: 2
+      multiplier: 100.0
+
+# Legacy blackjack configuration (for chat commands)
+blackjack:
+  enabled: true
+  dealer-stands-on: 17
+  blackjack-multiplier: 2.5
+  win-multiplier: 2.0
+
+# Visual Slots GameType (GUI-based 5-reel)
+SLOTS:
+  title: "§8Slots Machine"
+  bet_amounts: [100, 500, 1000, 5000, 10000]
+  bet_menu_title: "§8Select Bet Amount"
+  bet_menu_size: 54
+  symbols:
+    # Each symbol has: material, custom_model_data, weight, multiplier, is_star (optional)
+    cherry:
+      material: STICK
+      custom_model_data: 10
+      weight: 30
+      multiplier: 2.0
+    lemon:
+      material: STICK
+      custom_model_data: 11
+      weight: 25
+      multiplier: 3.0
+    orange:
+      material: STICK
+      custom_model_data: 12
+      weight: 20
+      multiplier: 5.0
+    bell:
+      material: STICK
+      custom_model_data: 13
+      weight: 15
+      multiplier: 10.0
+    seven:
+      material: STICK
+      custom_model_data: 14
+      weight: 8
+      multiplier: 25.0
+    star:
+      material: STICK
+      custom_model_data: 15
+      weight: 5
+      multiplier: 50.0
+      is_star: true
+
+# PvP Blackjack GameType
+BLACKJACK:
+  title: "§8Blackjack"
+  bet_amounts: [100, 500, 1000, 5000, 10000]
+  bet_menu_title: "§8Select Bet Amount"
+  bet_menu_size: 54
+  turn_timeout: 30
+  card_suits: ["♠", "♥", "♦", "♣"]
+  card_values: ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+
+# Baccarat configuration
+baccarat:
+  enabled: true
+  player-multiplier: 2.0    # Player bet pays 1:1 (2.0x total return)
+  banker-multiplier: 1.95   # Banker bet pays 1:1 minus 5% commission (1.95x total return)
+  tie-multiplier: 9.0       # Tie bet pays 8:1 (9.0x total return)
+
+# Crash configuration
+crash:
+  enabled: true
+  min-multiplier: 1.0
+  max-multiplier: 100.0
+  house-edge: 0.05
+  tick-rate: 2
+
+# Coinflip configuration
+coinflip:
+  enabled: true
+  expiry-time: 60
+
+# Jackpot configuration
+JACKPOT:
+  enabled: true
+  betting_duration: 600
+  time_between_games: 120
+  time_added_on_bet: 5
+  animation_duration: 120
+  send_message_to_everyone: false
+  gui:
+    winning_head_slot: 4
+    head_slots: [3, 4, 5, 15, 24, 32, 31, 30, 20, 11]
+
+# Physical arcade machines
+machines:
+  enabled: true
+  seat_timeout_seconds: 300  # Auto-eject players after 5 minutes (300 seconds)
+
+# Discord webhook integration
+discord:
+  enabled: false
+  webhook_url: ""
+  big_win_threshold:
+    crash: 10000       # Announce crash wins over $10,000
+    lottery: 0         # Announce all lottery wins
+    dice: 5000         # Announce dice wins over $5,000
+
+# REST API for example.com website integration
+api:
+  enabled: false
+  port: 8080                        # HTTP API port
+
+  # SECURITY: API key authentication
+  require_auth: true                # Require X-API-Key header
+  key: ""                           # Set a strong random API key here (or use API_KEY environment variable - recommended)
+
+  # SECURITY: CORS configuration
+  # List of allowed origins (use ["*"] to allow all, not recommended)
+  # IMPORTANT: If api.enabled is true, this list MUST not be empty or the API will fail to start
+  allowed_origins:
+    - "https://example.com"
+    - "https://www.example.com"
+
+  # SECURITY: Rate limiting per IP address
+  rate_limiting:
+    enabled: true                   # Enable rate limiting
+    requests_per_second: 5          # Maximum requests per second per IP
+    burst_size: 10                  # Allow burst of requests (token bucket capacity)
+
+  # Endpoints:
+  #   GET /api/arcade/leaderboard/{type}?limit=10
+  #   GET /api/arcade/stats/{uuid}
+  #   GET /api/arcade/recent?limit=20
+
+# Performance tuning
+# These settings control caching behavior to reduce database load
+# Higher values improve performance but may show slightly stale data
+performance:
+  cache:
+    # Player statistics cache TTL (minutes)
+    # Used by /gamble stats and API endpoints
+    stats_ttl_minutes: 10
+
+    # Leaderboard cache TTL (minutes)
+    # Used by API leaderboard endpoints
+    leaderboard_ttl_minutes: 5
+
+    # Self-exclusion cache TTL (minutes)
+    # Checks gambling restrictions for player protection
+    exclusion_ttl_minutes: 5
+
+    # Maximum cache entries (prevents memory exhaustion)
+    # Recommended: 10000 for typical servers, increase for larger player bases
+    max_entries: 10000
+
+# Messages
+messages:
+  prefix: "<gradient:#ff6b6b:#feca57>[Arcade]</gradient> "
+
+  # General game messages
+  bet-placed: "<green>Bet placed: <gold>${bet}</gold>"
+  win: "<green>You won <gold>${amount}</gold>!"
+  lose: "<red>You lost <gold>${amount}</gold>!"
+  insufficient-funds: "<red>You need at least <gold>${amount}</gold> to play!"
+  min-bet: "<red>Minimum bet is <gold>${min}</gold>!"
+  max-bet: "<red>Maximum bet is <gold>${max}</gold>!"
+  cooldown: "<red>Please wait <yellow>${seconds}</yellow> seconds!"
+
+  # Permission and access
+  no-permission: "<red>You don't have permission to play arcade games!"
+  command-no-permission: "<red>This command requires a perk! <gray>Find an arcade machine to play, or unlock command access in the <gold>/store<gray>."
+  players-only: "<red>This command can only be used by players!"
+  game-disabled: "<red>${game} is currently disabled!"
+
+  # Self-exclusion
+  excluded: "<red>You are currently excluded from gambling."
+  excluded-time: "<gray>Time remaining: <yellow>${time}</yellow>"
+  excluded-reason: "<gray>Reason: <yellow>${reason}</yellow>"
+
+  # Invalid input
+  invalid-bet: "<red>Invalid bet amount!"
+  invalid-usage: "<red>Usage: ${usage}"
+  invalid-bet-range: "<red>Bet must be between <gold>${min}</gold> and <gold>${max}</gold>!"
+
+  # Active game states
+  active-game: "<yellow>You have an active game! Use: ${actions}"
+  no-active-bet: "<red>You don't have an active bet!"
+  already-active: "<red>You already have an active ${game}! Use ${cancel_command} to cancel it."
+
+  # Blackjack specific
+  blackjack-actions: "hit, stand, or double"
+  blackjack-unknown-action: "<red>Unknown action. Use: hit, stand, double, split, insurance, or surrender"
+  blackjack-double-restricted: "<red>You can only double down on your first two cards with value 9-11!"
+  blackjack-insufficient-double: "<red>You don't have enough to double down!"
+  blackjack-split-restricted: "<red>You can only split with a pair on your first two cards!"
+  blackjack-insufficient-split: "<red>You don't have enough to split!"
+  blackjack-split-success: "<green>Hand split! You now have two hands."
+  blackjack-insurance-restricted: "<red>Insurance is only available when dealer shows an Ace!"
+  blackjack-insufficient-insurance: "<red>You don't have enough for insurance (<gold>${amount}</gold>)!"
+  blackjack-insurance-taken: "<green>Insurance taken for <gold>${amount}</gold>. Pays 2:1 if dealer has blackjack."
+  blackjack-surrender-restricted: "<red>You can only surrender on your first two cards!"
+  blackjack-cancelled: "<red>Game cancelled. Your bet was lost."
+
+  # Baccarat specific
+  baccarat-invalid-side: "<red>Invalid side! Choose: <gold>player</gold>, <gold>banker</gold>, or <gold>tie</gold>"
+
+  # Crash specific
+  crash-cashout-success: "<green>Cashed out at ${multiplier}x! Won <gold>${amount}</gold>"
+  crash-bet-failed: "<red>Couldn't place bet. The game may have already crashed. Funds refunded."
+  crash-cashout-hint: "<gray>Use <yellow>/crash cashout</yellow> to cash out!"
+  crash-game-info: "<yellow>Crash Game</yellow>"
+  crash-current-multiplier: "<gray>Current multiplier: <green>${multiplier}x</green>"
+  crash-game-status: "<gray>Game running: ${status}"
+  crash-withdraw-failed: "<red>Failed to withdraw funds. Please try again."
+
+  # Coinflip specific
+  coinflip-created: "<green>Created a coinflip for <gold>${amount}</gold>!"
+  coinflip-waiting: "<gray>Waiting for someone to accept..."
+  coinflip-cancelled: "<green>Cancelled your coinflip and returned your bet."
+  coinflip-no-active: "<red>You don't have an active coinflip."
+  coinflip-player-not-found: "<red>Player not found!"
+  coinflip-no-game: "<red>That player doesn't have an active coinflip!"
+  coinflip-accept-failed: "<red>Couldn't accept the coinflip!"
+  coinflip-win: "<green>${result}! You won <gold>${amount}</gold>!"
+  coinflip-lose: "<red>${result}! You lost the coinflip."
+  coinflip-broadcast: "<yellow>${player}</yellow> <gray>created a coinflip for</gray> <gold>${amount}</gold><gray>!</gray> <click:run_command:'/coinflip accept ${player}'><green>[Accept]</green></click>"
+  coinflip-no-pending: "<gray>No active coinflips. Create one with /coinflip <bet>"

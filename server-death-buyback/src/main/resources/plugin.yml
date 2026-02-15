@@ -1,0 +1,40 @@
+name: ServerDeathBuyback
+version: ${project.version}
+main: net.serverplugins.deathbuyback.ServerDeathBuyback
+api-version: "1.21"
+description: Death inventory buyback system for ServerPlugins
+author: ServerPlugins
+website: https://example.com
+depend: [ServerAPI, Vault]
+softdepend: [LuckPerms, PlaceholderAPI, SellGUI, Essentials, CombatLogX, server-bridge]
+load: POSTWORLD
+
+commands:
+  buyback:
+    description: Open death inventory buyback menu
+    usage: /<command>
+    aliases: [deathbuyback, deaths, db, recover, recovery, deathrecovery, death]
+  buybackadmin:
+    description: Admin commands for death buyback
+    usage: /<command> <reload|clear|info> [player]
+    aliases: [dba, deathsadmin]
+
+permissions:
+  deathbuyback.use:
+    description: Access the buyback menu
+    default: true
+  deathbuyback.slots.1:
+    description: 1 buyback slot (VIP)
+    default: false
+  deathbuyback.slots.2:
+    description: 2 buyback slots (MVP)
+    default: false
+  deathbuyback.slots.3:
+    description: 3 buyback slots (Pro)
+    default: false
+  deathbuyback.admin:
+    description: Access admin commands
+    default: op
+  deathbuyback.admin.viewothers:
+    description: View other players death inventories
+    default: op

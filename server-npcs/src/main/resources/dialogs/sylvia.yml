@@ -1,0 +1,53 @@
+# Sylvia NPC Dialog Configuration
+# Guide NPC that helps players navigate the server
+
+npc:
+  name: "sylvia"
+  display-name: "⻔<light_purple><bold>Sylvia"
+
+dialog:
+  greeting:
+    message:
+      - "<white>"
+      - "⻔<light_purple><bold>━━━━━━━━━━━━━━━━━━━━━━"
+      - "⻔"
+      - "⻔<light_purple><bold>NPC SYLVIA"
+      - "⻔<gray>ARE YOU NEW HERE? I CAN GIVE YOU THE WISEST"
+      - "⻔<gray>ADVICE TO MAKE YOUR ADVENTURE MUCH EASIER."
+      - "⻔<gray>DO YOU WANT TO KNOW SOMETHING FROM ME?"
+      - "⻔"
+      - "⻔<white>• SERVER GUIDE"
+      - "⻔<white>• SERVER LINKS"
+      - "⻔<white>• VIEW MENU"
+      - "⻔"
+      - "⻔<red><bold>! <red>YOU NEED TO HOVER AND CLICK THE OPTIONS"
+      - "<white>"
+
+    choices:
+      1:
+        text: "⻔<green>OPEN SERVER GUIDE"
+        command: "guide"
+        permission: ""
+        delay: 0
+        close: true
+
+      2:
+        text: "⻔<aqua>SHOW SERVER LINKS"
+        command: "links"
+        permission: ""
+        delay: 120
+        close: true
+
+      3:
+        text: "⻔<yellow>VIEW MENU"
+        command: "sylvia"
+        permission: ""
+        delay: 0
+        close: true
+
+      4:
+        text: "⻔<red>EXIT"
+        command: ""
+        permission: ""
+        delay: 0
+        close: true

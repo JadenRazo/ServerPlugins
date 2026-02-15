@@ -1,0 +1,28 @@
+name: ServerParkour
+version: ${project.version}
+main: net.serverplugins.parkour.ServerParkour
+api-version: "1.21"
+description: Infinite parkour minigame for ServerPlugins lobby
+author: ServerPlugins
+website: https://example.com
+depend: [ServerAPI]
+softdepend: [DecentHolograms, PlaceholderAPI]
+
+commands:
+  parkour:
+    description: Parkour commands
+    usage: /<command> [start|stop|stats|top]
+    aliases: [pk, jump, jumping, pkour]
+  parkouradmin:
+    description: Admin commands for parkour
+    usage: /<command> <reload|setnpc|removenpc>
+    permission: serverparkour.admin
+    aliases: [pka, pkoura, parkouradm]
+
+permissions:
+  serverparkour.play:
+    description: Access to play parkour
+    default: true
+  serverparkour.admin:
+    description: Admin permissions for parkour
+    default: op

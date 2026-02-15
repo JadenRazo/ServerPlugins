@@ -1,0 +1,29 @@
+server-name: "smp"
+
+redis:
+  host: "127.0.0.1"
+  port: 6379
+  password: ""
+
+database:
+  host: "localhost"
+  port: 3306
+  database: "my_database"
+  username: "db_user"
+  password: ""
+
+chat-bridge:
+  enabled: true
+  format: "<dark_aqua>[Discord]</dark_aqua> <white>%player%:</white> <gray>%message%</gray>"
+
+role-sync:
+  enabled: true
+  check-interval: 60
+
+messages:
+  link-success: "<green>Your account has been linked to Discord!</green>"
+  link-expired: "<red>That code has expired. Please generate a new one on Discord.</red>"
+  link-invalid: "<red>Invalid code. Please check and try again.</red>"
+  link-already-linked: "<yellow>Your account is already linked to Discord.</yellow>"
+  unlink-success: "<green>Your Discord account has been unlinked.</green>"
+  unlink-not-linked: "<red>Your account is not linked to Discord.</red>"

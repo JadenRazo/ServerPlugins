@@ -1,0 +1,79 @@
+# MILD - Minor crude language
+# Blocked at: STRICT level only
+
+words:
+  # Religious exclamations
+  - "damn"
+  - "damned"
+  - "dammit"
+  - "goddamn"
+  - "goddammit"
+
+  # Hell references
+  - "hell"
+  - "hella"
+  - "hellish"
+  - "go to hell"
+  - "what the hell"
+
+  # Crude but mild
+  - "crap"
+  - "crappy"
+  - "crapper"
+  - "suck"
+  - "sucks"
+  - "sucking"
+  - "sucker"
+  - "screw"
+  - "screwed"
+  - "screwing"
+  - "freaking"
+  - "friggin"
+  - "frigging"
+
+  # Body function references
+  - "fart"
+  - "farts"
+  - "farted"
+  - "farting"
+  - "poop"
+  - "poopy"
+  - "pee"
+  - "peeing"
+  - "butt"
+  - "butthole"
+  - "butthead"
+  - "buttface"
+
+  # Mild insults
+  - "stupid"
+  - "idiot"
+  - "idiotic"
+  - "moron"
+  - "moronic"
+  - "dumb"
+  - "dummy"
+  - "loser"
+  - "jerk"
+  - "weirdo"
+  - "noob"
+  - "n00b"
+  - "lame"
+
+  # Euphemisms (that still suggest profanity)
+  - "effing"
+  - "eff"
+  - "frick"
+  - "fricking"
+  - "dang"
+  - "dangit"
+  - "heck"
+  - "shoot"
+
+  # Suggestive
+  - "sexy"
+  - "horny"
+  - "naughty"
+  - "kinky"
+
+patterns: []

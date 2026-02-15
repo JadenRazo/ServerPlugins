@@ -1,0 +1,26 @@
+name: ServerAPI
+version: '${project.version}'
+main: net.serverplugins.api.ServerAPI
+api-version: '1.21'
+description: Shared API library for all Server plugins
+website: https://example.com
+
+softdepend:
+  - Vault
+  - LuckPerms
+  - ProtocolLib
+
+commands:
+  server:
+    description: Transfer to another server (admins can transfer other players)
+    usage: /<command> <server> [player|all]
+    aliases: [hub, lobby]
+  transfer:
+    description: Admin command to transfer players between servers (bypasses proxy)
+    usage: /<command> <server> <player|all>
+    permission: serverapi.server.admin
+
+permissions:
+  serverapi.server.admin:
+    description: Allows transferring other players between servers
+    default: op

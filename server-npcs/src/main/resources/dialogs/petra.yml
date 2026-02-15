@@ -1,0 +1,53 @@
+# Petra NPC Dialog Configuration
+# Auction house NPC
+
+npc:
+  name: "petra"
+  display-name: "⻔<aqua><bold>PETRA"
+
+dialog:
+  greeting:
+    message:
+      - "<white>"
+      - "⻔<aqua><bold>━━━━━━━━━━━━━━━━━━━━━━"
+      - "⻔"
+      - "⻔<aqua><bold>NPC PETRA"
+      - "⻔<gray>HELLO, {player}!"
+      - "⻔<gray>I'M PETRA, THE AUCTIONEER."
+      - "⻔<gray>LOOKING TO BUY OR SELL?"
+      - "⻔"
+      - "⻔<white>• OPEN AUCTION HOUSE"
+      - "⻔<white>• VIEW GUIDE"
+      - "⻔<white>• OPEN MENU"
+      - "⻔"
+      - "⻔<red><bold>! <red>YOU NEED TO HOVER AND CLICK THE OPTIONS"
+      - "<white>"
+
+    choices:
+      1:
+        text: "⻔<green>OPEN AUCTION HOUSE"
+        command: "ah"
+        permission: ""
+        delay: 100
+        close: true
+
+      2:
+        text: "⻔<aqua>VIEW GUIDE"
+        command: "guide"
+        permission: ""
+        delay: 100
+        close: true
+
+      3:
+        text: "⻔<yellow>OPEN MENU"
+        command: "petra"
+        permission: ""
+        delay: 0
+        close: true
+
+      4:
+        text: "⻔<red>EXIT"
+        command: ""
+        permission: ""
+        delay: 0
+        close: true

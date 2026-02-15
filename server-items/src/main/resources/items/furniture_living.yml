@@ -1,0 +1,317 @@
+# Living Room Furniture - Page 1
+# Default furniture definitions for ServerItems plugin
+
+bed:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#8B4513>Modern Bed"
+  lore:
+    - "<gray>A modern 4x3 bed for restful sleep"
+    - "<gray>Perfect for any bedroom"
+  custom_model_data: 30001
+  furniture:
+    hitbox:
+      width: 2.0
+      height: 1.0
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+piano:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#4A4A4A>Grand Piano"
+  lore:
+    - "<gray>A luxurious 3x3 piano made of dark oak"
+    - "<gray>Fill your home with music"
+  custom_model_data: 30002
+  furniture:
+    hitbox:
+      width: 2.0
+      height: 1.0
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+sofa:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<white>Simple Sofa"
+  lore:
+    - "<gray>A simple 3x1 sofa made of wool"
+    - "<gray>Comfortable seating for your living room"
+  custom_model_data: 30003
+  furniture:
+    hitbox:
+      width: 1.5
+      height: 0.8
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: true
+    sit_height: 0.3
+
+sofa2:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<white>Modern Sofa"
+  lore:
+    - "<gray>A modern 3x1 sofa"
+    - "<gray>Sleek design for contemporary spaces"
+  custom_model_data: 30004
+  furniture:
+    hitbox:
+      width: 1.5
+      height: 0.8
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: true
+    sit_height: 0.3
+
+sofa3:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<gold>Luxury Sofa"
+  lore:
+    - "<gray>An attractive 5x1 sofa"
+    - "<gray>Spacious seating for multiple guests"
+  custom_model_data: 30005
+  furniture:
+    hitbox:
+      width: 2.5
+      height: 0.8
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: true
+    sit_height: 0.3
+
+blackboard:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#2F4F4F>Blackboard"
+  lore:
+    - "<gray>A simple 3x1 blackboard"
+    - "<gray>Perfect for classrooms or planning"
+  custom_model_data: 30006
+  furniture:
+    hitbox:
+      width: 1.5
+      height: 1.5
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+hammock:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#DEB887>Hammock"
+  lore:
+    - "<gray>A spacious 7x1 hammock"
+    - "<gray>Relax in style under the stars"
+  custom_model_data: 30007
+  furniture:
+    hitbox:
+      width: 3.0
+      height: 0.6
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: true
+    sit_height: 0.2
+
+bench:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<white>Modern Bench"
+  lore:
+    - "<gray>A modern and attractive 3x1 bench"
+    - "<gray>Contemporary seating solution"
+  custom_model_data: 30008
+  furniture:
+    hitbox:
+      width: 1.5
+      height: 0.6
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: true
+    sit_height: 0.3
+
+chair:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#8B4513>Oak Chair"
+  lore:
+    - "<gray>A simple 1x1 oak chair"
+    - "<gray>Classic wooden seating"
+  custom_model_data: 30009
+  furniture:
+    hitbox:
+      width: 0.6
+      height: 0.8
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: true
+    sit_height: 0.4
+
+chair2:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<white>Quartz Chair"
+  lore:
+    - "<gray>An attractive 1x1 iron and quartz chair"
+    - "<gray>Elegant modern design"
+  custom_model_data: 30010
+  furniture:
+    hitbox:
+      width: 0.6
+      height: 0.8
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: true
+    sit_height: 0.4
+
+schoolchair:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#8B4513>School Chair"
+  lore:
+    - "<gray>A 1x1 school chair"
+    - "<gray>Perfect for classrooms"
+  custom_model_data: 30011
+  furniture:
+    hitbox:
+      width: 0.6
+      height: 0.8
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: true
+    sit_height: 0.4
+
+campchair:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#8B4513>Camp Chair"
+  lore:
+    - "<gray>A small portable 1x1 camp chair"
+    - "<gray>Great for outdoor adventures"
+  custom_model_data: 30012
+  furniture:
+    hitbox:
+      width: 0.6
+      height: 0.6
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: true
+    sit_height: 0.3
+
+table:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#8B4513>Oak Table"
+  lore:
+    - "<gray>An attractive 1x1 oak table"
+    - "<gray>Classic wooden furniture"
+  custom_model_data: 30013
+  furniture:
+    hitbox:
+      width: 0.8
+      height: 0.8
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+largetable:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<white>Glass Table"
+  lore:
+    - "<gray>A spacious 3x3 glass table"
+    - "<gray>Modern centerpiece for dining rooms"
+  custom_model_data: 30014
+  furniture:
+    hitbox:
+      width: 2.0
+      height: 0.8
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+schooltable:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<#8B4513>School Table"
+  lore:
+    - "<gray>A simple 1x1 oak table"
+    - "<gray>Functional classroom furniture"
+  custom_model_data: 30015
+  furniture:
+    hitbox:
+      width: 0.8
+      height: 0.8
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+torntablea:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<white>Modern Living Table"
+  lore:
+    - "<gray>A special modern 3x1 living table"
+    - "<gray>Contemporary design for modern homes"
+  custom_model_data: 30016
+  furniture:
+    hitbox:
+      width: 1.5
+      height: 0.6
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: false
+    sittable: false
+
+fireplace:
+  material: LEATHER_HORSE_ARMOR
+  display_name: "<gold>Luxurious Fireplace"
+  lore:
+    - "<gray>A luxurious 3x2 fireplace"
+    - "<gray>Warm and elegant centerpiece"
+  custom_model_data: 30017
+  furniture:
+    hitbox:
+      width: 2.0
+      height: 1.5
+    transform:
+      scale: [1.0, 1.0, 1.0]
+      translation: [0.0, -0.5, 0.0]
+    rotation: PLAYER_YAW
+    barrier: true
+    sittable: false

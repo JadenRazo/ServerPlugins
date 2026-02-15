@@ -1,0 +1,31 @@
+min-bounty-amount: 100.0
+max-bounty-amount: 0
+tax-percentage: 5.0
+broadcast-on-kill: true
+broadcast-on-place: true
+head-expiry-days: 30
+allow-self-bounty: false
+cooldown-seconds: 60
+
+messages:
+  prefix: "<gradient:#e74c3c:#c0392b>[Bounty]</gradient> "
+  bounty-placed: "<green>You placed a <gold>{amount}</gold> bounty on <yellow>{target}</yellow>! Total: <gold>{total}</gold>"
+  self-bounty-denied: "<red>You cannot place a bounty on yourself!"
+  amount-too-low: "<red>Minimum bounty is <gold>{min}</gold>!"
+  amount-too-high: "<red>Maximum bounty is <gold>{max}</gold>!"
+  insufficient-funds: "<red>You don't have enough money!"
+  on-cooldown: "<red>Please wait before placing another bounty."
+  transaction-failed: "<red>Transaction failed. Please try again."
+  database-error: "<red>Database error occurred. Please contact an administrator."
+  invalid-amount: "<red>Please enter a valid amount!"
+  bounty-claimed: "<green>You claimed the bounty on <yellow>{victim}</yellow> and received <gold>{amount}</gold>!"
+  broadcast-placed: "<yellow>{placer}</yellow> placed a <gold>{amount}</gold> bounty on <red>{target}</red>! Total: <gold>{total}</gold>"
+  broadcast-kill: "<yellow>{killer}</yellow> claimed the <gold>{amount}</gold> bounty on <red>{victim}</red>!"
+  head-ready: "<green>A trophy head of <yellow>{victim}</yellow> is ready! Use <gold>/bounty heads</gold>"
+  unclaimed-heads: "<gold>You have <yellow>{count}</yellow> unclaimed trophy heads!"
+  no-bounty-on-player: "<gray>No active bounty on <white>{player}</white>."
+  has-bounty: "<red>Warning: <gold>{amount}</gold> bounty on your head!"
+  no-active-bounties: "<gray>No active bounties."
+  heads-claimed: "<green>Claimed <yellow>{count}</yellow> trophy head(s)!"
+  no-heads: "<gray>No unclaimed trophy heads."
+  inventory-full: "<red>Inventory full!"

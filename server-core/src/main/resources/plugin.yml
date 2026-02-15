@@ -1,0 +1,86 @@
+name: ServerCore
+version: ${project.version}
+main: net.serverplugins.core.ServerCore
+api-version: "1.21"
+load: STARTUP
+description: Core features plugin for ServerPlugins
+author: ServerPlugins
+website: https://example.com
+depend: [ServerAPI]
+softdepend: [WorldGuard, PlaceholderAPI, ProtocolLib]
+
+commands:
+  hat:
+    description: Wear an item as a hat
+    usage: /<command>
+    permission: servercore.hat
+  servercore:
+    description: Toggle ServerCore features
+    usage: /<command> <reload|toggle> [feature]
+    permission: servercore.admin
+    aliases: [wcore]
+  dgive:
+    description: Give custom items to players
+    usage: /<command> <player> <item> [amount]
+    permission: servercore.give
+  javabedrock:
+    description: Check if a player is on Java or Bedrock
+    usage: /<command> [player]
+  battlepass:
+    description: View the battlepass
+    usage: /<command>
+  restart:
+    description: Schedule a server restart
+    usage: /<command> [time]
+    permission: servercore.restart
+  givespawner:
+    description: Give a mob spawner to a player
+    usage: /<command> <player> <mob> [amount]
+    permission: servercore.givespawner
+  hammerpick:
+    description: Hammer Pickaxe management command
+    usage: /<command> give <player> [tier]
+    permission: servercore.hammerpick.give
+  plugins:
+    description: List all plugins with hover info
+    usage: /<command>
+    permission: servercore.pluginlist
+    aliases: [pl]
+
+permissions:
+  servercore.hat:
+    description: Allows wearing items as hats
+    default: true
+  servercore.admin:
+    description: Admin permissions for ServerCore
+    default: op
+  servercore.give:
+    description: Use the give command
+    default: op
+  servercore.restart:
+    description: Schedule server restarts
+    default: op
+  servercore.givespawner:
+    description: Give spawners to players
+    default: op
+  servercore.silkspawner:
+    description: Mine spawners with silk touch
+    default: true
+  servercore.editablesigns:
+    description: Edit placed signs
+    default: true
+  servercore.autototem:
+    description: Use auto-totem feature
+    default: true
+  servercore.anvilcolors:
+    description: Use color codes in anvils
+    default: true
+  servercore.hammerpick.give:
+    description: Give hammer pickaxes to players
+    default: op
+  servercore.hammerpick.use:
+    description: Use the hammer pickaxe radius mining
+    default: true
+  servercore.pluginlist:
+    description: View the plugin list
+    default: op

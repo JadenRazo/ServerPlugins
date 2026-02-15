@@ -1,0 +1,769 @@
+# ServerEvents Configuration
+
+# Database configuration for stats storage
+# Leave host empty to use YAML file storage instead
+# Set values via environment variables or override in your local config
+database:
+  host: "${MARIADB_HOST}"
+  port: "${MARIADB_PORT}"
+  database: "${MARIADB_DATABASE}"
+  username: "${MARIADB_USER}"
+  password: "${MARIADB_PASSWORD}"
+
+# Scheduler settings
+scheduler:
+  # Interval between random events in seconds (600 = 10 minutes)
+  interval: 600
+  # Whether automatic events are enabled
+  enabled: true
+
+# Spawn location for pinata events
+spawn:
+  world: spawn
+  x: -21.5
+  y: 66
+  z: -68.5
+
+# Chat messages
+messages:
+  prefix: "&6[Events] &r"
+  event-starting: "&eA new event is starting!"
+  event-ended: "&eThe event has ended!"
+  no-active-event: "&cThere is no active event."
+  event-already-active: "&cAn event is already in progress!"
+
+# Pinata Event
+pinata:
+  # Entity type for the pinata
+  entity: LLAMA
+  # Random clicks required (between min and max)
+  clicks_min: 70
+  clicks_max: 100
+  # Glow color (team color)
+  glow_color: YELLOW
+  # Messages
+  messages:
+    spawn: "&e&lPINATA! &fA pinata has appeared at spawn! Click it to break it!"
+    progress: "&ePinata: &f%clicks%/%total% clicks"
+    broken: "&a&lPINATA BROKEN! &f%player% dealt the final blow!"
+  # Rewards
+  rewards:
+    # Base coins for participation
+    participation_coins: 50
+    # Coins for the player who breaks it
+    breaker_coins: 500
+    # Total coin pool distributed among participants
+    total_coins: 3000
+    # Bonus coins for the player who deals the final hit
+    breaker_bonus: 900
+    # Coin pool distributed proportionally based on hits
+    proportional_pool: 2100
+    # Chance to get a crate key (0.0 - 1.0)
+    key_chance: 0.1
+    # Key type from ExcellentCrates
+    key_type: common
+  # Anti-spam and combo mechanics
+  mechanics:
+    # Cooldown between clicks in milliseconds
+    click_cooldown_ms: 200
+    # Bonus coins for 5-hit combo
+    combo_5_bonus: 50
+    # Bonus coins for 10-hit combo
+    combo_10_bonus: 100
+    # Bonus coins for 15-hit combo
+    combo_15_bonus: 200
+  # Minimum players required to start this event
+  min_players: 2
+  # Pinata player skin mode
+  # When enabled, pinata will look like a random online player
+  use_player_skin: true
+
+  # Skin selection mode
+  skin_mode: RANDOM_ONLINE  # Options: RANDOM_ONLINE, SPECIFIC_PLAYER, THEMED
+  skin_player: "Notch"      # For SPECIFIC_PLAYER mode
+  skin_theme: "pirate"      # For THEMED mode (pirate, knight, zombie, santa, etc.)
+
+  # Equipment display
+  equipment:
+    enabled: true
+    main_hand: DIAMOND_SWORD
+    enchant_glow: true
+    off_hand: SHIELD
+
+  # Item drops from equipment
+  item_drops:
+    enabled: true
+    # Drop items that pinata is holding (main_hand, off_hand)
+    drop_held_items: true
+    # Drop chance for each item (0.0-1.0)
+    drop_chance: 0.3
+    # Use same distribution as rewards (proportional to hits)
+    use_proportional_distribution: true
+    # Only breaker gets items (false = distributed like coins)
+    breaker_only: false
+
+  # Random player appearance
+  random_player_appearance:
+    # Chance for pinata to appear as random online player (0.0-1.0)
+    # When triggered, uses that player's skin AND their actual gear
+    enabled: true
+    chance: 0.35  # 35% chance
+    # Drop player's actual equipment (armor + held items)
+    drop_player_gear: true
+    # Players to exclude from random selection
+    exclude_players:
+      - "Admin"
+      - "Owner"
+    # Announce which player the pinata is mimicking
+    announce_player: true
+    announce_message: "&6A pinata has appeared disguised as &e{player}&6!"
+
+  # Animations
+  animations:
+    hurt_on_hit: true           # Red tint when hit
+    arm_swing_on_hit: true      # Swing animation when hit
+    critical_hit_chance: 0.15   # 15% chance for dramatic critical effect
+
+  # Visual feedback
+  visual_feedback:
+    shake_on_hit: true
+    shake_intensity: 0.15
+    deterioration_enabled: true  # Smoke/particles at low health
+
+  # Nametag enhancements
+  nametag:
+    format: "&6&lPINATA &f[{clicks}/{total}] {bar}"
+    progress_bar: true
+    progress_bar_length: 10
+    progress_bar_filled: "█"
+    progress_bar_empty: "░"
+    progress_bar_filled_color: "&a"
+    progress_bar_empty_color: "&7"
+    height_offset: 0.3  # Extra height for player models
+
+# Spelling Event
+spelling:
+  # Time limit in seconds
+  time_limit: 30
+  # Word list (moderately difficult)
+  words:
+    - obsidian
+    - enchantment
+    - netherite
+    - amethyst
+    - stalactite
+    - suspicious
+    - archaeology
+    - oxidized
+    - weathered
+    - sculk
+    - calibrated
+    - chiseled
+    - reinforced
+    - smithing
+    - deepslate
+    - dripstone
+    - propagule
+    - mangrove
+    - azalea
+    - spyglass
+  # Messages
+  messages:
+    start: "&e&lSPELLING BEE! &fHover over the word below and type it in chat!"
+    hint: "&7Hint: The word has &f%length% &7letters"
+    winner: "&a&lCORRECT! &f%player% &aspelled it first!"
+    timeout: "&cTime's up! The word was: &f%word%"
+  # Rewards
+  rewards:
+    coins: 200
+    key_chance: 0.05
+    key_type: common
+
+# Crafting Event
+crafting:
+  # Default time limit in seconds
+  default_time: 60
+  # Messages
+  messages:
+    start: "&e&lCRAFTING CHALLENGE! &fBe the first to craft/smelt &6%amount%x %item%&f!"
+    progress: "&eProgress: &f%current%/%amount%"
+    winner: "&a&lCHALLENGE COMPLETE! &f%player% &afinished first!"
+    timeout: "&cTime's up! Nobody completed the challenge."
+  # Challenge definitions
+  challenges:
+    # Easy challenges
+    iron_ingot:
+      type: SMELT
+      material: IRON_INGOT
+      amount: 8
+      time: 60
+      display_name: "Iron Ingots"
+      rewards:
+        coins: 100
+        key_chance: 0.02
+        key_type: common
+    gold_ingot:
+      type: SMELT
+      material: GOLD_INGOT
+      amount: 8
+      time: 60
+      display_name: "Gold Ingots"
+      rewards:
+        coins: 100
+        key_chance: 0.02
+        key_type: common
+    cooked_beef:
+      type: SMELT
+      material: COOKED_BEEF
+      amount: 16
+      time: 45
+      display_name: "Steaks"
+      rewards:
+        coins: 75
+        key_chance: 0.01
+        key_type: common
+    # Medium challenges
+    iron_pickaxe:
+      type: CRAFT
+      material: IRON_PICKAXE
+      amount: 2
+      time: 90
+      display_name: "Iron Pickaxes"
+      rewards:
+        coins: 200
+        key_chance: 0.05
+        key_type: common
+    iron_chestplate:
+      type: CRAFT
+      material: IRON_CHESTPLATE
+      amount: 1
+      time: 90
+      display_name: "Iron Chestplate"
+      rewards:
+        coins: 250
+        key_chance: 0.08
+        key_type: common
+    cake:
+      type: CRAFT
+      material: CAKE
+      amount: 1
+      time: 120
+      display_name: "Cake"
+      rewards:
+        coins: 300
+        key_chance: 0.1
+        key_type: rare
+    # Hard challenges
+    diamond_boots:
+      type: CRAFT
+      material: DIAMOND_BOOTS
+      amount: 4
+      time: 120
+      display_name: "Diamond Boots"
+      rewards:
+        coins: 1000
+        key_chance: 0.25
+        key_type: rare
+    diamond_sword:
+      type: CRAFT
+      material: DIAMOND_SWORD
+      amount: 2
+      time: 90
+      display_name: "Diamond Swords"
+      rewards:
+        coins: 800
+        key_chance: 0.2
+        key_type: rare
+    ender_chest:
+      type: CRAFT
+      material: ENDER_CHEST
+      amount: 1
+      time: 180
+      display_name: "Ender Chest"
+      rewards:
+        coins: 1500
+        key_chance: 0.35
+        key_type: legendary
+
+# GUI settings
+gui:
+  title: "&0&lEvents Menu"
+  size: 27
+
+# Math Event
+math:
+  # Time limit in seconds
+  time_limit: 30
+  # Difficulty: 1=easy (+ and -), 2=medium (includes x), 3=hard (larger numbers)
+  difficulty: 2
+  # Messages
+  messages:
+    start: "&e&lMATH RACE! &fSolve the problem below!"
+    winner: "&a&lCORRECT! &f%player% &asolved it first! (Answer: %answer%)"
+    timeout: "&cTime's up! The answer was: &f%answer%"
+  # Rewards
+  rewards:
+    coins: 150
+    key_chance: 0.05
+    key_type: common
+
+# Drop Party Event
+drop_party:
+  # Total number of items to drop
+  total_drops: 50
+  # Ticks between drops (20 = 1 second)
+  interval_ticks: 10
+  # Items per drop wave
+  items_per_drop: 3
+  # Radius around spawn to drop items
+  radius: 5.0
+  # Height above spawn to drop from
+  height: 10.0
+  # Items that can drop (material names)
+  items:
+    - DIAMOND
+    - IRON_INGOT
+    - GOLD_INGOT
+    - EMERALD
+    - COAL
+    - LAPIS_LAZULI
+    - REDSTONE
+    - COPPER_INGOT
+    - COOKED_BEEF
+    - BREAD
+    - GOLDEN_APPLE
+    - IRON_NUGGET
+    - GOLD_NUGGET
+  # Messages
+  messages:
+    start: "&e&lDROP PARTY! &fItems are raining at spawn!"
+    end: "&eThe drop party has ended! Hope you got some goodies!"
+
+# Dragon Fight Event
+dragon:
+  # World where dragon fights occur (must have end dimension)
+  world: playworld_the_end
+  # Base dragon health
+  base_health: 200.0
+  # Additional health per player in the end (scales difficulty)
+  per_player_health: 50.0
+  # Maximum health cap
+  max_health: 2000.0
+  # Radius to count players for scaling
+  scale_radius: 200
+  # Phase thresholds (health percentages where phases change)
+  phase_thresholds:
+    - 75
+    - 50
+    - 25
+  # Custom attack settings
+  attacks:
+    # Lightning strike attack
+    lightning:
+      enabled: true
+      damage: 8.0
+      radius: 5.0
+      cooldown_seconds: 15
+      min_phase: 2
+    # Enhanced dragon breath
+    breath:
+      enabled: true
+      damage: 6.0
+      duration_ticks: 100
+      cooldown_seconds: 20
+      min_phase: 1
+    # Wing knockback attack
+    knockback:
+      enabled: true
+      strength: 2.5
+      damage: 4.0
+      cooldown_seconds: 10
+      min_phase: 3
+    # Fireball barrage
+    fireball:
+      enabled: true
+      count: 5
+      damage: 10.0
+      cooldown_seconds: 25
+      min_phase: 4
+  # Boss bar settings
+  bossbar:
+    enabled: true
+    title: "&5&lEnder Dragon &7- &c{health}%"
+    color: PURPLE
+    style: SEGMENTED_12
+  # Rewards (distributed based on damage dealt)
+  rewards:
+    # Base coins for participation
+    base_coins: 500
+    # Additional coins per 1% damage dealt
+    per_damage_percent: 50
+    # Bonus for the player who deals the killing blow
+    killer_bonus: 1000
+    # Chance to get a crate key (0.0 - 1.0)
+    key_chance: 0.25
+    # Key type from ExcellentCrates
+    key_type: rare
+  # Messages
+  messages:
+    spawn: "&5&lDRAGON FIGHT! &fThe Ender Dragon has awakened!"
+    phase_change: "&5&lPHASE {phase}! &eThe dragon grows more powerful!"
+    death: "&a&lVICTORY! &fThe dragon has been slain by &6{killer}&f!"
+    damage_report: "&7You dealt &e{percent}% &7of the damage and earned &6{coins} coins&7!"
+  # Time limit in seconds (0 = no limit)
+  time_limit: 600
+
+# Automatic Keyall Distribution
+# Runs independently of events - gives keys to all online players on an interval
+keyall:
+  # Enable automatic keyall distribution
+  enabled: true
+  # Interval in seconds (3600 = 1 hour)
+  interval: 3600
+  # Key type: "crate" or "dungeon"
+  type: crate
+  # Key name (must match a valid key in ServerKeys config)
+  # Crate options: daily, balanced, diversity, epic
+  # Dungeon options: easy, medium, hard
+  key: epic
+  # Number of keys to give each player
+  amount: 1
+  # Countdown warning times in seconds before next keyall
+  # Default: 30min, 10min, 5min, 1min
+  warnings:
+    - 1800
+    - 600
+    - 300
+    - 60
+
+# Premium Pinata Event
+# Special pinata with 2x rewards and bonus key drops
+premium_pinata:
+  # Spawn location center (spawns within radius of this point)
+  spawn:
+    world: spawn
+    x: 56.5
+    y: 112.0
+    z: -94.5
+    radius: 5.0
+  # Click requirements (higher than regular pinata)
+  clicks_min: 100
+  clicks_max: 150
+  # Total coin pool (2x regular pinata)
+  total_coins: 6000
+  breaker_bonus: 1800
+  # Timeout in seconds (longer than regular)
+  timeout_seconds: 120
+  # Key chances (breaker gets full chance, participants get half)
+  keys:
+    # /givekey <player> diversity
+    diversity_chance: 0.10
+    # /givekey <player> epic (rare)
+    epic_chance: 0.03
+    # /dkey <player> medium
+    dkey_medium_chance: 0.10
+    # /dkey <player> hard (rare)
+    dkey_hard_chance: 0.03
+  # Minimum players required to start this event
+  min_players: 3
+
+  # Premium item drops (in addition to standard drops)
+  item_drops:
+    enabled: true
+    drop_chance: 0.5
+    bonus_items:
+      - NETHERITE_INGOT
+      - ENCHANTED_GOLDEN_APPLE
+      - TOTEM_OF_UNDYING
+      - ELYTRA
+      - DIAMOND_BLOCK
+      - EMERALD_BLOCK
+      - NETHER_STAR
+
+  # Premium pinata overrides
+  skin_theme: "gold_statue"
+  equipment:
+    main_hand: NETHERITE_SWORD
+    off_hand: TOTEM_OF_UNDYING
+  animations:
+    critical_hit_chance: 0.25  # Higher crit chance
+
+# Random Event Pool
+# Set weight for random selection (0.0 = disabled, 1.0 = normal, higher = more likely)
+# Premium pinata has lower weight (0.15) to make it rarer than standard events
+random_events:
+  pinata: 1.0
+  premium_pinata: 0.15
+  spelling: 1.0
+  crafting: 1.0
+  math: 1.0
+  drop_party: 1.0
+  dragon: 0.0
+
+# Countdown warnings
+countdown:
+  # Enable countdown warnings before events
+  enabled: true
+  # Warning times in seconds before event starts
+  warnings:
+    - 30
+    - 10
+    - 5
+
+# Discord webhook integration
+discord:
+  # Enable Discord webhooks
+  enabled: false
+  # Webhook URL (get from Discord channel settings)
+  webhook_url: ""
+  # Announce event starts
+  announce_start: true
+  # Announce event winners
+  announce_winner: true
+
+# ============================================
+# BROADCAST MESSAGING SYSTEM
+# ============================================
+# The broadcast system provides centralized, config-driven messaging
+# with support for chat, action bars, titles, boss bars, sounds, and filtering.
+#
+# Message Types:
+# - CHAT: Standard chat message (supports click/hover actions)
+# - ACTION_BAR: Text above the hotbar
+# - TITLE: Large text in center of screen
+# - BOSS_BAR: Progress bar at top of screen
+#
+# Features:
+# - Sound effects for any broadcast
+# - World/permission/radius filtering
+# - PlaceholderAPI support (%player_name%, etc.)
+# - Custom placeholders with curly braces {player}, {amount}, etc.
+# - Cross-server broadcasts via Redis (use BroadcastManager.broadcastGlobal())
+#
+broadcasts:
+  # ===== Pinata Events =====
+  pinata-spawn:
+    type: CHAT
+    message: "<yellow><bold>PINATA!</bold></yellow> <white>A pinata has appeared at spawn! Click it to break it!"
+    sound:
+      type: ENTITY_PLAYER_LEVELUP
+      volume: 1.0
+      pitch: 1.2
+    click:
+      action: RUN_COMMAND
+      value: "/spawn"
+      hover: "<yellow>Click to teleport to spawn!"
+
+  pinata-progress:
+    type: ACTION_BAR
+    message: "<yellow>Pinata Progress: <white>{clicks}</white>/<white>{total}</white> clicks"
+
+  pinata-broken:
+    type: CHAT
+    message: "<green><bold>PINATA BROKEN!</bold></green> <gold>{player}</gold> <white>dealt the final blow!"
+    sound:
+      type: UI_TOAST_CHALLENGE_COMPLETE
+      volume: 1.0
+      pitch: 1.0
+
+  pinata-timeout:
+    type: CHAT
+    message: "<red>The pinata has disappeared! Nobody broke it in time."
+    sound:
+      type: ENTITY_ITEM_BREAK
+      volume: 1.0
+      pitch: 0.8
+
+  pinata-reward:
+    type: CHAT
+    message: "<green>+{coins} coins</green> <gray>| Hits: {hits}</gray>"
+
+  # ===== Dragon Fight Events =====
+  dragon-phase:
+    type: ACTION_BAR
+    message: "<light_purple><bold>PHASE {phase}!</bold></light_purple> <white>{description}</white>"
+    filter:
+      world: "playworld_the_end"
+    sound:
+      type: ENTITY_ENDER_DRAGON_GROWL
+      volume: 1.0
+      pitch: 0.8
+
+  dragon-start:
+    type: TITLE
+    title: "<dark_purple><bold>DRAGON FIGHT</bold></dark_purple>"
+    subtitle: "<gray>Defeat the Ender Dragon!</gray>"
+    fade-in: 10
+    stay: 60
+    fade-out: 20
+    sound:
+      type: ENTITY_ENDER_DRAGON_AMBIENT
+      volume: 1.0
+      pitch: 0.5
+
+  dragon-victory:
+    type: CHAT
+    message: "<gold><bold>VICTORY!</bold></gold> <yellow>{player}</yellow> <white>has defeated the Ender Dragon!"
+    sound:
+      type: UI_TOAST_CHALLENGE_COMPLETE
+      volume: 1.0
+      pitch: 0.8
+
+  dragon-health:
+    type: BOSS_BAR
+    message: "<dark_purple>Ender Dragon</dark_purple> <gray>{health}/{max_health} HP</gray>"
+    boss-bar:
+      color: PURPLE
+      style: SEGMENTED_10
+      progress: 1.0
+    filter:
+      world: "playworld_the_end"
+
+  # ===== Spelling Events =====
+  spelling-start:
+    type: CHAT
+    message: "<yellow><bold>SPELLING BEE!</bold></yellow> <white>Spell the word: <gold><bold>{word}</bold></gold>"
+    sound:
+      type: BLOCK_NOTE_BLOCK_PLING
+      volume: 1.0
+      pitch: 1.5
+
+  spelling-winner:
+    type: CHAT
+    message: "<green><bold>CORRECT!</bold></green> <gold>{player}</gold> <white>spelled it correctly!"
+    sound:
+      type: ENTITY_PLAYER_LEVELUP
+      volume: 1.0
+      pitch: 1.0
+
+  spelling-timeout:
+    type: CHAT
+    message: "<red>Time's up!</red> <gray>The correct spelling was: <white>{word}</white></gray>"
+
+  # ===== Math Events =====
+  math-start:
+    type: CHAT
+    message: "<yellow><bold>MATH RACE!</bold></yellow> <white>Solve: <gold><bold>{problem}</bold></gold>"
+    sound:
+      type: BLOCK_NOTE_BLOCK_PLING
+      volume: 1.0
+      pitch: 1.5
+
+  math-winner:
+    type: CHAT
+    message: "<green><bold>CORRECT!</bold></green> <gold>{player}</gold> <white>solved it first! Answer: <yellow>{answer}</yellow>"
+    sound:
+      type: UI_TOAST_CHALLENGE_COMPLETE
+      volume: 1.0
+      pitch: 1.0
+
+  # ===== Crafting Events =====
+  crafting-start:
+    type: CHAT
+    message: "<yellow><bold>CRAFTING RACE!</bold></yellow> <white>Craft <gold>{amount}x {item}</gold> in <yellow>{time}</yellow> seconds!"
+    sound:
+      type: BLOCK_ANVIL_USE
+      volume: 0.8
+      pitch: 1.2
+
+  crafting-winner:
+    type: CHAT
+    message: "<green><bold>COMPLETED!</bold></green> <gold>{player}</gold> <white>crafted <yellow>{amount}x {item}</yellow> first!"
+    sound:
+      type: UI_TOAST_CHALLENGE_COMPLETE
+      volume: 1.0
+      pitch: 1.0
+
+  # ===== Drop Party Events =====
+  drop-party-start:
+    type: TITLE
+    title: "<rainbow>DROP PARTY!</rainbow>"
+    subtitle: "<yellow>Grab the loot!</yellow>"
+    fade-in: 10
+    stay: 40
+    fade-out: 10
+    sound:
+      type: ENTITY_FIREWORK_ROCKET_LAUNCH
+      volume: 1.0
+      pitch: 1.0
+
+  drop-party-countdown:
+    type: ACTION_BAR
+    message: "<yellow><bold>Drop Party starting in {seconds} seconds...</bold></yellow>"
+
+  # ===== Premium Pinata Events =====
+  premium-pinata-spawn:
+    type: CHAT
+    message: "<gold><bold>✦ PREMIUM PINATA ✦</bold></gold> <yellow>A golden pinata with massive rewards has appeared!"
+    sound:
+      type: BLOCK_BEACON_ACTIVATE
+      volume: 1.0
+      pitch: 1.5
+    click:
+      action: RUN_COMMAND
+      value: "/spawn"
+      hover: "<gold><bold>Click to teleport!"
+
+  premium-pinata-warning:
+    type: TITLE
+    title: "<gold><bold>PREMIUM PINATA</bold></gold>"
+    subtitle: "<yellow>{seconds} seconds remaining!</yellow>"
+    fade-in: 5
+    stay: 30
+    fade-out: 5
+
+  # ===== General Event Messages =====
+  event-starting:
+    type: CHAT
+    message: "<yellow><bold>EVENT STARTING!</bold></yellow> <white>A new event is beginning..."
+    sound:
+      type: ENTITY_EXPERIENCE_ORB_PICKUP
+      volume: 1.0
+      pitch: 1.0
+
+  event-ended:
+    type: CHAT
+    message: "<gray>The event has ended. Thanks for participating!"
+
+  event-reward:
+    type: CHAT
+    message: "<green>+{amount} {currency}</green> <gray>from {event_name}</gray>"
+
+  # ===== Admin Notifications =====
+  # (Only visible to players with permission)
+  admin-event-force:
+    type: CHAT
+    message: "<red>[Admin]</red> <yellow>{player}</yellow> <gray>forced event: <white>{event_type}</white></gray>"
+    filter:
+      permission: "serverevents.admin"
+
+  admin-event-stop:
+    type: CHAT
+    message: "<red>[Admin]</red> <yellow>{player}</yellow> <gray>stopped the active event</gray>"
+    filter:
+      permission: "serverevents.admin"
+
+# ============================================
+# USAGE IN CODE:
+# ============================================
+# Simple broadcast:
+#   BroadcastManager.broadcast("pinata-spawn");
+#
+# With placeholders:
+#   BroadcastManager.broadcast("pinata-broken",
+#       Placeholder.of("player", player.getName())
+#   );
+#
+# Programmatic (without config):
+#   BroadcastManager.builder("temp-message")
+#       .message("<gold>Dynamic message: {value}")
+#       .placeholder("value", "123")
+#       .type(BroadcastType.ACTION_BAR)
+#       .filterWorld("playworld")
+#       .sound(Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.2f)
+#       .plugin(plugin)
+#       .send();
+#
+# Cross-server (Redis):
+#   BroadcastManager.broadcastGlobal("event-starting");
+#

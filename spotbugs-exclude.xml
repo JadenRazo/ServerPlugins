@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter
+    xmlns="https://github.com/spotbugs/filter/3.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://github.com/spotbugs/filter/3.0.0 https://raw.githubusercontent.com/spotbugs/spotbugs/3.1.0/spotbugs/etc/findbugsfilter.xsd">
+
+    <!-- Exclude test classes -->
+    <Match>
+        <Class name="~.*Test"/>
+    </Match>
+    <Match>
+        <Class name="~.*Tests"/>
+    </Match>
+    <Match>
+        <Package name="~.*\.test\..*"/>
+    </Match>
+
+    <!-- Exclude serialization issues in Bukkit plugin classes -->
+    <Match>
+        <Bug pattern="SE_NO_SERIALVERSIONID"/>
+    </Match>
+    <Match>
+        <Bug pattern="SE_BAD_FIELD"/>
+    </Match>
+    <Match>
+        <Bug pattern="SE_BAD_FIELD_STORE"/>
+    </Match>
+
+    <!-- Exclude unused field warnings for @Inject fields -->
+    <Match>
+        <Bug pattern="URF_UNREAD_FIELD"/>
+        <Or>
+            <Annotation name="javax.inject.Inject"/>
+            <Annotation name="com.google.inject.Inject"/>
+        </Or>
+    </Match>
+
+    <!-- Exclude equals/hashCode warnings for Bukkit wrapper classes -->
+    <Match>
+        <Bug pattern="EQ_COMPARETO_USE_OBJECT_EQUALS"/>
+        <Class name="~net\.serverplugins\..*"/>
+    </Match>
+
+    <!-- Exclude immature class warnings (no toString) -->
+    <Match>
+        <Bug pattern="IMC_IMMATURE_CLASS_NO_TOSTRING"/>
+    </Match>
+
+    <!-- Exclude default encoding warnings - Minecraft handles charset -->
+    <Match>
+        <Bug pattern="DM_DEFAULT_ENCODING"/>
+    </Match>
+    <Match>
+        <Bug pattern="DM_CONVERT_CASE"/>
+    </Match>
+
+    <!-- Exclude warnings about static fields in plugin/singleton main classes -->
+    <!-- Plugin instance pattern is standard in Bukkit -->
+    <Match>
+        <Bug pattern="MS_CANNOT_BE_FINAL"/>
+        <Or>
+            <Class name="~.*Plugin"/>
+            <Class name="~net\.serverplugins\.api\.ServerAPI"/>
+        </Or>
+    </Match>
+    <Match>
+        <Bug pattern="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD"/>
+        <Or>
+            <Class name="~.*Plugin"/>
+            <Class name="~net\.serverplugins\..*\.Server.*"/>
+            <Class name="~net\.serverplugins\.api\.utils\.PacketUtils"/>
+        </Or>
+    </Match>
+
+    <!-- Exclude object deserialization warnings for Bukkit ItemStack serialization -->
+    <Match>
+        <Bug pattern="OBJECT_DESERIALIZATION"/>
+        <Class name="~net\.serverplugins\..*"/>
+    </Match>
+
+    <!-- Exclude clone-without-Cloneable in Message types (intentional copy pattern) -->
+    <Match>
+        <Bug pattern="CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE"/>
+        <Class name="~net\.serverplugins\.api\.messages\.types\..*"/>
+    </Match>
+
+    <!-- Exclude method naming convention warnings for Bukkit event handlers -->
+    <Match>
+        <Bug pattern="NM_METHOD_NAMING_CONVENTION"/>
+        <Method name="~on.*"/>
+    </Match>
+
+    <!-- Exclude lambda serialization warnings -->
+    <Match>
+        <Bug pattern="SE_BAD_FIELD_INNER_CLASS"/>
+    </Match>
+
+    <!-- Exclude random number generator warnings -->
+    <!-- ThreadLocalRandom is appropriate for game mechanics -->
+    <Match>
+        <Bug pattern="DMI_RANDOM_USED_ONLY_ONCE"/>
+    </Match>
+
+    <!-- Exclude reflection warnings for Bukkit compatibility -->
+    <Match>
+        <Bug pattern="REC_CATCH_EXCEPTION"/>
+        <Class name="~.*Reflection.*"/>
+    </Match>
+    <Match>
+        <Bug pattern="DE_MIGHT_IGNORE"/>
+        <Class name="~.*Reflection.*"/>
+    </Match>
+
+    <!-- Exclude hard-coded password in H2 migration tool (empty password for sa user) -->
+    <Match>
+        <Bug pattern="HARD_CODE_PASSWORD"/>
+        <Class name="net.serverplugins.arcade.commands.MigrateCommand"/>
+    </Match>
+
+    <!-- Exclude inner class exposure warnings for Builder pattern -->
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP"/>
+        <Class name="~.*Builder"/>
+    </Match>
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+        <Class name="~.*Builder"/>
+    </Match>
+
+    <!-- Exclude path traversal warnings for config file loading in plugin directory -->
+    <Match>
+        <Bug pattern="PATH_TRAVERSAL_IN"/>
+        <Class name="net.serverplugins.discord.ServerBot"/>
+    </Match>
+
+</FindBugsFilter>

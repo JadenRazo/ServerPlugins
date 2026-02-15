@@ -1,0 +1,396 @@
+# ServerAdmin Configuration
+
+# Server identification for cross-server features
+# This should match the server name in ServerBridge config
+server-name: "smp"
+
+vanish:
+  # Default vanish mode when using /vanish without arguments
+  # Options: STAFF (visible to staff), FULL (invisible to everyone)
+  default-mode: STAFF
+
+  # Allow vanished players to interact with blocks
+  allow-interaction: true
+
+  # Allow vanished players to attack entities
+  allow-attack: false
+
+  # Persist vanish state when player relogs
+  persist-on-relog: true
+
+  # Enable flight when vanished
+  enable-flight: true
+
+  # Block these interactions for vanished players
+  block-pressure-plates: true
+  block-tripwire: true
+  block-sculk-sensors: true
+  block-turtle-eggs: true
+  block-dripleaf: true
+  silent-chest: true
+
+spectate:
+  # Automatically vanish when entering spectate mode
+  auto-vanish: true
+
+  # Exit spectate mode when target player disconnects
+  exit-on-target-quit: true
+
+  # Restore previous location when exiting spectate
+  restore-location: true
+
+freecam:
+  # Show player's armor on the ghost entity
+  show-armor: true
+
+  # Show player's held item on the ghost entity
+  show-held-item: true
+
+  # Show player's name tag above the ghost entity
+  show-name-tag: true
+
+xray:
+  # Enable xray detection system
+  enabled: true
+
+  # Minimum suspicion score to trigger an alert (0-100)
+  alert-threshold: 50
+
+  # Time window in seconds to calculate mining patterns
+  time-window: 300
+
+  # Blocks tracked for xray detection
+  tracked-blocks:
+    - DIAMOND_ORE
+    - DEEPSLATE_DIAMOND_ORE
+    - ANCIENT_DEBRIS
+    - EMERALD_ORE
+    - DEEPSLATE_EMERALD_ORE
+
+  # Blocks counted as stone for ratio calculation
+  stone-blocks:
+    - STONE
+    - DEEPSLATE
+    - GRANITE
+    - DIORITE
+    - ANDESITE
+    - TUFF
+    - CALCITE
+    - COBBLESTONE
+    - COBBLED_DEEPSLATE
+
+spawner:
+  # Enable spawner mining detection
+  enabled: true
+
+  # Alert when player finds this many spawners in the time window
+  alert-threshold: 2
+
+  # Time window in seconds for spawner detection (30 minutes)
+  time-window: 1800
+
+  # Always alert on first spawner found (suspicious in most cases)
+  alert-on-first: false
+
+disguise:
+  # Chat format when disguised. Supports PlaceholderAPI placeholders and MiniMessage.
+  # Available tokens: {nickname}, {displayname}, {name}, {message}
+  chat-format: "%vault_prefix%{nickname}%vault_suffix%<gray>: <white>{message}"
+
+freeze:
+  # Enable freeze system
+  enabled: true
+
+  # Auto-unfreeze after this many minutes (0 = never)
+  timeout-minutes: 5
+
+  # Commands frozen players can still use
+  allowed-commands:
+    - /msg
+    - /tell
+    - /r
+    - /reply
+    - /helpop
+
+  # Apply these effects when frozen
+  effects:
+    blindness: true
+    slowness: true
+
+staffchat:
+  # Enable staff chat
+  enabled: true
+
+  # Staff chat message format
+  format: "&8[&6SC&8] &f%player%&7: &f%message%"
+
+alts:
+  # Enable alt detection
+  enabled: true
+
+xrayvision:
+  # Enable xray vision feature (admin ability to see ores)
+  enabled: true
+
+  # Scan radius in blocks
+  radius: 32
+
+  # Update interval in ticks (20 = 1 second)
+  update-interval: 20
+
+  # Ores to highlight with glowing effect
+  ores:
+    - DIAMOND_ORE
+    - DEEPSLATE_DIAMOND_ORE
+    - GOLD_ORE
+    - DEEPSLATE_GOLD_ORE
+    - NETHER_GOLD_ORE
+    - EMERALD_ORE
+    - DEEPSLATE_EMERALD_ORE
+    - ANCIENT_DEBRIS
+    - SPAWNER
+
+punishment:
+  # Enable the unified punishment system
+  enabled: true
+
+  # Require confirmation before applying punishments via GUI
+  require-confirmation: true
+
+  # Default reason when none specified
+  default-reason: "Rule violation"
+
+  # Preset reasons with progressive escalation
+  reasons:
+    # Chat-related reasons
+    spam:
+      display-name: "Spam/Flooding"
+      description: "Repeated messages or chat flooding"
+      applicable-types: [WARN, MUTE]
+      escalation:
+        1: { type: WARN }
+        2: { type: MUTE, duration: "30m" }
+        3: { type: MUTE, duration: "6h" }
+        4: { type: MUTE, duration: "1d" }
+        5: { type: BAN, duration: "3d" }
+        6: { type: BAN }
+
+    caps-abuse:
+      display-name: "Caps Abuse"
+      description: "Excessive use of capital letters"
+      applicable-types: [WARN, MUTE]
+      escalation:
+        1: { type: WARN }
+        2: { type: MUTE, duration: "15m" }
+        3: { type: MUTE, duration: "1h" }
+        4: { type: MUTE, duration: "6h" }
+
+    inappropriate-language:
+      display-name: "Inappropriate Language"
+      description: "Profanity or inappropriate content"
+      applicable-types: [WARN, MUTE]
+      escalation:
+        1: { type: WARN }
+        2: { type: MUTE, duration: "1h" }
+        3: { type: MUTE, duration: "6h" }
+        4: { type: MUTE, duration: "1d" }
+        5: { type: BAN, duration: "3d" }
+
+    advertising:
+      display-name: "Advertising"
+      description: "Promoting other servers or services"
+      applicable-types: [WARN, MUTE, BAN]
+      escalation:
+        1: { type: MUTE, duration: "1h" }
+        2: { type: MUTE, duration: "1d" }
+        3: { type: BAN, duration: "7d" }
+        4: { type: BAN }
+
+    toxicity:
+      display-name: "Toxicity/Rudeness"
+      description: "Disrespectful or toxic behavior"
+      applicable-types: [WARN, MUTE]
+      escalation:
+        1: { type: WARN }
+        2: { type: MUTE, duration: "1h" }
+        3: { type: MUTE, duration: "1d" }
+        4: { type: BAN, duration: "3d" }
+        5: { type: BAN }
+
+    harassment:
+      display-name: "Harassment"
+      description: "Targeting or harassing another player"
+      applicable-types: [WARN, MUTE, BAN]
+      escalation:
+        1: { type: MUTE, duration: "6h" }
+        2: { type: MUTE, duration: "1d" }
+        3: { type: BAN, duration: "7d" }
+        4: { type: BAN }
+
+    slur-hate-speech:
+      display-name: "Slur/Hate Speech"
+      description: "Discriminatory or hateful language"
+      applicable-types: [MUTE, BAN]
+      escalation:
+        1: { type: MUTE, duration: "1d" }
+        2: { type: BAN, duration: "7d" }
+        3: { type: BAN }
+
+    staff-disrespect:
+      display-name: "Staff Disrespect"
+      description: "Disrespecting or ignoring staff"
+      applicable-types: [WARN, MUTE]
+      escalation:
+        1: { type: WARN }
+        2: { type: MUTE, duration: "1h" }
+        3: { type: MUTE, duration: "6h" }
+        4: { type: MUTE, duration: "1d" }
+
+    # Gameplay reasons
+    griefing:
+      display-name: "Griefing"
+      description: "Destroying or damaging builds"
+      applicable-types: [WARN, KICK, BAN]
+      escalation:
+        1: { type: WARN }
+        2: { type: BAN, duration: "1d" }
+        3: { type: BAN, duration: "7d" }
+        4: { type: BAN }
+
+    stealing:
+      display-name: "Stealing"
+      description: "Taking items without permission"
+      applicable-types: [WARN, KICK, BAN]
+      escalation:
+        1: { type: WARN }
+        2: { type: BAN, duration: "1d" }
+        3: { type: BAN, duration: "7d" }
+        4: { type: BAN }
+
+    scamming:
+      display-name: "Scamming"
+      description: "Deceiving players in trades"
+      applicable-types: [WARN, BAN]
+      escalation:
+        1: { type: WARN }
+        2: { type: BAN, duration: "3d" }
+        3: { type: BAN, duration: "14d" }
+        4: { type: BAN }
+
+    # Cheating reasons
+    hacked-client:
+      display-name: "Hacked Client"
+      description: "Using illegal modifications (KillAura, Fly, Speed)"
+      applicable-types: [BAN]
+      escalation:
+        1: { type: BAN, duration: "7d" }
+        2: { type: BAN, duration: "30d" }
+        3: { type: BAN }
+
+    xray:
+      display-name: "X-Ray"
+      description: "Using x-ray texture packs or mods"
+      applicable-types: [BAN]
+      escalation:
+        1: { type: BAN, duration: "7d" }
+        2: { type: BAN, duration: "30d" }
+        3: { type: BAN }
+
+    exploiting:
+      display-name: "Exploiting"
+      description: "Abusing bugs or exploits"
+      applicable-types: [WARN, BAN]
+      escalation:
+        1: { type: WARN }
+        2: { type: BAN, duration: "7d" }
+        3: { type: BAN }
+
+    duping:
+      display-name: "Duping"
+      description: "Duplicating items"
+      applicable-types: [BAN]
+      escalation:
+        1: { type: BAN, duration: "14d" }
+        2: { type: BAN }
+
+    # General
+    other:
+      display-name: "Custom Reason"
+      description: "Enter a custom reason"
+      applicable-types: [WARN, MUTE, KICK, BAN]
+      escalation:
+        1: { type: WARN }
+
+  # Legacy offense categories (kept for backwards compatibility)
+  categories:
+    chat:
+      display-name: "Chat Violations"
+      icon: PAPER
+      description: "Spam, caps abuse, advertising, inappropriate language"
+      escalation:
+        1: { type: WARN, reason: "Chat violation - First offense" }
+        2: { type: MUTE, duration: "30m", reason: "Chat violation - Second offense" }
+        3: { type: MUTE, duration: "6h", reason: "Chat violation - Third offense" }
+        4: { type: MUTE, duration: "1d", reason: "Chat violation - Fourth offense" }
+        5: { type: BAN, duration: "3d", reason: "Chat violation - Fifth offense" }
+        6: { type: BAN, reason: "Chat violation - Final offense" }
+
+    grief:
+      display-name: "Griefing"
+      icon: TNT
+      description: "Block destruction, stealing, claim abuse"
+      escalation:
+        1: { type: WARN, reason: "Griefing - First offense" }
+        2: { type: BAN, duration: "1d", reason: "Griefing - Second offense" }
+        3: { type: BAN, duration: "7d", reason: "Griefing - Third offense" }
+        4: { type: BAN, reason: "Griefing - Final offense" }
+
+    cheat:
+      display-name: "Cheating"
+      icon: DIAMOND_PICKAXE
+      description: "Hacked clients, exploits, x-ray"
+      escalation:
+        1: { type: BAN, duration: "7d", reason: "Cheating - First offense" }
+        2: { type: BAN, duration: "30d", reason: "Cheating - Second offense" }
+        3: { type: BAN, reason: "Cheating - Final offense" }
+
+    toxicity:
+      display-name: "Toxicity"
+      icon: ROTTEN_FLESH
+      description: "Harassment, hate speech, targeted abuse"
+      escalation:
+        1: { type: MUTE, duration: "1h", reason: "Toxic behavior - First offense" }
+        2: { type: MUTE, duration: "1d", reason: "Toxic behavior - Second offense" }
+        3: { type: BAN, duration: "3d", reason: "Toxic behavior - Third offense" }
+        4: { type: BAN, reason: "Toxic behavior - Final offense" }
+
+    other:
+      display-name: "Other"
+      icon: BARRIER
+      description: "Miscellaneous offenses"
+      escalation:
+        1: { type: WARN, reason: "Rule violation" }
+
+reset:
+  # Enable player data reset commands
+  enabled: true
+
+  # Require confirmation for all resets (double-click in GUI)
+  require-confirmation: true
+
+  # Default starting balance when resetting economy
+  economy-starting-balance: 0.0
+
+  # Default rank when resetting permissions (LuckPerms group name)
+  default-rank: "default"
+
+messages:
+  prefix: "&8[&6Admin&8] "
+  vanish-enabled: "&aYou are now vanished &7(%mode% mode)"
+  vanish-disabled: "&cYou are no longer vanished"
+  spectate-start: "&aSpectating &f%player%"
+  spectate-end: "&cStopped spectating"
+  xray-alert: "&c[XRay] &f%player% &7mined &f%count% %block% &7in &f%time% &7(suspicion: &c%level%&7)"
+  spawner-alert: "&d[Spawner] &f%player% &7found a &f%type% spawner &7at &f%location% &7(%count% in %time%)"
+  freeze-msg: "&c&lYOU HAVE BEEN FROZEN\n&7You were frozen by &f%staff%\n&7Reason: &f%reason%\n\n&eYou may only use /msg to contact staff"
+  unfreeze-msg: "&a&lYou have been unfrozen"

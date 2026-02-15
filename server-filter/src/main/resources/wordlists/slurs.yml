@@ -1,0 +1,78 @@
+# SLURS - Always blocked regardless of filter level
+# These are hate speech terms that are never acceptable
+
+words:
+  # Racial slurs
+  - "nigger"
+  - "nigga"
+  - "niger"
+  - "nigar"
+  - "niggers"
+  - "niggas"
+  - "chingchong"
+  - "darky"
+  - "darkey"
+  - "darkie"
+  - "darkies"
+  - "redskin"
+  - "redskins"
+  - "squinty"
+  - "tacohead"
+  - "wetback"
+  - "spic"
+  - "spick"
+  - "beaner"
+  - "gook"
+  - "chink"
+  - "kike"
+  - "heeb"
+  - "jigaboo"
+  - "coon"
+  - "porch monkey"
+  - "raghead"
+  - "towelhead"
+  - "camel jockey"
+  - "sandnigger"
+
+  # Homophobic slurs
+  - "faggot"
+  - "faggots"
+  - "faggit"
+  - "faggits"
+  - "feggit"
+  - "feggits"
+  - "fag"
+  - "fags"
+  - "dyke"
+  - "tranny"
+
+  # Other hate terms
+  - "kkk"
+  - "heil hitler"
+  - "sieg heil"
+  - "white power"
+  - "14/88"
+
+  # L33t variations (handled by normalizer but explicit for safety)
+  - "n1gger"
+  - "n1gga"
+  - "n1gg3r"
+  - "nlgger"
+  - "nlgg3r"
+  - "ni99a"
+  - "ni9a"
+  - "ni99er"
+  - "ni9er"
+  - "ni99as"
+  - "ni9as"
+  - "ni99ers"
+  - "ni9ers"
+  - "n!gger"
+  - "n!gg3r"
+
+# Regex patterns for variations
+patterns:
+  - "n+[i1!|]+g+[e3]+r+s?"
+  - "n+[i1!|]+g+[a@4]+s?"
+  - "f+[a@4]+g+[o0]+t+s?"
+  - "ch+[i1!]+n+k+s?"

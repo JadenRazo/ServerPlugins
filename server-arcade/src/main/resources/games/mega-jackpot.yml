@@ -1,0 +1,206 @@
+##################################
+##        Mega Jackpot          ##
+##################################
+gameType: "jackpot"
+name: "MEGA JACKPOT"
+config_key: "mega_jackpot"
+
+######## Command Settings ########
+
+#command: "megajackpot"
+
+######## Machine Settings ########
+
+machine:
+  item:
+    material: stick
+    custom_model_data: 515
+    name: "&c&lMEGA JACKPOT Machine"
+  structure:
+    '1':
+      type: block
+      material: barrier
+      location: 0 0 0
+    '2':
+      type: block
+      material: barrier
+      location: 0 1 0
+    '3':
+      type: block
+      material: barrier
+      location: 0 2 0
+    '4':
+      type: item
+      direction: NORTH
+      material: stick
+      custom_model_data: 515
+      location: 0 0 0
+
+
+######## Mega Jackpot Settings ########
+
+player_head:
+  material: PLAYER_HEAD
+  name: '&c%name%'
+  lore:
+    - '&7ᴄʜᴀɴᴄᴇ ᴛᴏ ᴡɪɴ: &c%chance%&f'
+    - '&7ʙᴇᴛ ᴠᴀʟᴜᴇ: &6%bet%'
+
+# Timing (in ticks, 20 ticks = 1 second)
+betting_duration: 216000     # 3 hours (10800 seconds) - entire betting window
+draw_interval: 72000         # Draw every 1 hour (3600 seconds)
+time_between_games: 600      # 30 seconds between draws
+animation_duration: 200      # 10 seconds of intense spinning
+
+# Requirements
+min_players: 1
+min_pot: 5000                # Higher threshold for mega jackpot
+progressive: true            # Rolls over if threshold not met
+
+# Prize Distribution
+house_edge: 0.05             # 5% house cut (95% RTP for big draws)
+winner_takes: 0.95
+house_takes: 0.05
+
+# Announcements
+announce_5min: true          # "MEGA JACKPOT IN 5 MINUTES!"
+announce_1min: true          # "MEGA JACKPOT IN 1 MINUTE!"
+announce_30sec: true         # "30 SECONDS TO MEGA JACKPOT!"
+
+# Celebration
+winner_celebration: epic     # Multiple fireworks, title screen
+broadcast_to_everyone: true  # Server-wide announcement
+send_message_to_everyone: true
+
+########    Inventory    ########
+
+betting_gui:
+  size: 54
+  title: '&f⻔⻔⻔⻔⻔⻔⻔⻔⻔⻔⻔'
+  head_slots: [ 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34 ]
+  buttons:
+    next_page:
+        slot: 53
+        material: STICK
+        custom_model_data: 8
+        name: "&8ɴᴇxᴛ ᴘᴀɢᴇ"
+    previous_page:
+        slot: 45
+        material: STICK
+        custom_model_data: 9
+        name: "&8ᴘʀᴇᴠɪᴏᴜꜱ ᴘᴀɢᴇ"
+    bet:
+        slot: [49, 50, 51]
+        material: STICK
+        custom_model_data: 1
+        name: '&f'
+        lore:
+          - '&c&lᴊᴏɪɴ ᴛʜᴇ ᴍᴇɢᴀ ᴊᴀᴄᴋᴘᴏᴛ'
+          - '&7ʙᴇᴛ ꜰᴏʀ ᴀ ᴄʜᴀɴᴄᴇ ᴛᴏ ᴡɪɴ ʙɪɢ!'
+          - '&f'
+          - '&f &eᴄʟɪᴄᴋ ᴛᴏ ᴍᴀᴋᴇ ᴀ ʙᴇᴛ!'
+  items:
+
+###############################
+
+waiting_gui:
+  size: 54
+  title: '&f⻔⻔⻔⻔⻔⻔⻔⻔⻔⻔⻔'
+  head_slots: [ 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34 ]
+  buttons:
+    next_page:
+        slot: 53
+        material: STICK
+        custom_model_data: 8
+        name: "&8ɴᴇxᴛ ᴘᴀɢᴇ"
+    previous_page:
+        slot: 45
+        material: STICK
+        custom_model_data: 9
+        name: "&8ᴘʀᴇᴠɪᴏᴜꜱ ᴘᴀɢᴇ"
+    remove_bet:
+        slot: [49, 50, 51]
+        material: STICK
+        custom_model_data: 1
+        name: '&f'
+        lore:
+          - '&7ʟᴇᴀᴠᴇ ᴛʜᴇ ɢᴀᴍᴇ ᴀɴᴅ'
+          - '&7ɢᴇᴛ ʏᴏᴜʀ ᴍᴏɴᴇʏ ʙᴀᴄᴋ.'
+          - '&f'
+          - '&f ▪ ʏᴏᴜʀ ʙᴇᴛ: &6%bet%'
+          - '&f'
+          - '&f &eᴄʟɪᴄᴋ ᴛᴏ ʀᴇᴍᴏᴠᴇ ʏᴏᴜʀ ʙᴇᴛ!'
+  items:
+
+###############################
+
+gui:
+  size: 54
+  title: '&f⻔⻔⻔⻔⻔⻔⻔⻔⻔⻔⻔'
+  head_slots: [ 3, 4, 5, 15, 24, 32, 31, 30, 20, 11]
+  winning_head_slot: 4
+  items:
+    '1':
+      slot: 4
+      material: STICK
+      custom_model_data: 1
+      name: '&c&lᴍᴇɢᴀ ᴡɪɴɴᴇʀ!'
+
+
+########   Bet Settings  ########
+
+bet:
+  default_bet: 500
+
+  gui:
+    size: 54
+    title: "&f⻔⻔⻔⻔⻔⻔⻔⻔⻔⻔⻔⻔⻔⻔"
+    values:
+      custom:
+        max: 100000
+        min: 100
+        slot: [38, 39, 40, 41, 42]
+        material: STICK
+        custom_model_data: 1
+        name: "&f"
+        lore:
+        - '&7ᴜꜱᴇ ᴛʜɪꜱ ɪꜰ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ'
+        - '&7ᴇɴᴛᴇʀ ᴀ ᴄᴜꜱᴛᴏᴍ ᴀᴍᴏᴜɴᴛ.'
+        - '&f'
+        - '&f &eʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ ꜱᴇʟᴇᴄᴛ!'
+      '500':
+        slot: 9
+        material: STICK
+        custom_model_data: 3
+        name: '&6500&f'
+        lore:
+          - '&7ᴄʟɪᴄᴋ ᴛᴏ ꜱᴇʟᴇᴄᴛ!'
+      '1000':
+        slot: 11
+        material: STICK
+        custom_model_data: 3
+        name: '&61000&f'
+        lore:
+          - '&7ᴄʟɪᴄᴋ ᴛᴏ ꜱᴇʟᴇᴄᴛ!'
+      '2500':
+        slot: 13
+        material: STICK
+        custom_model_data: 3
+        name: '&62500&f'
+        lore:
+          - '&7ᴄʟɪᴄᴋ ᴛᴏ ꜱᴇʟᴇᴄᴛ!'
+      '5000':
+        slot: 15
+        material: STICK
+        custom_model_data: 3
+        name: '&65000&f'
+        lore:
+          - '&7ᴄʟɪᴄᴋ ᴛᴏ ꜱᴇʟᴇᴄᴛ!'
+      '10000':
+        slot: 17
+        material: STICK
+        custom_model_data: 3
+        name: '&610000&f'
+        lore:
+          - '&7ᴄʟɪᴄᴋ ᴛᴏ ꜱᴇʟᴇᴄᴛ!'
+    items:
