@@ -2,6 +2,10 @@
 
 A modular Minecraft plugin ecosystem for Paper 1.21.4+ servers. Built with Java 21 and Maven, this suite provides 24 interconnected plugins covering economy, claims, events, administration, and more.
 
+## Architecture
+
+![Architecture](docs/architecture.svg)
+
 ## Modules
 
 | Module | Description |
