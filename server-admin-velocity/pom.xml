@@ -28,7 +28,7 @@
         <dependency>
             <groupId>com.velocitypowered</groupId>
             <artifactId>velocity-api</artifactId>
-            <version>3.3.0-SNAPSHOT</version>
+            <version>3.4.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -39,7 +39,7 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.10.1</version>
+            <version>2.14.0</version>
         </dependency>
         <dependency>
             <groupId>com.zaxxer</groupId>
@@ -49,7 +49,7 @@
         <dependency>
             <groupId>org.mariadb.jdbc</groupId>
             <artifactId>mariadb-java-client</artifactId>
-            <version>3.3.2</version>
+            <version>3.5.8</version>
         </dependency>
     </dependencies>
 
@@ -58,7 +58,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>3.15.0</version>
                 <configuration>
                     <release>21</release>
                     <fork>false</fork>
@@ -69,7 +69,7 @@
                         <path>
                             <groupId>com.velocitypowered</groupId>
                             <artifactId>velocity-api</artifactId>
-                            <version>3.3.0-SNAPSHOT</version>
+                            <version>3.4.0</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
@@ -77,7 +77,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>3.6.2</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
