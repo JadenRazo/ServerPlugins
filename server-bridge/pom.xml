@@ -74,7 +74,7 @@
         <dependency>
             <groupId>com.github.NEZNAMY</groupId>
             <artifactId>TAB-API</artifactId>
-            <version>5.0.0</version>
+            <version>6.0.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
