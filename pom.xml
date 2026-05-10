@@ -68,7 +68,7 @@
         <spotless.version>2.46.1</spotless.version>
         <pmd.plugin.version>3.28.0</pmd.plugin.version>
         <errorprone.version>2.49.0</errorprone.version>
-        <testcontainers.version>1.21.4</testcontainers.version>
+        <testcontainers.version>2.0.5</testcontainers.version>
         <pitest.version>1.23.1</pitest.version>
 
         <!-- Coverage enforcement -->
