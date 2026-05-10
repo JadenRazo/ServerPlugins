@@ -54,7 +54,7 @@
         <mariadb.version>3.5.8</mariadb.version>
 
         <!-- Testing -->
-        <junit.version>5.10.2</junit.version>
+        <junit.version>5.14.4</junit.version>
         <mockito.version>5.23.0</mockito.version>
         <mockbukkit.version>3.133.2</mockbukkit.version>
         <assertj.version>3.27.7</assertj.version>
