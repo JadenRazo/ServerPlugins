@@ -65,7 +65,7 @@
         <checkstyle.version>3.6.0</checkstyle.version>
         <spotbugs.version>4.9.8.3</spotbugs.version>
         <spotbugs-annotations.version>4.8.3</spotbugs-annotations.version>
-        <spotless.version>2.43.0</spotless.version>
+        <spotless.version>3.4.0</spotless.version>
         <pmd.plugin.version>3.28.0</pmd.plugin.version>
         <errorprone.version>2.49.0</errorprone.version>
         <testcontainers.version>1.21.4</testcontainers.version>
