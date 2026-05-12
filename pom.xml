@@ -45,7 +45,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <paper.version>1.21.4-R0.1-SNAPSHOT</paper.version>
         <adventure.version>4.26.1</adventure.version>
-        <minimessage.version>4.26.1</minimessage.version>
+        <minimessage.version>5.1.1</minimessage.version>
         <vault.version>1.7.1</vault.version>
         <luckperms.version>5.5</luckperms.version>
         <hikari.version>5.1.0</hikari.version>
