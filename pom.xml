@@ -51,7 +51,7 @@
         <hikari.version>5.1.0</hikari.version>
         <h2.version>2.4.240</h2.version>
         <sqlite.version>3.53.1.0</sqlite.version>
-        <mariadb.version>3.5.8</mariadb.version>
+        <mariadb.version>3.5.9</mariadb.version>
 
         <!-- Testing -->
         <junit.version>5.14.4</junit.version>
